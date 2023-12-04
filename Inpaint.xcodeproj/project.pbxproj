@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */; };
+		11C1FA2F2B1C80FE0021EA5F /* SplitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */; };
+		11C1FA312B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */; };
 		11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFF9F22B18D9FF008CFCA5 /* AppDelegate.swift */; };
 		11CFF9F52B18D9FF008CFCA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFF9F42B18D9FF008CFCA5 /* SceneDelegate.swift */; };
 		11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */; };
@@ -16,6 +19,12 @@
 		11CFFA0A2B18DA01008CFCA5 /* InpaintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA092B18DA01008CFCA5 /* InpaintTests.swift */; };
 		11CFFA142B18DA01008CFCA5 /* InpaintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA132B18DA01008CFCA5 /* InpaintUITests.swift */; };
 		11CFFA162B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA152B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift */; };
+		11CFFA272B18DB30008CFCA5 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CFFA262B18DB30008CFCA5 /* mask.png */; };
+		11CFFA292B18E222008CFCA5 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CFFA282B18E221008CFCA5 /* input.png */; };
+		11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */; };
+		3CF5136D7FA29622DA933275 /* Pods_Inpaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */; };
+		5A5261AB7059201704BCF1F0 /* Pods_Inpaint_InpaintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */; };
+		90609CAA495B37910B508E46 /* Pods_InpaintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint_InpaintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.debug.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LaMaFP16_512.mlpackage; sourceTree = "<group>"; };
+		11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitImageView.swift; sourceTree = "<group>"; };
+		11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LaMaFP16_1024.mlpackage; sourceTree = "<group>"; };
 		11CFF9EF2B18D9FF008CFCA5 /* Inpaint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inpaint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11CFF9F22B18D9FF008CFCA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11CFF9F42B18D9FF008CFCA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +64,15 @@
 		11CFFA0F2B18DA01008CFCA5 /* InpaintUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InpaintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11CFFA132B18DA01008CFCA5 /* InpaintUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintUITests.swift; sourceTree = "<group>"; };
 		11CFFA152B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		11CFFA262B18DB30008CFCA5 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
+		11CFFA282B18E221008CFCA5 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
+		11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmudgeDrawingView.swift; sourceTree = "<group>"; };
+		1A93C1B326361604F4C9E547 /* Pods-InpaintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.release.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.release.xcconfig"; sourceTree = "<group>"; };
+		85CF5DBC619910A0108151C8 /* Pods-Inpaint-InpaintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.release.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.release.xcconfig"; sourceTree = "<group>"; };
+		AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InpaintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E084CFB713396F64E30392E4 /* Pods-Inpaint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF5136D7FA29622DA933275 /* Pods_Inpaint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90609CAA495B37910B508E46 /* Pods_InpaintTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A5261AB7059201704BCF1F0 /* Pods_Inpaint_InpaintUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +110,8 @@
 				11CFFA082B18DA01008CFCA5 /* InpaintTests */,
 				11CFFA122B18DA01008CFCA5 /* InpaintUITests */,
 				11CFF9F02B18D9FF008CFCA5 /* Products */,
+				EA541A4E031102D287C1266B /* Pods */,
+				C66415C5D5EA8FB3CD0D26FF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +128,10 @@
 		11CFF9F12B18D9FF008CFCA5 /* Inpaint */ = {
 			isa = PBXGroup;
 			children = (
+				11CFFA262B18DB30008CFCA5 /* mask.png */,
+				11CFFA282B18E221008CFCA5 /* input.png */,
+				11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */,
+				11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */,
 				11CFF9F22B18D9FF008CFCA5 /* AppDelegate.swift */,
 				11CFF9F42B18D9FF008CFCA5 /* SceneDelegate.swift */,
 				11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */,
@@ -106,6 +139,8 @@
 				11CFF9FB2B18DA01008CFCA5 /* Assets.xcassets */,
 				11CFF9FD2B18DA01008CFCA5 /* LaunchScreen.storyboard */,
 				11CFFA002B18DA01008CFCA5 /* Info.plist */,
+				11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */,
+				11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */,
 			);
 			path = Inpaint;
 			sourceTree = "<group>";
@@ -127,6 +162,29 @@
 			path = InpaintUITests;
 			sourceTree = "<group>";
 		};
+		C66415C5D5EA8FB3CD0D26FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */,
+				05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */,
+				AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA541A4E031102D287C1266B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E084CFB713396F64E30392E4 /* Pods-Inpaint.debug.xcconfig */,
+				A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */,
+				85CF5DBC619910A0108151C8 /* Pods-Inpaint-InpaintUITests.debug.xcconfig */,
+				D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */,
+				0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */,
+				1A93C1B326361604F4C9E547 /* Pods-InpaintTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +192,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11CFFA192B18DA01008CFCA5 /* Build configuration list for PBXNativeTarget "Inpaint" */;
 			buildPhases = (
+				92C79388C43D0A9BD8FA9D93 /* [CP] Check Pods Manifest.lock */,
 				11CFF9EB2B18D9FF008CFCA5 /* Sources */,
 				11CFF9EC2B18D9FF008CFCA5 /* Frameworks */,
 				11CFF9ED2B18D9FF008CFCA5 /* Resources */,
@@ -151,6 +210,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11CFFA1C2B18DA01008CFCA5 /* Build configuration list for PBXNativeTarget "InpaintTests" */;
 			buildPhases = (
+				91AC5FA5301BBC924297A5BA /* [CP] Check Pods Manifest.lock */,
 				11CFFA012B18DA01008CFCA5 /* Sources */,
 				11CFFA022B18DA01008CFCA5 /* Frameworks */,
 				11CFFA032B18DA01008CFCA5 /* Resources */,
@@ -169,6 +229,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11CFFA1F2B18DA01008CFCA5 /* Build configuration list for PBXNativeTarget "InpaintUITests" */;
 			buildPhases = (
+				3319455969EF6CFB78040BC3 /* [CP] Check Pods Manifest.lock */,
 				11CFFA0B2B18DA01008CFCA5 /* Sources */,
 				11CFFA0C2B18DA01008CFCA5 /* Frameworks */,
 				11CFFA0D2B18DA01008CFCA5 /* Resources */,
@@ -232,8 +293,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				11CFF9FF2B18DA01008CFCA5 /* LaunchScreen.storyboard in Resources */,
+				11CFFA272B18DB30008CFCA5 /* mask.png in Resources */,
 				11CFF9FC2B18DA01008CFCA5 /* Assets.xcassets in Resources */,
 				11CFF9FA2B18D9FF008CFCA5 /* Main.storyboard in Resources */,
+				11CFFA292B18E222008CFCA5 /* input.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,11 +316,84 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3319455969EF6CFB78040BC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Inpaint-InpaintUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91AC5FA5301BBC924297A5BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InpaintTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92C79388C43D0A9BD8FA9D93 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Inpaint-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		11CFF9EB2B18D9FF008CFCA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C1FA2F2B1C80FE0021EA5F /* SplitImageView.swift in Sources */,
+				11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */,
+				11C1FA312B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage in Sources */,
+				11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */,
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
 				11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */,
 				11CFF9F52B18D9FF008CFCA5 /* SceneDelegate.swift in Sources */,
@@ -437,18 +573,22 @@
 		};
 		11CFFA1A2B18DA01008CFCA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E084CFB713396F64E30392E4 /* Pods-Inpaint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HUW3H8NBU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "AI照片处理";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -464,18 +604,22 @@
 		};
 		11CFFA1B2B18DA01008CFCA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HUW3H8NBU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "AI照片处理";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,6 +635,7 @@
 		};
 		11CFFA1D2B18DA01008CFCA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +655,7 @@
 		};
 		11CFFA1E2B18DA01008CFCA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A93C1B326361604F4C9E547 /* Pods-InpaintTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -529,6 +675,7 @@
 		};
 		11CFFA202B18DA01008CFCA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85CF5DBC619910A0108151C8 /* Pods-Inpaint-InpaintUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -546,6 +693,7 @@
 		};
 		11CFFA212B18DA01008CFCA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

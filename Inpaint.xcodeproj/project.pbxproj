@@ -590,7 +590,8 @@
 				DEVELOPMENT_TEAM = HUW3H8NBU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AI照片处理";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI图像擦除";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "保存处理后的图片";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -621,7 +622,8 @@
 				DEVELOPMENT_TEAM = HUW3H8NBU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AI照片处理";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI图像擦除";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "保存处理后的图片";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

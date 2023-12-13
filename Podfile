@@ -6,6 +6,7 @@ target 'Inpaint' do
   use_frameworks! :linkage => :static
 
   pod 'SnapKit'
+  pod 'Toast-Swift'
 
   # Pods for Inpaint
 

@@ -7,24 +7,19 @@
 
 import UIKit
 import SnapKit
+import Toast_Swift
 
 class InpaintingViewController: UIViewController {
     var imageView = UIImageView()
 
     var inpenting = LaMaImageInpenting.init()
+    
+    // 新增：加载指示器
+    var loadngView = UIActivityIndicatorView(style: .large)
 
     lazy var drawView: SmudgeDrawingView = {
         let view = SmudgeDrawingView.init()
         return view
-    }()
-
-    lazy var confirmBtn: UIButton = {
-        let btn = UIButton.init()
-        btn.setTitle("确定", for: .normal)
-        btn.backgroundColor = .lightGray
-        btn.setTitleColor(.black, for: .normal)
-        btn.addTarget(self, action: #selector(onConfirm), for: .touchUpInside)
-        return btn
     }()
 
     override func viewDidLoad() {
@@ -46,27 +41,58 @@ class InpaintingViewController: UIViewController {
         drawView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-
-        view.addSubview(confirmBtn)
-        confirmBtn.snp.makeConstraints { make in
-            make.width.equalTo(100)
-            make.height.equalTo(50)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-100)
+        
+        // 创建消除和保存按钮
+        let clearButton = UIBarButtonItem(title: "消除", style: .plain, target: self, action: #selector(onClear))
+        let saveButton = UIBarButtonItem(title: "保存", style: .plain, target: self, action: #selector(onSave))
+        
+        // 将按钮添加到导航栏
+        navigationItem.rightBarButtonItems = [saveButton, clearButton]
+        
+        loadngView.hidesWhenStopped = true
+        view.addSubview(loadngView)
+        loadngView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
+        
     }
     
-    
 
-    @objc func onConfirm() {
+    @objc func onClear() {
         guard let inputImage = imageView.image else { return }
         var maskImage = UIImage.init(named: "mask")!
         maskImage = drawView.exportAsGrayscaleImage()!
-        self.imageView.image = maskImage
+        loadngView.startAnimating()
         inpenting.inpent(image: inputImage, mask: maskImage, inpaintingRects: drawView.drawBounds) { [weak self] outImage, err in
-            self?.imageView.image = outImage
-            self?.imageView.contentMode = .scaleAspectFit
+            guard let self = self else { return }
+            self.imageView.image = outImage
+            self.imageView.contentMode = .scaleAspectFit
+            self.drawView.clean()
+            self.loadngView.stopAnimating()
         }
-        drawView.clean()
+        
     }
+    
+    @objc func onSave() {
+        // 检查 imageView 是否有图像
+        guard let imageToSave = imageView.image else {
+            print("没有可保存的图像")
+            return
+        }
+
+        // 保存图像到相册
+        UIImageWriteToSavedPhotosAlbum(imageToSave, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    // UIImageWriteToSavedPhotosAlbum 的回调方法
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // 保存失败，显示Toast消息
+            self.view.makeToast("保存失败: \(error.localizedDescription)", duration: 3.0, position: .bottom)
+        } else {
+            // 保存成功
+            self.view.makeToast("图像成功保存到相册", duration: 3.0, position: .bottom)
+        }
+    }
+    
 }

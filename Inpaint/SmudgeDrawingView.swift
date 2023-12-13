@@ -89,5 +89,6 @@ class SmudgeDrawingView: UIView {
     
     public func clean() {
         path = UIBezierPath()
+        self.setNeedsDisplay()
     }
 }

@@ -1,16 +1,20 @@
 PODS:
   - SnapKit (5.6.0)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - SnapKit
+  - Toast-Swift
 
 SPEC REPOS:
   trunk:
     - SnapKit
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 79587806732bcf0a20ff26edc27101e37902770f
+PODFILE CHECKSUM: c68181cc18556866d6316578a7bad1199965ff33
 
 COCOAPODS: 1.11.3

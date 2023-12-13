@@ -12,7 +12,7 @@ class SmudgeDrawingView: UIView {
 
     private var path: UIBezierPath = UIBezierPath()
     private var touchPoints: [CGPoint] = []
-    var smudgeColor: UIColor = UIColor.blue.withAlphaComponent(0.5) // 默认为半透明的淡蓝色
+    var smudgeColor: UIColor = UIColor.lightGray.withAlphaComponent(0.5) // 默认为半透明的淡蓝色
     var exportLineColor: UIColor = .white // 涂抹部分导出时的颜色
     var exportBackgroundColor: UIColor = .black // 未涂抹部分导出时的颜色
     var brushSize: CGFloat = 10.0 // 默认笔刷大小

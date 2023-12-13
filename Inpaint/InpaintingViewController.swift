@@ -30,11 +30,16 @@ class InpaintingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemBackground
+        
         view.addSubview(imageView)
-        imageView.backgroundColor = .white
-        imageView.frame = CGRect.init(x: 0, y: 200, width: self.view.frame.size.width, height: self.view.frame.size.width)
-//        imageView.image = UIImage.init(named: "input")
+        imageView.backgroundColor = .systemBackground
         imageView.contentMode = .scaleAspectFit
+        imageView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
         
         imageView.addSubview(drawView)
         imageView.isUserInteractionEnabled = true

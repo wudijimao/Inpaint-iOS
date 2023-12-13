@@ -99,8 +99,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.dismiss(animated: true, completion: {
             let vc = InpaintingViewController()
             vc.imageView.image = image
-//            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         })
     }
 

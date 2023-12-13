@@ -27,6 +27,17 @@ class SmudgeDrawingView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    public var drawBounds: [CGRect] {
+        get {
+            if path.isEmpty {
+                return []
+            }
+            var rect = path.bounds
+            rect = CGRect(x: rect.origin.x * UIScreen.main.scale, y: rect.origin.y * UIScreen.main.scale, width: rect.size.width * UIScreen.main.scale, height: rect.size.height * UIScreen.main.scale)
+            return [rect]
+        }
+    }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
@@ -50,22 +61,31 @@ class SmudgeDrawingView: UIView {
     }
 
     func exportAsGrayscaleImage() -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
+        let screenScale = UIScreen.main.scale
+
+        // 放大后的尺寸
+        let scaledSize = CGSize(width: self.bounds.size.width * screenScale, height: self.bounds.size.height * screenScale)
+
+        UIGraphicsBeginImageContextWithOptions(scaledSize, false, 1.0)
         guard let context = UIGraphicsGetCurrentContext() else { return nil }
+
 
         // 绘制背景
         exportBackgroundColor.setFill()
-        context.fill(self.bounds)
+        context.fill(CGRect(x: 0, y: 0, width: scaledSize.width, height: scaledSize.height))
 
-        // 绘制涂抹轨迹
+        // 调整路径尺寸
+        let scaledPath = UIBezierPath(cgPath: path.cgPath)
+        scaledPath.apply(CGAffineTransform(scaleX: screenScale, y: screenScale))
         exportLineColor.setStroke()
-        path.lineWidth = brushSize
-        path.stroke()
+        scaledPath.lineWidth = brushSize * screenScale // 调整线宽
+        scaledPath.stroke()
 
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
     }
+
     
     public func clean() {
         path = UIBezierPath()

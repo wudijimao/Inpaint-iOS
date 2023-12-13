@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */; };
+		11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E92B2A008A000F95C4 /* Inpainting.swift */; };
 		11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */; };
 		11C1FA2F2B1C80FE0021EA5F /* SplitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */; };
 		11C1FA312B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */; };
@@ -48,6 +50,8 @@
 		05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint_InpaintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.debug.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintingViewController.swift; sourceTree = "<group>"; };
+		11AE81E92B2A008A000F95C4 /* Inpainting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inpainting.swift; sourceTree = "<group>"; };
 		11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LaMaFP16_512.mlpackage; sourceTree = "<group>"; };
 		11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitImageView.swift; sourceTree = "<group>"; };
 		11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LaMaFP16_1024.mlpackage; sourceTree = "<group>"; };
@@ -135,12 +139,14 @@
 				11CFF9F22B18D9FF008CFCA5 /* AppDelegate.swift */,
 				11CFF9F42B18D9FF008CFCA5 /* SceneDelegate.swift */,
 				11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */,
+				11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */,
 				11CFF9F82B18D9FF008CFCA5 /* Main.storyboard */,
 				11CFF9FB2B18DA01008CFCA5 /* Assets.xcassets */,
 				11CFF9FD2B18DA01008CFCA5 /* LaunchScreen.storyboard */,
 				11CFFA002B18DA01008CFCA5 /* Info.plist */,
 				11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */,
 				11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */,
+				11AE81E92B2A008A000F95C4 /* Inpainting.swift */,
 			);
 			path = Inpaint;
 			sourceTree = "<group>";
@@ -391,8 +397,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C1FA2F2B1C80FE0021EA5F /* SplitImageView.swift in Sources */,
+				11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */,
 				11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */,
 				11C1FA312B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage in Sources */,
+				11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */,
 				11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */,
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
 				11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */,

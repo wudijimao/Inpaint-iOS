@@ -6,7 +6,7 @@ A free and open-source inpainting app powered by coreml on iPhone / iPad / MacBo
 
 ## Demo
 
-https://github.com/wudijimao/Inpaint-iOS/OtherAssets/1702571023625331.mp4
+[https://github.com/wudijimao/Inpaint-iOS/blob/main/OtherAssets/1702571023625331.mp4](https://github.com/wudijimao/Inpaint-iOS/assets/5219818/c3675ca6-2a7f-4066-b8e6-31d53df83a53)
 
 Demo App: Reviewing
 

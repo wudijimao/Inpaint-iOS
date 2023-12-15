@@ -54,54 +54,49 @@ class SplitImageView: UIView {
         setupConstraints()
         
         // 初始化遮罩视图的frame
-        customMaskView.backgroundColor = .clear
-        updateMaskViewFrame()
+        customMaskView.backgroundColor = .white
     }
 
     private func setupConstraints() {
         imageViewA.translatesAutoresizingMaskIntoConstraints = false
         imageViewB.translatesAutoresizingMaskIntoConstraints = false
         sliderView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            imageViewA.topAnchor.constraint(equalTo: topAnchor),
-            imageViewA.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageViewA.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageViewA.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            imageViewB.topAnchor.constraint(equalTo: topAnchor),
-            imageViewB.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageViewB.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageViewB.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            sliderView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            sliderView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            sliderView.widthAnchor.constraint(equalToConstant: 2),
-            sliderView.heightAnchor.constraint(equalTo: heightAnchor)
-        ])
+        
+        imageViewA.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        imageViewB.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        sliderView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.width.equalTo(2)
+            make.centerX.equalToSuperview()
+        }
 
         sliderView.backgroundColor = .black
+    }
+    
+    var maskX: CGFloat = 0
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        customMaskView.frame = CGRect(x: 0, y: 0, width: maskX + self.frame.size.width / 2.0, height: bounds.height)
     }
 
     private func addPanGesture() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        sliderView.addGestureRecognizer(panGesture)
+        self.addGestureRecognizer(panGesture)
     }
 
     @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: self)
-        sliderView.center.x += translation.x
-        gesture.setTranslation(.zero, in: self)
-
-        // 确保sliderView不会离开视图边界
-        sliderView.center.x = max(min(sliderView.center.x, bounds.maxX), bounds.minX)
-
-        updateMaskViewFrame()
-    }
-
-    private func updateMaskViewFrame() {
-        // 更新遮罩视图的frame以匹配sliderView的位置
-        customMaskView.frame = CGRect(x: 0, y: 0, width: sliderView.frame.minX, height: bounds.height)
+        sliderView.snp.updateConstraints { make in
+            make.centerX.equalToSuperview().offset(translation.x)
+        }
+        maskX = translation.x
+        setNeedsLayout()
     }
 
     // 允许外部设置图片A，接受UIImage?类型

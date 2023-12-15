@@ -13,8 +13,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     lazy var selectImageBtn: UIButton = {
         let btn = UIButton.init()
+        btn.setImage(UIImage(named: "cartoon_button_transparent_background"), for: .normal)
         btn.setTitle("选择图片", for: .normal)
-        btn.backgroundColor = .lightGray
+        btn.backgroundColor = .clear
         btn.setTitleColor(.black, for: .normal)
         btn.addTarget(self, action: #selector(onClick), for: .touchUpInside)
         return btn
@@ -45,7 +46,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             make.bottom.equalTo(selectImageBtn.snp.top).offset(-20)
         }
 
-        let images = [("1", "1b"), ("2", "2b"), ("3", "3b")]
+//        let images = [("1", "1b"), ("2", "2b"), ("3", "3b")]
+        let images = [("1", "1b")]
         var previousSplitImageView: SplitImageView?
 
         for imagePair in images {
@@ -78,10 +80,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private func setupSelectImageButton() {
         selectImageBtn.snp.makeConstraints { make in
             make.width.equalTo(100)
-            make.height.equalTo(50)
+            make.height.equalTo(100)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-100)
+            make.bottom.equalToSuperview().offset(-50)
         }
+        UIView.animate(withDuration: 0.8, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
+            // 放大到1.2倍
+            self.selectImageBtn.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }, completion: { finished in
+            // 动画完成后恢复到原始大小
+            self.selectImageBtn.transform = CGAffineTransform.identity
+        })
     }
 
     

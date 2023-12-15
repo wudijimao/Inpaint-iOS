@@ -14,17 +14,17 @@ Demo App: Reviewing
 
 ### en
 
-- [x] Image Modification History
-- [x] Choice Model
-- [x] Impove Brush
+- [ ] Image Modification History
+- [ ] Choice Model
+- [ ] Impove Brush
 - [ ] Integrate Segment Anything for Quick Selection and Removal in Images
 - [ ] Better UI
 
 ### cn
 
-- [x] 图像修改历史
-- [x] 选择模型
-- [x] 改进笔刷
+- [ ] 图像修改历史
+- [ ] 选择模型
+- [ ] 改进笔刷
 - [ ] 接入 Segment Anything，实现快速选择和去除图像
 - [ ] 更好的界面
 

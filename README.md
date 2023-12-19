@@ -1,4 +1,4 @@
-# [Inpaint-web](https://github.com/wudijimao/Inpaint-iOS)
+# [Inpaint-iOS](https://github.com/wudijimao/Inpaint-iOS)
 
 A free and open-source inpainting app powered by coreml on iPhone / iPad / MacBook with M CPU.
 

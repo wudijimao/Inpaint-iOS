@@ -19,6 +19,7 @@ Demo App 影像魔术师: https://apps.apple.com/cn/app/%E5%BD%B1%E5%83%8F%E9%AD
 - [ ] Impove Brush
 - [ ] Integrate Segment Anything for Quick Selection and Removal in Images
 - [ ] Better UI
+- [ ] Optimization for Older Device Models
 
 ### cn
 
@@ -27,6 +28,7 @@ Demo App 影像魔术师: https://apps.apple.com/cn/app/%E5%BD%B1%E5%83%8F%E9%AD
 - [ ] 改进笔刷
 - [ ] 接入 Segment Anything，实现快速选择和去除图像
 - [ ] 更好的界面
+- [ ] 较老机型适配优化
 
 ## Setup
 

@@ -9,6 +9,8 @@ import UIKit
 import Vision
 import SnapKit
 
+let kLimitImageSize: CGFloat = 2048
+
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     lazy var selectImageBtn: UIButton = {
@@ -105,9 +107,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // You can handle the selected image here
         guard let image = info[.originalImage] as? UIImage else { return }
+        let scaledImage = image.scaleToLimit(size: .init(width: kLimitImageSize, height: kLimitImageSize))
         picker.dismiss(animated: true, completion: {
             let vc = InpaintingViewController()
-            vc.imageView.image = image
+            vc.imageView.image = scaledImage
             self.navigationController?.pushViewController(vc, animated: true)
         })
     }

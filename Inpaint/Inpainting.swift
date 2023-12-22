@@ -115,6 +115,18 @@ extension UIImage {
 }
 
 extension UIImage {
+    
+    func scaleToLimit(size limitSize: CGSize) -> UIImage {
+        let widthRatio  = limitSize.width  / self.size.width
+        let heightRatio = limitSize.height / self.size.height
+        let scaleFactor = min(widthRatio, heightRatio)
+        guard scaleFactor < 1.0 else {
+            return self
+        }
+        let scaledSize = CGSize(width: self.size.width * scaleFactor, height: self.size.height * scaleFactor)
+        return scaleTo(size: scaledSize)
+    }
+    
     func scaleTo(size targetSize: CGSize) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: targetSize)
         let newImage = renderer.image { (context) in

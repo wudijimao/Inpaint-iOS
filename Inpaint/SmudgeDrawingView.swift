@@ -15,7 +15,7 @@ class SmudgeDrawingView: UIView {
     var smudgeColor: UIColor = UIColor.lightGray.withAlphaComponent(0.5) // 默认为半透明的淡蓝色
     var exportLineColor: UIColor = .white // 涂抹部分导出时的颜色
     var exportBackgroundColor: UIColor = .black // 未涂抹部分导出时的颜色
-    var brushSize: CGFloat = 10.0 // 默认笔刷大小
+    var brushSize: CGFloat = 20.0 // 默认笔刷大小
 
 
     init() {
@@ -28,6 +28,7 @@ class SmudgeDrawingView: UIView {
         super.init(coder: coder)
     }
     
+    // 计算绘制区域的边界
     public var drawBounds: [CGRect] {
         get {
             if path.isEmpty {
@@ -49,17 +50,48 @@ class SmudgeDrawingView: UIView {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
-        path.addLine(to: touchPoint)
+        
+        // 计算上一个点和当前点的中间点
+        let previousPoint = touchPoints.last ?? touchPoint
+        let middlePoint = CGPoint(x: (touchPoint.x + previousPoint.x) / 2.0, y: (touchPoint.y + previousPoint.y) / 2.0)
+
+        // 添加二次贝塞尔曲线，使曲线更平滑
+        path.addQuadCurve(to: middlePoint, controlPoint: previousPoint)
         touchPoints.append(touchPoint)
-        setNeedsDisplay()
+
+        // 重绘当前触摸点附近的区域
+        let redrawRect = CGRect(x: touchPoint.x - brushSize * 2, y: touchPoint.y - brushSize * 2,
+                                width: brushSize * 4, height: brushSize * 4)
+        setNeedsDisplay(redrawRect)
+    }
+    
+    // 处理触摸结束事件
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let touchPoint = touch.location(in: self)
+
+        // 添加最后一个点到路径中
+        if let lastPoint = touchPoints.last {
+            let middlePoint = CGPoint(x: (touchPoint.x + lastPoint.x) / 2.0, y: (touchPoint.y + lastPoint.y) / 2.0)
+            path.addQuadCurve(to: middlePoint, controlPoint: lastPoint)
+        }
+
+        // 清除触摸点，为下一次绘制做准备
+        touchPoints.removeAll()
+
+        // 重绘视图以显示最终的绘图
+        self.setNeedsDisplay()
     }
 
+    // 绘制方法
     override func draw(_ rect: CGRect) {
         smudgeColor.setStroke()
         path.lineWidth = brushSize
+        path.lineCapStyle = .round // 设置线帽为圆形，使曲线封闭部分为圆形
         path.stroke()
     }
 
+    // 导出为灰度图像
     func exportAsGrayscaleImage() -> UIImage? {
         let screenScale = UIScreen.main.scale
 
@@ -79,6 +111,7 @@ class SmudgeDrawingView: UIView {
         scaledPath.apply(CGAffineTransform(scaleX: screenScale, y: screenScale))
         exportLineColor.setStroke()
         scaledPath.lineWidth = brushSize * screenScale // 调整线宽
+        scaledPath.lineCapStyle = .round
         scaledPath.stroke()
 
         let image = UIGraphicsGetImageFromCurrentImageContext()

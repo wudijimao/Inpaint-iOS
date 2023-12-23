@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1192515B2B366F6500F72E5D /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
 		11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */; };
 		11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E92B2A008A000F95C4 /* Inpainting.swift */; };
 		11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */; };
@@ -20,8 +21,6 @@
 		11CFFA0A2B18DA01008CFCA5 /* InpaintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA092B18DA01008CFCA5 /* InpaintTests.swift */; };
 		11CFFA142B18DA01008CFCA5 /* InpaintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA132B18DA01008CFCA5 /* InpaintUITests.swift */; };
 		11CFFA162B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA152B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift */; };
-		11CFFA272B18DB30008CFCA5 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CFFA262B18DB30008CFCA5 /* mask.png */; };
-		11CFFA292B18E222008CFCA5 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CFFA282B18E221008CFCA5 /* input.png */; };
 		11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */; };
 		3CF5136D7FA29622DA933275 /* Pods_Inpaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */; };
 		5A5261AB7059201704BCF1F0 /* Pods_Inpaint_InpaintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */; };
@@ -49,6 +48,7 @@
 		05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint_InpaintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.debug.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1192515A2B366F6500F72E5D /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintingViewController.swift; sourceTree = "<group>"; };
 		11AE81E92B2A008A000F95C4 /* Inpainting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inpainting.swift; sourceTree = "<group>"; };
 		11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LaMaFP16_512.mlpackage; sourceTree = "<group>"; };
@@ -67,8 +67,6 @@
 		11CFFA0F2B18DA01008CFCA5 /* InpaintUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InpaintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11CFFA132B18DA01008CFCA5 /* InpaintUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintUITests.swift; sourceTree = "<group>"; };
 		11CFFA152B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		11CFFA262B18DB30008CFCA5 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
-		11CFFA282B18E221008CFCA5 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
 		11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmudgeDrawingView.swift; sourceTree = "<group>"; };
 		1A93C1B326361604F4C9E547 /* Pods-InpaintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.release.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.release.xcconfig"; sourceTree = "<group>"; };
 		85CF5DBC619910A0108151C8 /* Pods-Inpaint-InpaintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +104,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		119251592B366F5300F72E5D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1192515A2B366F6500F72E5D /* CGRect.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		11CFF9E62B18D9FF008CFCA5 = {
 			isa = PBXGroup;
 			children = (
@@ -131,8 +137,7 @@
 		11CFF9F12B18D9FF008CFCA5 /* Inpaint */ = {
 			isa = PBXGroup;
 			children = (
-				11CFFA262B18DB30008CFCA5 /* mask.png */,
-				11CFFA282B18E221008CFCA5 /* input.png */,
+				119251592B366F5300F72E5D /* Utils */,
 				11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */,
 				11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */,
 				11CFF9F22B18D9FF008CFCA5 /* AppDelegate.swift */,
@@ -298,10 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				11CFF9FF2B18DA01008CFCA5 /* LaunchScreen.storyboard in Resources */,
-				11CFFA272B18DB30008CFCA5 /* mask.png in Resources */,
 				11CFF9FC2B18DA01008CFCA5 /* Assets.xcassets in Resources */,
 				11CFF9FA2B18D9FF008CFCA5 /* Main.storyboard in Resources */,
-				11CFFA292B18E222008CFCA5 /* input.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +405,7 @@
 				11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */,
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
 				11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */,
+				1192515B2B366F6500F72E5D /* CGRect.swift in Sources */,
 				11CFF9F52B18D9FF008CFCA5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -60,8 +60,7 @@ class InpaintingViewController: UIViewController {
 
     @objc func onClear() {
         guard let inputImage = imageView.image else { return }
-        var maskImage = UIImage.init(named: "mask")!
-        maskImage = drawView.exportAsGrayscaleImage()!
+        guard let maskImage = drawView.exportAsGrayscaleImage() else { return }
         loadngView.startAnimating()
         inpenting.inpent(image: inputImage, mask: maskImage, inpaintingRects: drawView.drawBounds) { [weak self] outImage, err in
             guard let self = self else { return }

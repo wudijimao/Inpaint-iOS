@@ -82,6 +82,30 @@ class InpaintingViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
+        // 创建滑动条
+        let slider = UISlider()
+        slider.minimumValue = 10
+        slider.maximumValue = 50
+        let lastSliderValue = UserDefaults.standard.object(forKey: "lastSliderValue") as? Float ?? 30
+        slider.value = lastSliderValue
+        slider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        drawView.brushSize = CGFloat(lastSliderValue)
+        
+        // 将滑动条添加到导航栏
+        let sliderBarItem = UIBarButtonItem(customView: slider)
+        self.navigationItem.titleView = sliderBarItem.customView
+        
+        // 配置滑动条的布局以避开左右按钮
+        slider.widthAnchor.constraint(equalToConstant: self.view.frame.width - 320).isActive = true // 根据需要调整120的值
+    }
+    
+    @objc func sliderValueChanged(_ sender: UISlider) {
+        let roundedValue = round(sender.value)
+        print("Slider value is now \(roundedValue)")
+        
+        // 保存四舍五入后的整数值到UserDefaults
+        UserDefaults.standard.set(roundedValue, forKey: "lastSliderValue")
+        drawView.brushSize = CGFloat(roundedValue)
     }
     
     

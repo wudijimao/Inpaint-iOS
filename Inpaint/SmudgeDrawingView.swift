@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 class SmudgeDrawingView: UIView {
-
+    
+    private var paths = [UIBezierPath]()
     private var path: UIBezierPath = UIBezierPath()
     private var touchPoints: [CGPoint] = []
     var smudgeColor: UIColor = UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 0.5) // 默认为半透明的淡蓝色
@@ -35,12 +36,27 @@ class SmudgeDrawingView: UIView {
     // 计算绘制区域的边界
     public var drawBounds: [CGRect] {
         get {
-            if path.isEmpty {
+            if paths.isEmpty {
                 return []
             }
-            var rect = path.bounds
-            rect = CGRect(x: rect.origin.x * UIScreen.main.scale, y: rect.origin.y * UIScreen.main.scale, width: rect.size.width * UIScreen.main.scale, height: rect.size.height * UIScreen.main.scale)
-            return [rect]
+            var rects = [CGRect]()
+            paths.forEach { path in
+                guard !path.isEmpty else { return }
+                var rect = path.bounds
+                rect = CGRect(x: rect.origin.x * UIScreen.main.scale, y: rect.origin.y * UIScreen.main.scale, width: rect.size.width * UIScreen.main.scale, height: rect.size.height * UIScreen.main.scale)
+                rects.append(rect)
+            }
+            guard rects.count > 0 else {
+                return []
+            }
+            // rects合成一个先，外边处理不了多个，多个为了后边做优化分别inpaint用
+            // 初始化一个空的矩形
+            var combinedRect = CGRect.null
+            // 遍历数组并合并所有矩形
+            for rect in rects {
+                combinedRect = combinedRect.union(rect)
+            }
+            return [combinedRect]
         }
     }
     
@@ -65,6 +81,9 @@ class SmudgeDrawingView: UIView {
     
     @inline(__always)
     func _touchesBegan(touchPoint: CGPoint) {
+        path = UIBezierPath()
+        path.lineWidth = brushSize
+        path.lineCapStyle = .round // 设置线帽为圆形，使曲线封闭部分为圆形
         path.move(to: touchPoint)
         touchPoints.append(touchPoint)
     }
@@ -94,6 +113,8 @@ class SmudgeDrawingView: UIView {
             path.addQuadCurve(to: middlePoint, controlPoint: lastPoint)
         }
 
+        paths.append(path)
+        path = UIBezierPath()
         // 清除触摸点，为下一次绘制做准备
         touchPoints.removeAll()
 
@@ -104,8 +125,9 @@ class SmudgeDrawingView: UIView {
     // 绘制方法
     override func draw(_ rect: CGRect) {
         smudgeColor.setStroke()
-        path.lineWidth = brushSize
-        path.lineCapStyle = .round // 设置线帽为圆形，使曲线封闭部分为圆形
+        paths.forEach { path in
+            path.stroke()
+        }
         path.stroke()
     }
 
@@ -124,13 +146,15 @@ class SmudgeDrawingView: UIView {
         exportBackgroundColor.setFill()
         context.fill(CGRect(x: 0, y: 0, width: scaledSize.width, height: scaledSize.height))
 
-        // 调整路径尺寸
-        let scaledPath = UIBezierPath(cgPath: path.cgPath)
-        scaledPath.apply(CGAffineTransform(scaleX: screenScale, y: screenScale))
-        exportLineColor.setStroke()
-        scaledPath.lineWidth = brushSize * screenScale // 调整线宽
-        scaledPath.lineCapStyle = .round
-        scaledPath.stroke()
+        paths.forEach { path in
+            // 调整路径尺寸
+            let scaledPath = UIBezierPath(cgPath: path.cgPath)
+            scaledPath.apply(CGAffineTransform(scaleX: screenScale, y: screenScale))
+            exportLineColor.setStroke()
+            scaledPath.lineWidth = brushSize * screenScale // 调整线宽
+            scaledPath.lineCapStyle = .round
+            scaledPath.stroke()
+        }
 
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -140,6 +164,8 @@ class SmudgeDrawingView: UIView {
     
     public func clean() {
         path = UIBezierPath()
+        paths = []
+        touchPoints = []
         self.setNeedsDisplay()
     }
 }

@@ -22,6 +22,10 @@ class SmudgeDrawingView: UIView {
         super.init(frame: .zero)
         self.backgroundColor = .clear
         self.isUserInteractionEnabled = true
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
+        panGesture.maximumNumberOfTouches = 1
+        self.addGestureRecognizer(panGesture)
     }
 
     required init?(coder: NSCoder) {
@@ -39,18 +43,34 @@ class SmudgeDrawingView: UIView {
             return [rect]
         }
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let touchPoint = touch.location(in: self)
+    
+    @objc func panGestureAction(_ sender: UIPanGestureRecognizer) {
+        let touchPoint = sender.location(in: self)
+        
+        switch sender.state {
+        case .began:
+            _touchesBegan(touchPoint: touchPoint)
+        case .changed:
+            _touchesMoved(touchPoint: touchPoint)
+        case .ended:
+            _touchesEnded(touchPoint: touchPoint)
+        case .cancelled:
+            touchPoints.removeAll()
+            path.removeAllPoints()
+            self.setNeedsDisplay()
+        default:
+            break
+        }
+    }
+    
+    @inline(__always)
+    func _touchesBegan(touchPoint: CGPoint) {
         path.move(to: touchPoint)
         touchPoints.append(touchPoint)
     }
-
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let touchPoint = touch.location(in: self)
-        
+    
+    @inline(__always)
+    func _touchesMoved(touchPoint: CGPoint) {
         // 计算上一个点和当前点的中间点
         let previousPoint = touchPoints.last ?? touchPoint
         let middlePoint = CGPoint(x: (touchPoint.x + previousPoint.x) / 2.0, y: (touchPoint.y + previousPoint.y) / 2.0)
@@ -66,10 +86,8 @@ class SmudgeDrawingView: UIView {
     }
     
     // 处理触摸结束事件
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let touchPoint = touch.location(in: self)
-
+    @inline(__always)
+    func _touchesEnded(touchPoint: CGPoint) {
         // 添加最后一个点到路径中
         if let lastPoint = touchPoints.last {
             let middlePoint = CGPoint(x: (touchPoint.x + lastPoint.x) / 2.0, y: (touchPoint.y + lastPoint.y) / 2.0)

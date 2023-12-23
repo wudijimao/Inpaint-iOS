@@ -10,30 +10,54 @@ import SnapKit
 import Toast_Swift
 
 class InpaintingViewController: UIViewController {
-    var imageView = UIImageView()
-
+    
     var inpenting = LaMaImageInpenting.init()
     
     // 新增：加载指示器
     var loadngView = UIActivityIndicatorView(style: .large)
 
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 6.0
+        view.addSubview(scrollView)
+        return scrollView
+    }()
+    var imageView = UIImageView()
+    
     lazy var drawView: SmudgeDrawingView = {
         let view = SmudgeDrawingView.init()
         return view
     }()
-
+    
+    public init(image: UIImage) {
+        super.init(nibName: nil, bundle: nil)
+        imageView.image = image
+        imageView.backgroundColor = .red
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
         
-        view.addSubview(imageView)
-        imageView.backgroundColor = .systemBackground
-        imageView.contentMode = .scaleAspectFit
-        imageView.snp.makeConstraints { make in
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
+        scrollView.addSubview(imageView)
+        imageView.backgroundColor = .systemBackground
+        imageView.contentMode = .scaleAspectFit
+        imageView.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
         }
         
         imageView.addSubview(drawView)
@@ -78,7 +102,6 @@ class InpaintingViewController: UIViewController {
             print("没有可保存的图像")
             return
         }
-
         // 保存图像到相册
         UIImageWriteToSavedPhotosAlbum(imageToSave, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
@@ -94,4 +117,15 @@ class InpaintingViewController: UIViewController {
         }
     }
     
+}
+
+
+extension InpaintingViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+    
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        //TODO: 放大后对笔刷进行处理，这要求DrawView支持同时绘制不同大小的笔刷，需要先支持笔刷切换再做
+    }
 }

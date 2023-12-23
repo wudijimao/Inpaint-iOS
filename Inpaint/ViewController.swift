@@ -109,8 +109,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let image = info[.originalImage] as? UIImage else { return }
         let scaledImage = image.scaleToLimit(size: .init(width: kLimitImageSize, height: kLimitImageSize))
         picker.dismiss(animated: true, completion: {
-            let vc = InpaintingViewController()
-            vc.imageView.image = scaledImage
+            let vc = InpaintingViewController(image: scaledImage)
             self.navigationController?.pushViewController(vc, animated: true)
         })
     }

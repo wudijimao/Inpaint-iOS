@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1192515B2B366F6500F72E5D /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
+		119251602B369FFA00F72E5D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1192515F2B369FFA00F72E5D /* Localizable.xcstrings */; };
+		119251642B36A1DA00F72E5D /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 119251632B36A1DA00F72E5D /* InfoPlist.xcstrings */; };
+		119251662B36A65000F72E5D /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119251652B36A65000F72E5D /* Localization.swift */; };
 		11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */; };
 		11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E92B2A008A000F95C4 /* Inpainting.swift */; };
 		11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */; };
@@ -50,6 +53,10 @@
 		0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1192515A2B366F6500F72E5D /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		1192515C2B368F8200F72E5D /* Inpaint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inpaint.entitlements; sourceTree = "<group>"; };
+		1192515F2B369FFA00F72E5D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		119251622B36A16000F72E5D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		119251632B36A1DA00F72E5D /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		119251652B36A65000F72E5D /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintingViewController.swift; sourceTree = "<group>"; };
 		11AE81E92B2A008A000F95C4 /* Inpainting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inpainting.swift; sourceTree = "<group>"; };
 		11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LaMaFP16_512.mlpackage; sourceTree = "<group>"; };
@@ -109,8 +116,18 @@
 			isa = PBXGroup;
 			children = (
 				1192515A2B366F6500F72E5D /* CGRect.swift */,
+				119251652B36A65000F72E5D /* Localization.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		1192515E2B369FA600F72E5D /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				1192515F2B369FFA00F72E5D /* Localizable.xcstrings */,
+				119251632B36A1DA00F72E5D /* InfoPlist.xcstrings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		11CFF9E62B18D9FF008CFCA5 = {
@@ -138,6 +155,7 @@
 		11CFF9F12B18D9FF008CFCA5 /* Inpaint */ = {
 			isa = PBXGroup;
 			children = (
+				1192515E2B369FA600F72E5D /* Localization */,
 				1192515C2B368F8200F72E5D /* Inpaint.entitlements */,
 				119251592B366F5300F72E5D /* Utils */,
 				11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */,
@@ -286,6 +304,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				ja,
 			);
 			mainGroup = 11CFF9E62B18D9FF008CFCA5;
 			productRefGroup = 11CFF9F02B18D9FF008CFCA5 /* Products */;
@@ -305,7 +325,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				11CFF9FF2B18DA01008CFCA5 /* LaunchScreen.storyboard in Resources */,
+				119251642B36A1DA00F72E5D /* InfoPlist.xcstrings in Resources */,
 				11CFF9FC2B18DA01008CFCA5 /* Assets.xcassets in Resources */,
+				119251602B369FFA00F72E5D /* Localizable.xcstrings in Resources */,
 				11CFF9FA2B18D9FF008CFCA5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +428,7 @@
 				11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */,
 				11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */,
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
+				119251662B36A65000F72E5D /* Localization.swift in Sources */,
 				11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */,
 				1192515B2B366F6500F72E5D /* CGRect.swift in Sources */,
 				11CFF9F52B18D9FF008CFCA5 /* SceneDelegate.swift in Sources */,
@@ -457,6 +480,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				11CFF9FE2B18DA01008CFCA5 /* Base */,
+				119251622B36A16000F72E5D /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -595,8 +619,8 @@
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "影像魔术师";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "保存处理后的图片";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRIVACY_PHOTO)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -628,8 +652,8 @@
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "影像魔术师";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "保存处理后的图片";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRIVACY_PHOTO)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -67,8 +67,8 @@ class InpaintingViewController: UIViewController {
         }
         
         // 创建消除和保存按钮
-        let clearButton = UIBarButtonItem(title: "消除", style: .plain, target: self, action: #selector(onClear))
-        let saveButton = UIBarButtonItem(title: "保存", style: .plain, target: self, action: #selector(onSave))
+        let clearButton = UIBarButtonItem(title: *"inpaint", style: .plain, target: self, action: #selector(onClear))
+        let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
         
         // 将按钮添加到导航栏
         navigationItem.rightBarButtonItems = [saveButton, clearButton]
@@ -110,10 +110,10 @@ class InpaintingViewController: UIViewController {
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             // 保存失败，显示Toast消息
-            self.view.makeToast("保存失败: \(error.localizedDescription)", duration: 3.0, position: .bottom)
+            self.view.makeToast("\(*"toast_save_error")) \(error.localizedDescription)", duration: 3.0, position: .bottom)
         } else {
             // 保存成功
-            self.view.makeToast("图像成功保存到相册", duration: 3.0, position: .bottom)
+            self.view.makeToast(*"toast_save_success", duration: 3.0, position: .bottom)
         }
     }
     

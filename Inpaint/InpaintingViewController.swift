@@ -41,6 +41,8 @@ class InpaintingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    lazy var unDoButton = UIBarButtonItem(title: *"undo", style: .plain, target: self, action: #selector(onUndo))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,12 +68,13 @@ class InpaintingViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
+        unDoButton.isEnabled = false
         // 创建消除和保存按钮
-        let clearButton = UIBarButtonItem(title: *"inpaint", style: .plain, target: self, action: #selector(onClear))
+        let clearButton = UIBarButtonItem(title: *"inpaint", style: .plain, target: self, action: #selector(onInpaint))
         let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
         
         // 将按钮添加到导航栏
-        navigationItem.rightBarButtonItems = [saveButton, clearButton]
+        navigationItem.rightBarButtonItems = [saveButton, clearButton, unDoButton]
         
         loadngView.hidesWhenStopped = true
         view.addSubview(loadngView)
@@ -81,8 +84,28 @@ class InpaintingViewController: UIViewController {
         
     }
     
+    
+    var undoList = [UIImage]() {
+        didSet {
+            unDoButton.isEnabled = undoList.count > 0
+        }
+    }
+    @objc func onUndo() {
+        guard undoList.count > 0 else { return }
+        let img = undoList.removeLast()
+        self.imageView.image = img
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // 如果收到内存警告则只保留最新的两次操作和原始图片
+        if undoList.count > 3 {
+            let lastTwoOperations = undoList.suffix(2)
+            undoList = [undoList[0]] + lastTwoOperations
+        }
+    }
 
-    @objc func onClear() {
+    @objc func onInpaint() {
         guard let inputImage = imageView.image else { return }
         guard let maskImage = drawView.exportAsGrayscaleImage() else { return }
         loadngView.startAnimating()
@@ -90,6 +113,7 @@ class InpaintingViewController: UIViewController {
             guard let self = self else { return }
             self.imageView.image = outImage
             self.imageView.contentMode = .scaleAspectFit
+            self.undoList.append(inputImage)
             self.drawView.clean()
             self.loadngView.stopAnimating()
         }

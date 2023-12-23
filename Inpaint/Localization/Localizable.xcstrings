@@ -4,6 +4,12 @@
     "back" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21,6 +27,12 @@
     "inpaint" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inpaint"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54,6 +66,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保存"
+          }
+        }
+      }
+    },
+    "toast_inpaint_warning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For optimal results, choose a smaller area to erase."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最適な結果を得るために、消去する範囲を小さく選んでください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "为获最佳效果，建议选取较小消除区域"
           }
         }
       }

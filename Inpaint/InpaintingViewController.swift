@@ -128,12 +128,19 @@ class InpaintingViewController: UIViewController {
             undoList = [undoList[0]] + lastTwoOperations
         }
     }
+    
+    var hasWarned = false
 
     @objc func onInpaint() {
         guard let inputImage = imageView.image else { return }
         guard let maskImage = drawView.exportAsGrayscaleImage() else { return }
         loadngView.startAnimating()
-        inpenting.inpent(image: inputImage, mask: maskImage, inpaintingRects: drawView.drawBounds) { [weak self] outImage, err in
+        let bounds = drawView.drawBounds
+        if !hasWarned, let rect = bounds.first, (rect.size.width > 512 || rect.size.height > 512) {
+            hasWarned = true
+            self.view.makeToast(*"toast_inpaint_warning", duration: 4.0, position: .bottom)
+        }
+        inpenting.inpent(image: inputImage, mask: maskImage, inpaintingRects: bounds) { [weak self] outImage, err in
             guard let self = self else { return }
             self.imageView.image = outImage
             self.imageView.contentMode = .scaleAspectFit

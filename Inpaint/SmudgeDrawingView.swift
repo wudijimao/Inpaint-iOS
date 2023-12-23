@@ -43,6 +43,11 @@ class SmudgeDrawingView: UIView {
             paths.forEach { path in
                 guard !path.isEmpty else { return }
                 var rect = path.bounds
+                // 要扩大path.width的半径
+                // 计算扩大的值，这里是路径宽度的一半
+                let expandBy = path.lineWidth / 2
+                // 扩大 CGRect
+                rect = rect.insetBy(dx: -expandBy, dy: -expandBy)
                 rect = CGRect(x: rect.origin.x * UIScreen.main.scale, y: rect.origin.y * UIScreen.main.scale, width: rect.size.width * UIScreen.main.scale, height: rect.size.height * UIScreen.main.scale)
                 rects.append(rect)
             }
@@ -56,6 +61,8 @@ class SmudgeDrawingView: UIView {
             for rect in rects {
                 combinedRect = combinedRect.union(rect)
             }
+            // 再往外扩一点避免有生硬的边界
+            combinedRect = combinedRect.insetBy(dx: -5, dy: -5)
             return [combinedRect]
         }
     }

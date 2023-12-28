@@ -4,6 +4,16 @@ A free and open-source inpainting app powered by coreml on iPhone / iPad / MacBo
 
 基于 coreml 技术的免费开源 inpainting iOS App, OnDevice处理，无需服务器。
 
+最近更新:    
+1. 图片支持放大，做更精细的处理  
+2. 现在支持回退操作  
+3. 笔刷颜色更舒适  
+4. 笔刷大小可以根据需要调整啦  
+
+修复:  
+1. 有时图像出现白线的问题  
+2. 有些手机上保存图片失败，展示为纯黑色的问题  
+
 ## Demo
 
 Demo App 影像魔术师: [https://apps.apple.com/cn/app/%E5%BD%B1%E5%83%8F%E9%AD%94%E6%9C%AF%E5%B8%88/id6474593002](https://apps.apple.com/app/apple-store/id6474593002?pt=126805460&ct=github&mt=8)

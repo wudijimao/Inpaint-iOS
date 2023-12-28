@@ -44,9 +44,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     private func setupScrollView() {
         scrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(selectImageBtn.snp.top).offset(-20)
         }
+        scrollView.layer.cornerRadius = 20
+        scrollView.layer.masksToBounds = true
 
 //        let images = [("1", "1b"), ("2", "2b"), ("3", "3b")]
         let images = [("1", "1b")]
@@ -109,8 +112,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let image = info[.originalImage] as? UIImage else { return }
         let scaledImage = image.scaleToLimit(size: .init(width: kLimitImageSize, height: kLimitImageSize))
         picker.dismiss(animated: true, completion: {
-            let vc = InpaintingViewController()
-            vc.imageView.image = scaledImage
+            let vc = InpaintingViewController(image: scaledImage)
             self.navigationController?.pushViewController(vc, animated: true)
         })
     }

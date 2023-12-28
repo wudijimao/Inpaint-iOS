@@ -128,6 +128,10 @@ extension UIImage {
     }
     
     func scaleTo(size targetSize: CGSize) -> UIImage {
+        guard self.size != targetSize else {
+            // 尺寸一致的时候不放大
+            return self
+        }
         let renderer = UIGraphicsImageRenderer(size: targetSize)
         let newImage = renderer.image { (context) in
             self.draw(in: CGRect(origin: .zero, size: targetSize))
@@ -176,6 +180,7 @@ extension UIImage {
         
         // 把2 写回1
         func writeBack(to img: UIImage, subImg: UIImage) -> UIImage {
+            // 如果涂抹区域过大，原始尺寸大于模型可处理尺寸时需要放大，这时候可能会导致模糊
             let originSubImg = subImg.scaleTo(size: originalSize)
             return img.writeBack(image: originSubImg, to: position)
         }
@@ -195,7 +200,7 @@ extension UIImage {
             realCropFrame.origin.y -= CGFloat(Int((mask.size.height - self.size.height * widthScale) / 2))
             realCropFrame /= widthScale
         }
-        
+        realCropFrame = realCropFrame.ceil()
         
         
         var newCropFrame = realCropFrame
@@ -227,20 +232,21 @@ extension UIImage {
         } else if newCropFrame.maxY > imageSize.height {
             newCropFrame.origin.y = imageSize.height - newCropFrame.height
         }
+        newCropFrame = newCropFrame.ceil()
         // 保证在图片的范围中结束
-
+        
         // 裁剪图像
         let croppedImage = self.crop(to: newCropFrame)
 
         var maskCropFrame = newCropFrame
         if widthScale > heightScale {
             maskCropFrame *= heightScale
-            maskCropFrame.origin.x += CGFloat(Int((mask.size.width - self.size.width * heightScale) / 2))
+            maskCropFrame.origin.x += CGFloat(Int((mask.size.width - self.size.width * heightScale) / 2.0))
         } else {
             maskCropFrame *= widthScale
-            maskCropFrame.origin.y += CGFloat(Int((mask.size.height - self.size.height * widthScale) / 2))
+            maskCropFrame.origin.y += CGFloat(Int((mask.size.height - self.size.height * widthScale) / 2.0))
         }
-
+        maskCropFrame = maskCropFrame.ceil()
         let croppedMaskImage = mask.crop(to: maskCropFrame)
 
         // 缩放图像

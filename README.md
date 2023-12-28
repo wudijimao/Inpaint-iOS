@@ -6,9 +6,9 @@ A free and open-source inpainting app powered by coreml on iPhone / iPad / MacBo
 
 ## Demo
 
-Demo App 影像魔术师: https://apps.apple.com/cn/app/%E5%BD%B1%E5%83%8F%E9%AD%94%E6%9C%AF%E5%B8%88/id6474593002
+Demo App 影像魔术师: [https://apps.apple.com/cn/app/%E5%BD%B1%E5%83%8F%E9%AD%94%E6%9C%AF%E5%B8%88/id6474593002](https://apps.apple.com/app/apple-store/id6474593002?pt=126805460&ct=github&mt=8)
 
-[https://github.com/wudijimao/Inpaint-iOS/blob/main/OtherAssets/1702571023625331.mp4](https://github.com/wudijimao/Inpaint-iOS/assets/5219818/c3675ca6-2a7f-4066-b8e6-31d53df83a53)
+https://github.com/wudijimao/Inpaint-iOS/assets/5219818/83b14e38-defd-4b3b-afaf-c5695b6b10b5
 
 
 
@@ -16,18 +16,18 @@ Demo App 影像魔术师: https://apps.apple.com/cn/app/%E5%BD%B1%E5%83%8F%E9%AD
 
 ### en
 
-- [ ] Image Modification History
+- [X] Image Modification History
 - [ ] Choice Model
-- [ ] Impove Brush
+- [*] Impove Brush
 - [ ] Integrate Segment Anything for Quick Selection and Removal in Images
 - [ ] Better UI
 - [ ] Optimization for Older Device Models
 
 ### cn
 
-- [ ] 图像修改历史
+- [X] 图像修改历史
 - [ ] 选择模型
-- [ ] 改进笔刷
+- [*] 改进笔刷
 - [ ] 接入 Segment Anything，实现快速选择和去除图像
 - [ ] 更好的界面
 - [ ] 较老机型适配优化

@@ -8,6 +8,8 @@
 import UIKit
 import SceneKit
 import MetalKit
+import CoreMotion
+
 
 
 class DepthImage3DModleGenerator {
@@ -133,6 +135,9 @@ class DepthImageSenceViewController: UIViewController {
     
     let deepMapModelGenerator = DepthImage3DModleGenerator()
     
+    lazy var motionManager: CMMotionManager = CMMotionManager()
+    lazy var cameraNode = SCNNode()
+    
     let image: UIImage
     let depthData: [Float]
     
@@ -144,6 +149,47 @@ class DepthImageSenceViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupMotion() {
+        motionManager.gyroUpdateInterval = 1.0 / 60.0
+        
+        // 开始接收陀螺仪数据
+        if motionManager.isGyroAvailable {
+            motionManager.startGyroUpdates(to: .main) { [weak self] (gyroData, error) in
+                guard let strongSelf = self else { return }
+                if let rotationRate = gyroData?.rotationRate {
+                    strongSelf.updateCameraRotation(rotationRate: rotationRate)
+                }
+            }
+        }
+    }
+    
+    func updateCameraRotation(rotationRate: CMRotationRate) {
+        // 设定旋转半径
+        let radius: Float = 4.0
+        
+        // 获取当前摄像机的球面坐标
+        var currentTheta = atan2(cameraNode.position.z, cameraNode.position.x)
+        var currentPhi = acos(cameraNode.position.y / radius)
+        
+        // 计算新的角度
+        let deltaTheta = Float(rotationRate.y) * 0.01 // 水平旋转角度，调整0.01来改变灵敏度
+        let deltaPhi = Float(rotationRate.x) * 0.01 // 垂直旋转角度，调整0.01来改变灵敏度
+        
+        currentTheta += deltaTheta
+        currentPhi -= deltaPhi
+        
+        // 限制phi的范围以避免翻转
+        currentPhi = max(0.1, min(currentPhi, Float.pi - 0.1))
+        
+        // 根据新的角度计算摄像机的位置
+        let x = radius * sin(currentPhi) * cos(currentTheta)
+        let y = radius * cos(currentPhi)
+        let z = radius * sin(currentPhi) * sin(currentTheta)
+        
+        // 更新摄像机的位置
+        cameraNode.position = SCNVector3(x, y, z)
     }
     
     override func viewDidLoad() {
@@ -219,7 +265,13 @@ class DepthImageSenceViewController: UIViewController {
         scnView.scene = scene
         
         // 启用默认光照
-        scnView.autoenablesDefaultLighting = true
+        scnView.autoenablesDefaultLighting = false
+        // 移除场景中的所有光源
+        scene.rootNode.enumerateChildNodes { (node, _) in
+            if node.light != nil {
+                node.removeFromParentNode()
+            }
+        }
         
         // 添加一个立方体节点
         let boxGeometry = geometry
@@ -227,6 +279,8 @@ class DepthImageSenceViewController: UIViewController {
         // 添加贴图
         let material = SCNMaterial()
         material.diffuse.contents = self.image
+        material.lightingModel = .constant // 关闭光照效果
+
 //            let program = SCNProgram()
 //            program.vertexFunctionName = "myVertex"
 //            program.fragmentFunctionName = "myFragment"
@@ -237,22 +291,29 @@ class DepthImageSenceViewController: UIViewController {
         scene.rootNode.addChildNode(boxNode)
 
        
-
-        // 添加相机节点
-        let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 4)
+        // 设置摄像机始终朝向(0,0,0)
+        let constraint = SCNLookAtConstraint(target: boxNode)
+        cameraNode.constraints = [constraint]
+        
         scene.rootNode.addChildNode(cameraNode)
         
         // 允许用户控制相机
         scnView.allowsCameraControl = true
 
+        #if DEBUG
         // 显示统计数据
         scnView.showsStatistics = true
+        #endif
 
         // 设置背景色
-        scnView.backgroundColor = UIColor.black
+        scnView.backgroundColor = UIColor.systemBackground
+        
+        setupMotion()
     }
+    
+    
 }
 
 

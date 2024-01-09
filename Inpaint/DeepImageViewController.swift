@@ -10,10 +10,84 @@ import Vision
 import CoreML
 import SnapKit
 
+// 图像深度预测
+protocol ImageDepthPrediction {
+    // 异步
+    func depthPrediction(image: UIImage, completion: @escaping (UIImage?, [Float]?, NSError?) -> Void)
+}
+
+extension MLShapedArray {
+    var array: [Scalar] {
+        var ret = [Scalar]()
+        self.withUnsafeShapedBufferPointer { ptr, shape, strides in
+            ret = Array(ptr)
+        }
+        return ret
+    }
+}
+
+class MiDaSImageDepthPrediction: ImageDepthPrediction {
+   
+
+    let workQueue = DispatchQueue.init(label: "MiDaSImageDepthPrediction")
+    
+    lazy var config: MLModelConfiguration = {
+        let config = MLModelConfiguration()
+        config.computeUnits = .cpuAndGPU
+        return config
+    }()
+    
+    var model: MiDaSMobileSwin2Tiny256FP16?
+    
+    public init() {
+        self.preload()
+    }
+    
+    func depthPrediction(image: UIImage, completion: @escaping (UIImage?, [Float]?, NSError?) -> Void) {
+        workQueue.async {
+            guard let model = self.model else { return }
+//            let scaledImage = image.scaleTo(size: .init(width: 256, height: 256))
+            guard let imgBuffer = image.buffer(ofSize: 256) else {
+                completion(nil, nil, nil)
+                return
+            }
+            
+            do {
+                let input = MiDaSMobileSwin2Tiny256FP16Input(input: imgBuffer)
+                let result = try model.prediction(input: input)
+                guard let outImage = result.depth_image.uiImage else {
+                    completion(nil, nil, nil)
+                    return
+                }
+                let depthArray = result.depthShapedArray.array
+                DispatchQueue.main.async {
+                    completion(outImage, depthArray, nil)
+                }
+            } catch(let e) {
+                print(e)
+                completion(nil, nil, e as NSError)
+            }
+        }
+    }
+
+    func preload() {
+        workQueue.async {
+            do {
+                self.model = try MiDaSMobileSwin2Tiny256FP16.init(configuration: self.config)
+            } catch(let e) {
+                print(e)
+            }
+        }
+    }
+    
+}
+
+
+
 class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Core ML 模型
-    var visionModel: VNCoreMLModel?
+    lazy var prediction: MiDaSImageDepthPrediction = MiDaSImageDepthPrediction()
     
     let image: UIImage
     
@@ -52,50 +126,17 @@ class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate
     var lama: LaMaFP16_512?
 
     func loadModel() {
-        let config = MLModelConfiguration.init()
-        guard let model = try? MiDaSMobileSwin2Tiny256FP16(configuration: config),
-            let visionModel = try? VNCoreMLModel(for: model.model) else {
-            fatalError("加载模型失败")
-        }
-        self.visionModel = visionModel
+        _ = prediction
     }
 
     func generateGrayScaleImage(_ image: UIImage) {
-        guard let visionModel = visionModel else {
-            print("模型未加载")
-            return
-        }
-
-        guard let cgImage = image.cgImage else {
-            print("无法获取CGImage")
-            return
-        }
-
-        // 创建 Vision 请求
-        let request = VNCoreMLRequest(model: visionModel) { request, error in
-            guard let results = request.results as? [VNPixelBufferObservation] else {
-                print("无法获取结果")
-                return
+        prediction.depthPrediction(image: image) { depthImage, depthData, err in
+            self.imageView.image = depthImage
+            guard let depthData = depthData else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                let vc = DepthImageSenceViewController(image: image, depthData: depthData)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-
-            // 处理灰度图像结果
-            if let topResult = results.first {
-                let pixelBuffer = topResult.pixelBuffer
-                let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-                let uiImage = UIImage(ciImage: ciImage)
-                DispatchQueue.main.async {
-                    // 在这里更新 UI，例如显示图像
-                     self.imageView.image = uiImage
-                }
-            }
-        }
-
-        // 执行 Vision 请求
-        let handler = VNImageRequestHandler(cgImage: cgImage)
-        do {
-            try handler.perform([request])
-        } catch {
-            print("执行请求时出错: \(error)")
         }
     }
 }

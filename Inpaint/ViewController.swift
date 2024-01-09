@@ -114,6 +114,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.dismiss(animated: true, completion: {
 //            let vc = InpaintingViewController(image: scaledImage)
             let vc = DeepImageViewController(image: scaledImage)
+//            let vc = DeepSenceViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         })
     }

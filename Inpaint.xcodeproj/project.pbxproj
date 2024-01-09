@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */; };
 		1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
+		115EF1E92B48F6EB00F4C420 /* DepthImageSence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */; };
+		115EF1EF2B49127C00F4C420 /* DepthImageRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */; };
+		11817B742B4C475600DFF8D4 /* VisionImageViewControllerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11817B732B4C475500DFF8D4 /* VisionImageViewControllerExample.swift */; };
 		1192515B2B366F6500F72E5D /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
 		119251602B369FFA00F72E5D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1192515F2B369FFA00F72E5D /* Localizable.xcstrings */; };
 		119251642B36A1DA00F72E5D /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 119251632B36A1DA00F72E5D /* InfoPlist.xcstrings */; };
@@ -55,6 +58,9 @@
 		0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepImageViewController.swift; sourceTree = "<group>"; };
 		1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MiDaSMobileSwin2Tiny256FP16.mlpackage; sourceTree = "<group>"; };
+		115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSence.swift; sourceTree = "<group>"; };
+		115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DepthImageRender.metal; sourceTree = "<group>"; };
+		11817B732B4C475500DFF8D4 /* VisionImageViewControllerExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisionImageViewControllerExample.swift; sourceTree = "<group>"; };
 		1192515A2B366F6500F72E5D /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		1192515C2B368F8200F72E5D /* Inpaint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inpaint.entitlements; sourceTree = "<group>"; };
 		1192515F2B369FFA00F72E5D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -116,6 +122,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		115EF1E72B48F6D500F4C420 /* DepthImage */ = {
+			isa = PBXGroup;
+			children = (
+				115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */,
+				115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */,
+			);
+			path = DepthImage;
+			sourceTree = "<group>";
+		};
 		119251592B366F5300F72E5D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +174,7 @@
 		11CFF9F12B18D9FF008CFCA5 /* Inpaint */ = {
 			isa = PBXGroup;
 			children = (
+				115EF1E72B48F6D500F4C420 /* DepthImage */,
 				1192515E2B369FA600F72E5D /* Localization */,
 				1192515C2B368F8200F72E5D /* Inpaint.entitlements */,
 				119251592B366F5300F72E5D /* Utils */,
@@ -169,6 +185,7 @@
 				11CFF9F42B18D9FF008CFCA5 /* SceneDelegate.swift */,
 				11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */,
 				11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */,
+				11817B732B4C475500DFF8D4 /* VisionImageViewControllerExample.swift */,
 				1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */,
 				11CFF9F82B18D9FF008CFCA5 /* Main.storyboard */,
 				11CFF9FB2B18DA01008CFCA5 /* Assets.xcassets */,
@@ -429,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C1FA2F2B1C80FE0021EA5F /* SplitImageView.swift in Sources */,
+				115EF1EF2B49127C00F4C420 /* DepthImageRender.metal in Sources */,
 				11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */,
 				11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */,
 				11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */,
@@ -437,9 +455,11 @@
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
 				1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */,
 				119251662B36A65000F72E5D /* Localization.swift in Sources */,
+				115EF1E92B48F6EB00F4C420 /* DepthImageSence.swift in Sources */,
 				11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */,
 				1192515B2B366F6500F72E5D /* CGRect.swift in Sources */,
 				11CFF9F52B18D9FF008CFCA5 /* SceneDelegate.swift in Sources */,
+				11817B742B4C475600DFF8D4 /* VisionImageViewControllerExample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

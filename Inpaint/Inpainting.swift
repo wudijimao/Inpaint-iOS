@@ -89,6 +89,11 @@ let kImageSize = 512
 extension UIImage {
 //    import VideoToolbox
     
+    func buffer(ofSize size: Int) -> CVPixelBuffer?  {
+        let feature = try! MLFeatureValue.init(cgImage: self.cgImage!, pixelsWide: size, pixelsHigh: size, pixelFormatType: kCVPixelFormatType_32ARGB)
+        return feature.imageBufferValue
+    }
+    
     var buffer: CVPixelBuffer? {
         let feature = try! MLFeatureValue.init(cgImage: self.cgImage!, pixelsWide: kImageSize, pixelsHigh: kImageSize, pixelFormatType: kCVPixelFormatType_32ARGB)
         return feature.imageBufferValue
@@ -132,7 +137,9 @@ extension UIImage {
             // 尺寸一致的时候不放大
             return self
         }
-        let renderer = UIGraphicsImageRenderer(size: targetSize)
+        let rendererFormat = UIGraphicsImageRendererFormat.default()
+        rendererFormat.scale = 1  // 设置scale为1
+        let renderer = UIGraphicsImageRenderer(size: targetSize, format: rendererFormat)
         let newImage = renderer.image { (context) in
             self.draw(in: CGRect(origin: .zero, size: targetSize))
         }

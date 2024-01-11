@@ -33,6 +33,8 @@
 		3CF5136D7FA29622DA933275 /* Pods_Inpaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */; };
 		5A5261AB7059201704BCF1F0 /* Pods_Inpaint_InpaintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */; };
 		90609CAA495B37910B508E46 /* Pods_InpaintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */; };
+		BCC06E5F2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */; };
+		BCC06E612B4F88F1002E28BD /* DepthImage3DModleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		85CF5DBC619910A0108151C8 /* Pods-Inpaint-InpaintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.release.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.release.xcconfig"; sourceTree = "<group>"; };
 		AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InpaintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSenceForVisionPro.swift; sourceTree = "<group>"; };
+		BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImage3DModleGenerator.swift; sourceTree = "<group>"; };
 		D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E084CFB713396F64E30392E4 /* Pods-Inpaint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +131,8 @@
 			children = (
 				115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */,
 				115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */,
+				BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */,
+				BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */,
 			);
 			path = DepthImage;
 			sourceTree = "<group>";
@@ -451,6 +457,8 @@
 				11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */,
 				11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */,
 				1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */,
+				BCC06E5F2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift in Sources */,
+				BCC06E612B4F88F1002E28BD /* DepthImage3DModleGenerator.swift in Sources */,
 				11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */,
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
 				1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */,
@@ -662,9 +670,12 @@
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
 		};
@@ -695,9 +706,12 @@
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
 		};

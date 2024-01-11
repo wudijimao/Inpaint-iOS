@@ -7,7 +7,7 @@
 
 import Foundation
 import MetalKit
-
+import SceneKit
 
 struct MyPoint {
     let x: Float

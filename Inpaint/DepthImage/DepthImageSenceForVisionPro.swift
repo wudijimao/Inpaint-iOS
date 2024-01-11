@@ -27,7 +27,12 @@ class DepthImageSenceForVisionProViewController: UIHostingController<DepthImageS
     
     let proccesser = DepthImage3DModleGenerator()
     
-    public init() {
+    let image: UIImage
+    let depthData: [Float]
+    
+    init(image: UIImage, depthData: [Float]) {
+        self.image = image
+        self.depthData = depthData
         super.init(rootView: DepthImageSenceForVisionPro())
     }
     

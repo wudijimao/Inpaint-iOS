@@ -33,8 +33,17 @@
 		3CF5136D7FA29622DA933275 /* Pods_Inpaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */; };
 		5A5261AB7059201704BCF1F0 /* Pods_Inpaint_InpaintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */; };
 		90609CAA495B37910B508E46 /* Pods_InpaintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */; };
-		BCC06E5F2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */; };
-		BCC06E612B4F88F1002E28BD /* DepthImage3DModleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */; };
+		BCAE548D2B5020C20008EF90 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = BCAE548C2B5020C20008EF90 /* RealityKitContent */; };
+		BCAE548F2B5020C20008EF90 /* MagicPhotoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAE548E2B5020C20008EF90 /* MagicPhotoApp.swift */; };
+		BCAE54912B5020C20008EF90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAE54902B5020C20008EF90 /* ContentView.swift */; };
+		BCAE54932B5020C40008EF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCAE54922B5020C40008EF90 /* Assets.xcassets */; };
+		BCAE54962B5020C40008EF90 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCAE54952B5020C40008EF90 /* Preview Assets.xcassets */; };
+		BCAE549C2B5020EB0008EF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11CFF9FB2B18DA01008CFCA5 /* Assets.xcassets */; };
+		BCAE549D2B5021010008EF90 /* DepthImageSenceForVisionPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */; };
+		BCAE549E2B50210E0008EF90 /* DepthImage3DModleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */; };
+		BCAE549F2B5021110008EF90 /* DepthImage3DModleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */; };
+		BCAE54A02B5021150008EF90 /* DepthImageRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */; };
+		BCAE54A12B50211C0008EF90 /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +101,13 @@
 		85CF5DBC619910A0108151C8 /* Pods-Inpaint-InpaintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.release.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.release.xcconfig"; sourceTree = "<group>"; };
 		AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InpaintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCAE54882B5020C20008EF90 /* MagicPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCAE548B2B5020C20008EF90 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		BCAE548E2B5020C20008EF90 /* MagicPhotoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicPhotoApp.swift; sourceTree = "<group>"; };
+		BCAE54902B5020C20008EF90 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BCAE54922B5020C40008EF90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCAE54952B5020C40008EF90 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BCAE54972B5020C40008EF90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSenceForVisionPro.swift; sourceTree = "<group>"; };
 		BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImage3DModleGenerator.swift; sourceTree = "<group>"; };
 		D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +136,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A5261AB7059201704BCF1F0 /* Pods_Inpaint_InpaintUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCAE54852B5020C20008EF90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCAE548D2B5020C20008EF90 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +185,8 @@
 				11CFF9F12B18D9FF008CFCA5 /* Inpaint */,
 				11CFFA082B18DA01008CFCA5 /* InpaintTests */,
 				11CFFA122B18DA01008CFCA5 /* InpaintUITests */,
+				BCAE54892B5020C20008EF90 /* MagicPhoto */,
+				BCAE548A2B5020C20008EF90 /* Packages */,
 				11CFF9F02B18D9FF008CFCA5 /* Products */,
 				EA541A4E031102D287C1266B /* Pods */,
 				C66415C5D5EA8FB3CD0D26FF /* Frameworks */,
@@ -173,6 +199,7 @@
 				11CFF9EF2B18D9FF008CFCA5 /* Inpaint.app */,
 				11CFFA052B18DA01008CFCA5 /* InpaintTests.xctest */,
 				11CFFA0F2B18DA01008CFCA5 /* InpaintUITests.xctest */,
+				BCAE54882B5020C20008EF90 /* MagicPhoto.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -219,6 +246,34 @@
 				11CFFA152B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift */,
 			);
 			path = InpaintUITests;
+			sourceTree = "<group>";
+		};
+		BCAE54892B5020C20008EF90 /* MagicPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				BCAE548E2B5020C20008EF90 /* MagicPhotoApp.swift */,
+				BCAE54902B5020C20008EF90 /* ContentView.swift */,
+				BCAE54922B5020C40008EF90 /* Assets.xcassets */,
+				BCAE54972B5020C40008EF90 /* Info.plist */,
+				BCAE54942B5020C40008EF90 /* Preview Content */,
+			);
+			path = MagicPhoto;
+			sourceTree = "<group>";
+		};
+		BCAE548A2B5020C20008EF90 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				BCAE548B2B5020C20008EF90 /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		BCAE54942B5020C40008EF90 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BCAE54952B5020C40008EF90 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		C66415C5D5EA8FB3CD0D26FF /* Frameworks */ = {
@@ -303,6 +358,26 @@
 			productReference = 11CFFA0F2B18DA01008CFCA5 /* InpaintUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		BCAE54872B5020C20008EF90 /* MagicPhoto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCAE549A2B5020C40008EF90 /* Build configuration list for PBXNativeTarget "MagicPhoto" */;
+			buildPhases = (
+				BCAE54842B5020C20008EF90 /* Sources */,
+				BCAE54852B5020C20008EF90 /* Frameworks */,
+				BCAE54862B5020C20008EF90 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MagicPhoto;
+			packageProductDependencies = (
+				BCAE548C2B5020C20008EF90 /* RealityKitContent */,
+			);
+			productName = MagicPhoto;
+			productReference = BCAE54882B5020C20008EF90 /* MagicPhoto.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -310,7 +385,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					11CFF9EE2B18D9FF008CFCA5 = {
@@ -323,6 +398,9 @@
 					11CFFA0E2B18DA01008CFCA5 = {
 						CreatedOnToolsVersion = 15.1;
 						TestTargetID = 11CFF9EE2B18D9FF008CFCA5;
+					};
+					BCAE54872B5020C20008EF90 = {
+						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
@@ -344,6 +422,7 @@
 				11CFF9EE2B18D9FF008CFCA5 /* Inpaint */,
 				11CFFA042B18DA01008CFCA5 /* InpaintTests */,
 				11CFFA0E2B18DA01008CFCA5 /* InpaintUITests */,
+				BCAE54872B5020C20008EF90 /* MagicPhoto */,
 			);
 		};
 /* End PBXProject section */
@@ -372,6 +451,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCAE54862B5020C20008EF90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCAE54962B5020C40008EF90 /* Preview Assets.xcassets in Resources */,
+				BCAE549C2B5020EB0008EF90 /* Assets.xcassets in Resources */,
+				BCAE54932B5020C40008EF90 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,10 +544,9 @@
 				115EF1EF2B49127C00F4C420 /* DepthImageRender.metal in Sources */,
 				11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */,
 				11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */,
+				BCAE549F2B5021110008EF90 /* DepthImage3DModleGenerator.swift in Sources */,
 				11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */,
 				1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */,
-				BCC06E5F2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift in Sources */,
-				BCC06E612B4F88F1002E28BD /* DepthImage3DModleGenerator.swift in Sources */,
 				11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */,
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
 				1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */,
@@ -485,6 +573,19 @@
 			files = (
 				11CFFA162B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift in Sources */,
 				11CFFA142B18DA01008CFCA5 /* InpaintUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCAE54842B5020C20008EF90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCAE549E2B50210E0008EF90 /* DepthImage3DModleGenerator.swift in Sources */,
+				BCAE54A12B50211C0008EF90 /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */,
+				BCAE54A02B5021150008EF90 /* DepthImageRender.metal in Sources */,
+				BCAE54912B5020C20008EF90 /* ContentView.swift in Sources */,
+				BCAE549D2B5021010008EF90 /* DepthImageSenceForVisionPro.swift in Sources */,
+				BCAE548F2B5020C20008EF90 /* MagicPhotoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,12 +771,12 @@
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -706,12 +807,12 @@
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -791,6 +892,62 @@
 			};
 			name = Release;
 		};
+		BCAE54982B5020C40008EF90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MagicPhoto/Preview Content\"";
+				DEVELOPMENT_TEAM = HUW3H8NBU9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.MagicPhoto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		BCAE54992B5020C40008EF90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MagicPhoto/Preview Content\"";
+				DEVELOPMENT_TEAM = HUW3H8NBU9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.MagicPhoto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -830,7 +987,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		BCAE549A2B5020C40008EF90 /* Build configuration list for PBXNativeTarget "MagicPhoto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCAE54982B5020C40008EF90 /* Debug */,
+				BCAE54992B5020C40008EF90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BCAE548C2B5020C20008EF90 /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 11CFF9E72B18D9FF008CFCA5 /* Project object */;
 }

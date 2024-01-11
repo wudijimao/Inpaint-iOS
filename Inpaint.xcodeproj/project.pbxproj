@@ -33,6 +33,12 @@
 		3CF5136D7FA29622DA933275 /* Pods_Inpaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */; };
 		5A5261AB7059201704BCF1F0 /* Pods_Inpaint_InpaintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */; };
 		90609CAA495B37910B508E46 /* Pods_InpaintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */; };
+		BC7AA7AD2B50350300DC34EE /* ImageDepthPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */; };
+		BC7AA7AE2B50356F00DC34EE /* ImageDepthPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */; };
+		BC7AA7B02B50358700DC34EE /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
+		BC7AA7B12B50358B00DC34EE /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119251652B36A65000F72E5D /* Localization.swift */; };
+		BC7AA7B32B50364000DC34EE /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7B22B50364000DC34EE /* UIImage.swift */; };
+		BC7AA7B42B50365100DC34EE /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7B22B50364000DC34EE /* UIImage.swift */; };
 		BCAE548D2B5020C20008EF90 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = BCAE548C2B5020C20008EF90 /* RealityKitContent */; };
 		BCAE548F2B5020C20008EF90 /* MagicPhotoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAE548E2B5020C20008EF90 /* MagicPhotoApp.swift */; };
 		BCAE54912B5020C20008EF90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAE54902B5020C20008EF90 /* ContentView.swift */; };
@@ -101,6 +107,8 @@
 		85CF5DBC619910A0108151C8 /* Pods-Inpaint-InpaintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.release.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.release.xcconfig"; sourceTree = "<group>"; };
 		AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InpaintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDepthPrediction.swift; sourceTree = "<group>"; };
+		BC7AA7B22B50364000DC34EE /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BCAE54882B5020C20008EF90 /* MagicPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCAE548B2B5020C20008EF90 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		BCAE548E2B5020C20008EF90 /* MagicPhotoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicPhotoApp.swift; sourceTree = "<group>"; };
@@ -156,7 +164,9 @@
 				115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */,
 				115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */,
 				BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */,
+				1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */,
 				BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */,
+				BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */,
 			);
 			path = DepthImage;
 			sourceTree = "<group>";
@@ -166,6 +176,7 @@
 			children = (
 				1192515A2B366F6500F72E5D /* CGRect.swift */,
 				119251652B36A65000F72E5D /* Localization.swift */,
+				BC7AA7B22B50364000DC34EE /* UIImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -219,7 +230,6 @@
 				11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */,
 				11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */,
 				11817B732B4C475500DFF8D4 /* VisionImageViewControllerExample.swift */,
-				1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */,
 				11CFF9F82B18D9FF008CFCA5 /* Main.storyboard */,
 				11CFF9FB2B18DA01008CFCA5 /* Assets.xcassets */,
 				11CFF9FD2B18DA01008CFCA5 /* LaunchScreen.storyboard */,
@@ -546,6 +556,7 @@
 				11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */,
 				BCAE549F2B5021110008EF90 /* DepthImage3DModleGenerator.swift in Sources */,
 				11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */,
+				BC7AA7AD2B50350300DC34EE /* ImageDepthPrediction.swift in Sources */,
 				1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */,
 				11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */,
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
@@ -554,6 +565,7 @@
 				115EF1E92B48F6EB00F4C420 /* DepthImageSence.swift in Sources */,
 				11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */,
 				1192515B2B366F6500F72E5D /* CGRect.swift in Sources */,
+				BC7AA7B32B50364000DC34EE /* UIImage.swift in Sources */,
 				11CFF9F52B18D9FF008CFCA5 /* SceneDelegate.swift in Sources */,
 				11817B742B4C475600DFF8D4 /* VisionImageViewControllerExample.swift in Sources */,
 			);
@@ -581,10 +593,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCAE549E2B50210E0008EF90 /* DepthImage3DModleGenerator.swift in Sources */,
+				BC7AA7B42B50365100DC34EE /* UIImage.swift in Sources */,
+				BC7AA7AE2B50356F00DC34EE /* ImageDepthPrediction.swift in Sources */,
 				BCAE54A12B50211C0008EF90 /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */,
 				BCAE54A02B5021150008EF90 /* DepthImageRender.metal in Sources */,
 				BCAE54912B5020C20008EF90 /* ContentView.swift in Sources */,
+				BC7AA7B12B50358B00DC34EE /* Localization.swift in Sources */,
 				BCAE549D2B5021010008EF90 /* DepthImageSenceForVisionPro.swift in Sources */,
+				BC7AA7B02B50358700DC34EE /* CGRect.swift in Sources */,
 				BCAE548F2B5020C20008EF90 /* MagicPhotoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

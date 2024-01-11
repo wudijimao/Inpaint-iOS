@@ -14,6 +14,13 @@ struct MyPoint {
     let y: Float
 }
 
+struct MagicModelData {
+    let vertexList: [SCNVector3]
+    let texCoordList: [MyPoint]
+    let indices: [Int32]
+}
+
+
 class DepthImage3DModleGenerator {
     var device: MTLDevice!
     var commandQueue: MTLCommandQueue!
@@ -47,10 +54,38 @@ class DepthImage3DModleGenerator {
         outputBuffer = device.makeBuffer(length: dataSize * MemoryLayout<SCNVector3>.size, options: [])
         texOutputBuffer = device.makeBuffer(length: dataSize * MemoryLayout<MyPoint>.size, options: [])
     }
+    
+    private func _getIndices() -> [Int32] {
+        var indices = [Int32]()
+        let a = 255
+        let b = 255
+        for i in 0..<a {
+            for j in 0..<b {
+                let topLeft = i * (b + 1) + j
+                let topRight = topLeft + 1
+                let bottomLeft = (i + 1) * (b + 1) + j
+                let bottomRight = bottomLeft + 1
 
-    func process(depthData: [Float]) -> ([SCNVector3], [MyPoint]) {
+                // 添加第一个三角形的索引
+                indices.append(contentsOf: [Int32(topLeft), Int32(bottomLeft), Int32(topRight)])
+
+                // 添加第二个三角形的索引
+                indices.append(contentsOf: [Int32(bottomLeft), Int32(bottomRight), Int32(topRight)])
+                
+//                // 添加第一个三角形的索引（改为顺时针）
+//                indices.append(contentsOf: [Int32(topLeft), Int32(topRight), Int32(bottomLeft)])
+//
+//                // 添加第二个三角形的索引（改为顺时针）
+//                indices.append(contentsOf: [Int32(bottomLeft), Int32(topRight), Int32(bottomRight)])
+
+            }
+        }
+        return indices
+    }
+
+    func process(depthData: [Float]) -> MagicModelData? {
         guard let commandBuffer = commandQueue.makeCommandBuffer() else {
-            return ([], [])
+            return nil
         }
         let width = 256
         let height = 256
@@ -65,7 +100,7 @@ class DepthImage3DModleGenerator {
         
                 
         guard let computeEncoder = commandBuffer.makeComputeCommandEncoder() else {
-            return ([], [])
+            return nil
         }
         
 
@@ -78,7 +113,9 @@ class DepthImage3DModleGenerator {
         // 调度计算任务
         let gridSize = MTLSize(width: 256, height: 256, depth: 1)
         let threadGroupSize = MTLSize(width: 16, height: 16, depth: 1)
-        computeEncoder.dispatchThreads(gridSize, threadsPerThreadgroup: threadGroupSize)
+//        computeEncoder.dispatchThreads(gridSize, threadsPerThreadgroup: threadGroupSize)
+        
+        computeEncoder.dispatchThreadgroups(gridSize, threadsPerThreadgroup: threadGroupSize)
         
         computeEncoder.endEncoding()
         commandBuffer.commit()
@@ -124,6 +161,6 @@ class DepthImage3DModleGenerator {
         }
         
         
-        return (resultArray, texCoordsArray)
+        return MagicModelData.init(vertexList: resultArray, texCoordList: texCoordsArray, indices: _getIndices())
     }
 }

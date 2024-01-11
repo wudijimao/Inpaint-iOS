@@ -17,7 +17,7 @@ struct MyPoint {
 struct MagicModelData {
     let vertexList: [SCNVector3]
     let texCoordList: [MyPoint]
-    let indices: [Int32]
+    let indices: [UInt32]
 }
 
 
@@ -55,8 +55,8 @@ class DepthImage3DModleGenerator {
         texOutputBuffer = device.makeBuffer(length: dataSize * MemoryLayout<MyPoint>.size, options: [])
     }
     
-    private func _getIndices() -> [Int32] {
-        var indices = [Int32]()
+    private func _getIndices() -> [UInt32] {
+        var indices = [UInt32]()
         let a = 255
         let b = 255
         for i in 0..<a {
@@ -67,10 +67,10 @@ class DepthImage3DModleGenerator {
                 let bottomRight = bottomLeft + 1
 
                 // 添加第一个三角形的索引
-                indices.append(contentsOf: [Int32(topLeft), Int32(bottomLeft), Int32(topRight)])
+                indices.append(contentsOf: [UInt32(topLeft), UInt32(bottomLeft), UInt32(topRight)])
 
                 // 添加第二个三角形的索引
-                indices.append(contentsOf: [Int32(bottomLeft), Int32(bottomRight), Int32(topRight)])
+                indices.append(contentsOf: [UInt32(bottomLeft), UInt32(bottomRight), UInt32(topRight)])
                 
 //                // 添加第一个三角形的索引（改为顺时针）
 //                indices.append(contentsOf: [Int32(topLeft), Int32(topRight), Int32(bottomLeft)])
@@ -111,11 +111,16 @@ class DepthImage3DModleGenerator {
         computeEncoder.setBuffer(texOutputBuffer, offset: 0, index: 1)
 
         // 调度计算任务
-        let gridSize = MTLSize(width: 256, height: 256, depth: 1)
+//#if os(visionOS)
+        let groupSize = MTLSize(width: 16, height: 16, depth: 1)
         let threadGroupSize = MTLSize(width: 16, height: 16, depth: 1)
+        computeEncoder.dispatchThreadgroups(groupSize, threadsPerThreadgroup: threadGroupSize)
+//#else
+//        let gridSize = MTLSize(width: 256, height: 256, depth: 1)
+//        let threadGroupSize = MTLSize(width: 16, height: 16, depth: 1)
 //        computeEncoder.dispatchThreads(gridSize, threadsPerThreadgroup: threadGroupSize)
+//#endif
         
-        computeEncoder.dispatchThreadgroups(gridSize, threadsPerThreadgroup: threadGroupSize)
         
         computeEncoder.endEncoding()
         commandBuffer.commit()

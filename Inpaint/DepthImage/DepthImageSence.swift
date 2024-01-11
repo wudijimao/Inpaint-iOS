@@ -77,8 +77,8 @@ class DepthImageSenceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        let (vertices, texCoords) = deepMapModelGenerator.process(depthData: depthData)
+        guard let result = deepMapModelGenerator.process(depthData: depthData) else { return }
+        let (vertices, texCoords) = (result.vertexList, result.texCoordList)
         // 创建顶点源
         let vertexData = Data(bytes: vertices, count: vertices.count * MemoryLayout<SCNVector3>.size)
         let vertexSource = SCNGeometrySource(data: vertexData,

@@ -24,14 +24,29 @@ class MagicPhotoViewModel: ObservableObject {
                 self.modelData = result
                 if let result {
                     var descr = MeshDescriptor(name: "tritri")
-                    descr.positions = MeshBuffers.Positions(
-                      [[-1, -1, 0], [1, -1, 0], [0, 1, 0]]
-                    )
-                    descr.primitives = .triangles([0, 1, 2])
+//                    descr.positions = MeshBuffers.Positions(
+//                        [[-1, -1, 0.1], [1, -1, 0.1], [0, 1, 0.1]]
+//                    )
+//                    descr.primitives = .triangles([0, 1, 2])
+//                    
+                    descr.positions = MeshBuffers.Positions(result.vertexList.map({ vec in
+                        return SIMD3<Float>.init(x: vec.x, y: vec.y, z: vec.z / 5.0)
+                    }))
+                    descr.primitives = .triangles(result.indices)
+                    descr.textureCoordinates = MeshBuffer.init(result.texCoordList.map({ point in
+                        return SIMD2<Float>.init(x: point.x, y: point.y)
+                    }))
+                    
+                    let textRes = try! TextureResource.generate(from: image.cgImage!, options: .init(semantic: nil))
+                    
+                    var triMat = SimpleMaterial(color: .orange, isMetallic: false)
+                    triMat.color = .init(texture: .init(textRes))
+                    
+
                     
                     let generatedModel = ModelEntity(
                        mesh: try! .generate(from: [descr]),
-                       materials: [SimpleMaterial(color: .orange, isMetallic: false)]
+                       materials: [triMat]
                     )
                     self.model = generatedModel
                 }

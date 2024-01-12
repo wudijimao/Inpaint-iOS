@@ -103,5 +103,5 @@ kernel void compute_shader_niubi(texture2d<float, access::read> inputTexture [[t
     
     int texPos = (x + y * inputTexture.get_width()) * 2;
     texCoordsOutputBuffer[texPos] = x / 255.0;
-    texCoordsOutputBuffer[texPos + 1] = position.y / 255.0;
+    texCoordsOutputBuffer[texPos + 1] = 1.0 - position.y / 255.0; // 在visionPro上贴图方向是上下颠倒的，或者可能是这张图片的特殊问题，总之先把贴图上下颠倒了一下
 }

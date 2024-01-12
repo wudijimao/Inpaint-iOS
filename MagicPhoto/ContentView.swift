@@ -24,30 +24,30 @@ class MagicPhotoViewModel: ObservableObject {
                 self.modelData = result
                 if let result {
                     var descr = MeshDescriptor(name: "tritri")
-//                    descr.positions = MeshBuffers.Positions(
-//                        [[-1, -1, 0.1], [1, -1, 0.1], [0, 1, 0.1]]
-//                    )
-//                    descr.primitives = .triangles([0, 1, 2])
-//                    
+                    var maxZ = 0.0;
                     descr.positions = MeshBuffers.Positions(result.vertexList.map({ vec in
-                        return SIMD3<Float>.init(x: vec.x, y: vec.y, z: vec.z / 5.0)
+                        maxZ = max(maxZ, Double(vec.z))
+                        return SIMD3<Float>.init(x: vec.x / 5.0, y: vec.y / 5.0, z: vec.z / 5.0)
                     }))
+                    print(maxZ)
                     descr.primitives = .triangles(result.indices)
                     descr.textureCoordinates = MeshBuffer.init(result.texCoordList.map({ point in
                         return SIMD2<Float>.init(x: point.x, y: point.y)
                     }))
                     
-                    let textRes = try! TextureResource.generate(from: image.cgImage!, options: .init(semantic: nil))
+                    let textRes = try! TextureResource.generate(from: image.cgImage!, options: .init(semantic: .color))
                     
-                    var triMat = SimpleMaterial(color: .orange, isMetallic: false)
+                    var triMat = UnlitMaterial(color: .clear)
                     triMat.color = .init(texture: .init(textRes))
-                    
 
                     
                     let generatedModel = ModelEntity(
                        mesh: try! .generate(from: [descr]),
                        materials: [triMat]
                     )
+                    
+//                    generatedModel.setSunlight(intensity: 5.25)
+                    
                     self.model = generatedModel
                 }
             }

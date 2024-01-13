@@ -23,9 +23,9 @@ extension Entity {
     // 再把世界加到传送门上，注意两个实体都需要加到界面上
     public func makePortal() -> Entity {
         let portal = Entity()
-        portal.components[ModelComponent.self] = .init(mesh: .generatePlane(width: 1,
+        portal.components[ModelComponent.self] = .init(mesh: .generatePlane(width: 0.7,
                                                                             depth: 1,
-                                                                            cornerRadius: 0.5),
+                                                                            cornerRadius: 0.1),
                                                        materials: [PortalMaterial()])
         portal.components[PortalComponent.self] = .init(target: self)
         return portal
@@ -67,6 +67,46 @@ extension MagicModel {
     }
 }
 
+extension Entity {
+    // 角度 ~360 - 360
+    @discardableResult
+    func rotationX(angle: Float) -> Entity {
+        // 设置旋转角度（以弧度为单位）
+        let rotationAngle: Float = (angle / 180.0) * .pi
+        let rotationAxis = SIMD3<Float>(1, 0, 0) // 绕X轴旋转
+        
+        var transform = self.transform
+        transform.rotation = simd_quatf(angle: rotationAngle, axis: rotationAxis)
+
+        self.transform = transform
+        return self
+    }
+    
+    // 缩放因子 > 0
+    @discardableResult
+    func scale(factor: Float) -> Entity {
+        // 设置缩放因子
+        let scaleVector = SIMD3<Float>(factor, factor, factor) // 沿所有轴缩放
+        
+        var transform = self.transform
+        transform.scale = scaleVector
+        // 将缩放变换乘以Entity的transform属性
+        self.transform = transform
+        return self
+    }
+    
+    // 平移向量
+    @discardableResult
+    func translate(vector: SIMD3<Float>) -> Entity {
+        var transform = self.transform
+        transform.translation = vector
+        // 将缩放变换乘以Entity的transform属性
+        self.transform = transform
+        return self
+    }
+}
+
+
 class MagicPhotoViewModel: ObservableObject {
     var modleGen = DepthImage3DModleGenerator()
     var deepPrediction = MiDaSImageDepthPrediction()
@@ -91,7 +131,9 @@ class MagicPhotoViewModel: ObservableObject {
             let generatedModel = model.createRealityModelEntity()
             self.model = generatedModel
             self.world = generatedModel.makeWorld()
+            self.world?.rotationX(angle: 0).scale(factor: 0.2).translate(vector: .init(x: 0, y: 0, z: -0.1))
             self.protal = self.world?.makePortal()
+            self.protal?.rotationX(angle: 90).scale(factor: 0.5).translate(vector: .init(x: 0, y: 0, z: 0))
         }
     }
     
@@ -180,15 +222,6 @@ struct ContentView: View {
                 Group {
                     if let world = vm.world, let protal = vm.protal {
                         RealityView { content in
-                            // 设置旋转角度（以弧度为单位）
-                            let rotationAngle: Float = .pi / 2 // 45度
-                            let rotationAxis = SIMD3<Float>(1, 0, 0) // 绕Y轴旋转
-
-                            // 创建一个旋转变换
-                            let rotationTransform = Transform(rotation: simd_quatf(angle: rotationAngle, axis: rotationAxis))
-
-                            // 将旋转变换应用于Entity的transform属性
-                            protal.transform = rotationTransform
                             content.add(world)
                             content.add(protal)
                         }

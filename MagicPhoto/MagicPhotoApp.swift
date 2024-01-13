@@ -40,7 +40,7 @@ public func makePortal(world: Entity) -> Entity {
     let portal = Entity()
     
     portal.components[ModelComponent.self] = .init(mesh: .generatePlane(width: 1,
-                                                                        depth: 1,
+                                                                        height: 1,
                                                                         cornerRadius: 0.5),
                                                    materials: [PortalMaterial()])
     portal.components[PortalComponent.self] = .init(target: world)

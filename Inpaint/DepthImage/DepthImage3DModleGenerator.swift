@@ -9,15 +9,77 @@ import Foundation
 import MetalKit
 import SceneKit
 
-struct MyPoint {
+struct MyPoint: Codable {
     let x: Float
     let y: Float
 }
 
-struct MagicModelData {
-    let vertexList: [SCNVector3]
+struct MyVector3: Codable {
+    let x: Float
+    let y: Float
+    let z: Float
+}
+
+/// 我的模型
+struct MagicModel {
+    let data: MagicModelData
+    let image: UIImage
+    
+    // 保存数据到指定的文件URL
+    func saveTo(fileURL: URL) {
+        data.saveTo(fileURL: fileURL.appendingPathComponent("data.mgobj"))
+        try? image.pngData()?.write(to: fileURL.appendingPathComponent("texture.png"))
+    }
+    
+    // 从指定的文件URL加载数据
+    static func loadFrom(fileURL: URL) -> MagicModel? {
+        guard let data = MagicModelData.loadFrom(fileURL: fileURL.appendingPathComponent("data.mgobj")) else {
+            return nil
+        }
+        guard let image = UIImage(contentsOfFile: fileURL.appendingPathComponent("texture.png").path()) else {
+            return nil
+        }
+        return MagicModel(data: data, image: image)
+    }
+}
+
+struct MagicModelData: Codable {
+    let vertexList: [MyVector3]
     let texCoordList: [MyPoint]
     let indices: [UInt32]
+    
+    // 保存数据到指定的文件URL
+    func saveTo(fileURL: URL) {
+        // 将数据转换为JSON格式
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(self) else {
+            print("Failed to encode data")
+            return
+        }
+        // 将数据写入文件
+        do {
+            try data.write(to: fileURL)
+            print("Data saved successfully")
+        } catch {
+            print("Failed to write data: \(error)")
+        }
+    }
+    
+    // 从指定的文件URL加载数据
+    static func loadFrom(fileURL: URL) -> MagicModelData? {
+        // 从文件读取数据
+        guard let data = try? Data(contentsOf: fileURL) else {
+            print("Failed to read data")
+            return nil
+        }
+        // 将数据从JSON格式转换回结构体
+        let decoder = JSONDecoder()
+        guard let model = try? decoder.decode(MagicModelData.self, from: data) else {
+            print("Failed to decode data")
+            return nil
+        }
+        return model
+    }
 }
 
 
@@ -129,12 +191,12 @@ class DepthImage3DModleGenerator {
         // 读取和处理结果
         let data = Data(bytesNoCopy: outputBuffer.contents(), count: dataSize * MemoryLayout<Float>.size, deallocator: .none)
         // 处理 data...
-        var resultArray: [SCNVector3] = []
+        var resultArray: [MyVector3] = []
         
         // 使用withUnsafeBytes来安全地访问Data中的字节
         data.withUnsafeBytes { (bufferPointer: UnsafeRawBufferPointer) in
             // 获取指向Float的指针
-            let floatPointer = bufferPointer.bindMemory(to: SCNVector3.self)
+            let floatPointer = bufferPointer.bindMemory(to: MyVector3.self)
             if let baseAddress = floatPointer.baseAddress {
                 // 创建一个Float数组
                 let array = Array(UnsafeBufferPointer(start: baseAddress, count: dataSize))

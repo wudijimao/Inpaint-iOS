@@ -5,6 +5,8 @@
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationPreferredDefaultSceneSessionRole</key>
+		<string>UISceneSessionRoleImmersiveSpaceApplication</string>
+		<key>Preferred Default Scene Session Role2</key>
 		<string>UIWindowSceneSessionRoleApplication</string>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<true/>

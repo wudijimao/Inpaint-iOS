@@ -23,9 +23,9 @@ extension Entity {
     // 再把世界加到传送门上，注意两个实体都需要加到界面上
     public func makePortal() -> Entity {
         let portal = Entity()
-        portal.components[ModelComponent.self] = .init(mesh: .generatePlane(width: 0.7,
+        portal.components[ModelComponent.self] = .init(mesh: .generatePlane(width: 1,
                                                                             depth: 1,
-                                                                            cornerRadius: 0.1),
+                                                                            cornerRadius: 0.05),
                                                        materials: [PortalMaterial()])
         portal.components[PortalComponent.self] = .init(target: self)
         return portal
@@ -131,7 +131,7 @@ class MagicPhotoViewModel: ObservableObject {
             let generatedModel = model.createRealityModelEntity()
             self.model = generatedModel
             self.world = generatedModel.makeWorld()
-            self.world?.rotationX(angle: 0).scale(factor: 0.2).translate(vector: .init(x: 0, y: 0, z: -0.1))
+            self.world?.rotationX(angle: 0).scale(factor: 0.3).translate(vector: .init(x: 0, y: 0, z: -0.1))
             self.protal = self.world?.makePortal()
             self.protal?.rotationX(angle: 90).scale(factor: 0.5).translate(vector: .init(x: 0, y: 0, z: 0))
         }

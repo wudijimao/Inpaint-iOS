@@ -99,7 +99,12 @@ kernel void compute_shader_niubi(texture2d<float, access::read> inputTexture [[t
     // 将结果写入输出缓冲区
     outputBuffer[pos] = (position.x / 128.0) - 1.0 ; // 你的处理结果
     outputBuffer[pos + 1] = 1.0 - (position.y / 128.0); // 你的处理结果
-    outputBuffer[pos + 2] = color.r;
+    if (x == 0 || y == 0 || x == 255 || y == 255) {
+        // 最边上z设置为0
+        outputBuffer[pos + 2] = 0.5;
+    } else {
+        outputBuffer[pos + 2] = color.r;
+    }
     
     int texPos = (x + y * inputTexture.get_width()) * 2;
     texCoordsOutputBuffer[texPos] = x / 255.0;

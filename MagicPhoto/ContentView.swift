@@ -128,13 +128,18 @@ class MagicPhotoViewModel: ObservableObject {
             return
         }
         DispatchQueue.main.async {
-            let generatedModel = model.createRealityModelEntity()
-            self.model = generatedModel
-            self.world = generatedModel.makeWorld()
-            self.world?.rotationX(angle: 0).scale(factor: 0.3).translate(vector: .init(x: 0, y: 0, z: -0.1))
-            self.protal = self.world?.makePortal()
-            self.protal?.rotationX(angle: 90).scale(factor: 0.5).translate(vector: .init(x: 0, y: 0, z: 0))
+            self._fill(with: model)
         }
+    }
+    
+    @MainActor
+    private func _fill(with model: MagicModel) {
+        let generatedModel = model.createRealityModelEntity()
+        self.model = generatedModel
+        self.world = generatedModel.makeWorld()
+        self.world?.rotationX(angle: 0).scale(factor: 0.25).translate(vector: .init(x: 0, y: 0, z: -0.12))
+        self.protal = self.world?.makePortal()
+        self.protal?.rotationX(angle: 90).scale(factor: 0.4).translate(vector: .init(x: 0, y: 0, z: 0))
     }
     
     func process(_ image: UIImage) {
@@ -149,10 +154,9 @@ class MagicPhotoViewModel: ObservableObject {
                 let model = MagicModel.init(data: result, image: image)
                 model.saveTo(fileURL: url)
                 
-                let generatedModel = model.createRealityModelEntity()
-                self.model = generatedModel
-                self.world = generatedModel.makeWorld()
-                self.protal = self.world?.makePortal()
+                DispatchQueue.main.async {
+                    self._fill(with: model)
+                }
             }
         }
     }

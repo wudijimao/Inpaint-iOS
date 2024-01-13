@@ -122,7 +122,12 @@ class MagicPhotoViewModel: ObservableObject {
     @Published var world: Entity?
     @Published var protal: Entity?
     
-    init() {
+    static var global: MagicPhotoViewModel?
+    
+    let disableProtalForTest: Bool
+    
+    init(disableProtalForTest: Bool = false) {
+        self.disableProtalForTest = disableProtalForTest
         DispatchQueue.global().async {
             self.loadFromFile()
         }
@@ -133,14 +138,17 @@ class MagicPhotoViewModel: ObservableObject {
             return
         }
         DispatchQueue.main.async {
-            self._fill(with: model)
+            self.fill(with: model)
         }
     }
     
     @MainActor
-    private func _fill(with model: MagicModel) {
+    public func fill(with model: MagicModel) {
         let generatedModel = model.createRealityModelEntity()
         self.model = generatedModel
+        if disableProtalForTest {
+            return
+        }
         self.world = generatedModel.makeWorld()
         self.world?.rotationX(angle: 0).scale(factor: 0.25).translate(vector: .init(x: 0, y: 0, z: -0.12))
         self.protal = self.world?.makePortal()
@@ -165,7 +173,7 @@ class MagicPhotoViewModel: ObservableObject {
                 model.saveTo(fileURL: url)
                 
                 DispatchQueue.main.async {
-                    self._fill(with: model)
+                    self.fill(with: model)
                 }
             }
         }
@@ -184,28 +192,46 @@ struct MagictPhoto: View {
 }
 
 struct ImmersiveView: View {
+    
+    @StateObject var vm = MagicPhotoViewModel()
+    
     var body: some View {
-        RealityView { content in
-            let anchor = AnchorEntity(.plane(.vertical, classification: .wall,
-                                             minimumBounds: [1, 1]))
-            
-            guard let scene = try? await Entity(named: "ImmersiveScene", in: realityKitContentBundle) else {
-                return
+        if let world = vm.world, let protal = vm.protal {
+            RealityView() { content in
+                let anchor = AnchorEntity(.plane(.vertical, classification: .wall,
+                                                 minimumBounds: [1, 1]), trackingMode: .continuous)
+                content.add(anchor)
+                world.rotationX(angle: -90)
+                protal.rotationX(angle: -1)
+                world.translate(vector: .init(x: -0.4, y: -0.12, z: 0))
+                protal.translate(vector: .init(x: -0.4, y: 0, z: 0))
+                anchor.addChild(world)
+                anchor.addChild(protal)
             }
-            content.add(anchor)
-//            content.add(scene)
-            // 设置旋转角度（以弧度为单位）
-            let rotationAngle: Float = .pi / -2 // 45度
-            let rotationAxis = SIMD3<Float>(1, 0, 0) // 绕Y轴旋转
-
-            // 创建一个旋转变换
-            let rotationTransform = Transform(rotation: simd_quatf(angle: rotationAngle, axis: rotationAxis))
-
-            // 将旋转变换应用于Entity的transform属性
-            scene.transform = rotationTransform
-            anchor.addChild(scene)
+        } else {
+            Text("No")
         }
+        Text("No")
     }
+//        RealityView { content in
+//            
+//            
+//            guard let scene = try? await Entity(named: "ImmersiveScene", in: realityKitContentBundle) else {
+//                return
+//            }
+//            content.add(anchor)
+////            content.add(scene)
+//            // 设置旋转角度（以弧度为单位）
+//            let rotationAngle: Float = .pi / -2 // 45度
+//            let rotationAxis = SIMD3<Float>(1, 0, 0) // 绕Y轴旋转
+//
+//            // 创建一个旋转变换
+//            let rotationTransform = Transform(rotation: simd_quatf(angle: rotationAngle, axis: rotationAxis))
+//
+//            // 将旋转变换应用于Entity的transform属性
+//            scene.transform = rotationTransform
+//            anchor.addChild(scene)
+//        }
 }
 
 #Preview(windowStyle: .volumetric) {
@@ -254,6 +280,7 @@ struct ContentView: View {
                     }
                     Button {
                         Task {
+                            MagicPhotoViewModel.global = self.vm
                             await openImmersiveSpace(id: "immersive")
                         }
                     } label: {

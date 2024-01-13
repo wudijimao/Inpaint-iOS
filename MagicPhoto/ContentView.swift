@@ -88,8 +88,13 @@ extension Entity {
         // 设置缩放因子
         let scaleVector = SIMD3<Float>(factor, factor, factor) // 沿所有轴缩放
         
+        return self.scale(scaleVector: scaleVector)
+    }
+    
+    @discardableResult
+    func scale(scaleVector: SIMD3<Float>) -> Entity {
         var transform = self.transform
-        transform.scale = scaleVector
+        transform.scale *= scaleVector
         // 将缩放变换乘以Entity的transform属性
         self.transform = transform
         return self
@@ -140,6 +145,11 @@ class MagicPhotoViewModel: ObservableObject {
         self.world?.rotationX(angle: 0).scale(factor: 0.25).translate(vector: .init(x: 0, y: 0, z: -0.12))
         self.protal = self.world?.makePortal()
         self.protal?.rotationX(angle: 90).scale(factor: 0.4).translate(vector: .init(x: 0, y: 0, z: 0))
+        // 按原图比例拉伸
+        let scale = SIMD3<Float>.init(x: Float(model.image.size.width / model.image.size.height), y: 1, z: 1)
+        // 如果宽度比较宽
+        self.world?.scale(scaleVector: scale)
+        self.protal?.scale(scaleVector: scale)
     }
     
     func process(_ image: UIImage) {
@@ -206,8 +216,6 @@ struct ImmersiveView: View {
 
 struct ContentView: View {
 
-    @State var enlarge = false
-    
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImage: UIImage? = nil
     
@@ -223,31 +231,20 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if !pickingImage {
-                Group {
-                    if let world = vm.world, let protal = vm.protal {
-                        RealityView { content in
-                            content.add(world)
-                            content.add(protal)
-                        }
-                    } else {
-                        RealityView { content in
-                            // Add the initial RealityKit content
-                            if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle) {
-                                content.add(scene)
-                            }
-                        } update: { content in
-                            // Update the RealityKit content when SwiftUI state changes
-                            if let scene = content.entities.first {
-                                let uniformScale: Float = enlarge ? 1.4 : 1.0
-                                scene.transform.scale = [uniformScale, uniformScale, uniformScale]
-                            }
-                        }
-                    }
+                if let world = vm.world, let protal = vm.protal {
+                    RealityView (make: { content in
+                        
+                    }, update: { content in
+                        content.entities.removeAll()
+                        world.translate(vector: .init(x: 0, y: 0, z: -0.31))
+                        protal.translate(vector: .init(x: 0, y: 0, z: -0.2))
+                        content.add(world)
+                        content.add(protal)
+                    })
+                    .gesture(TapGesture().targetedToAnyEntity().onEnded { _ in
+                        pickingImage.toggle()
+                    })
                 }
-                .gesture(TapGesture().targetedToAnyEntity().onEnded { _ in
-                    enlarge.toggle()
-                    pickingImage.toggle()
-                })
                 
                 HStack {
                     Button {
@@ -269,12 +266,12 @@ struct ContentView: View {
                     }
                 }
             }
-            if let selectedImage {
-                Image(uiImage: selectedImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 250, height: 250)
-            }
+//            if let selectedImage {
+//                Image(uiImage: selectedImage)
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 250, height: 250)
+//            }
         }
         .photosPicker(isPresented: $pickingImage,
                        selection: $selectedItem,

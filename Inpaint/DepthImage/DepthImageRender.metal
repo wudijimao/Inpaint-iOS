@@ -101,7 +101,11 @@ kernel void compute_shader_niubi(texture2d<float, access::read> inputTexture [[t
     outputBuffer[pos + 1] = 1.0 - (position.y / 128.0); // 你的处理结果
     if (x == 0 || y == 0 || x == 255 || y == 255) {
         // 最边上z设置为0
-        outputBuffer[pos + 2] = 0.5;
+        if (color.r > 0.5) {
+            outputBuffer[pos + 2] = 0;
+        } else {
+            outputBuffer[pos + 2] = 1.0;
+        }
     } else {
         outputBuffer[pos + 2] = color.r;
     }

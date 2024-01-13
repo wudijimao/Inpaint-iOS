@@ -9,19 +9,22 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-//@main
-//struct MagicPhotoApp: App {
-//    var body: some Scene {
-//        WindowGroup {
-//            ContentView()
-//        }.windowStyle(.plain)
-//        
-//        WindowGroup(id: "photo") {
-//            MagictPhoto()
-//        }.windowStyle(.volumetric)
-//        
-//    }
-//}
+@main
+struct MagicPhotoApp: App {
+    var body: some SwiftUI.Scene {
+        WindowGroup {
+            ContentView()
+        }.windowStyle(.plain)
+        
+        WindowGroup(id: "photo") {
+            MagictPhoto()
+        }.windowStyle(.volumetric)
+        
+        ImmersiveSpace(id: "immersive") {
+            ImmersiveView()
+        }
+    }
+}
 
 @MainActor
 public func makeWorld() async -> Entity {
@@ -44,23 +47,23 @@ public func makePortal(world: Entity) -> Entity {
     return portal
 }
 
-@main
-struct MagicPhotoApp: App {
-
-    @State private var immersionStyle: ImmersionStyle = .mixed
-
-    var body: some SwiftUI.Scene {
-        ImmersiveSpace {
-            RealityView { content in
-                let anchor = AnchorEntity(.plane(.vertical, classification: .wall,
-                                                 minimumBounds: [1, 1]))
-                content.add(anchor)
-                let word = await makeWorld()
-                let portal = makePortal(world: word)
-                anchor.addChild(word)
-                anchor.addChild(portal)
-            }
-        }
-        .immersionStyle(selection: $immersionStyle, in: .mixed)
-    }
-}
+//@main
+//struct MagicPhotoApp: App {
+//
+//    @State private var immersionStyle: ImmersionStyle = .mixed
+//
+//    var body: some SwiftUI.Scene {
+//        ImmersiveSpace {
+//            RealityView { content in
+//                let anchor = AnchorEntity(.plane(.vertical, classification: .wall,
+//                                                 minimumBounds: [1, 1]))
+//                content.add(anchor)
+//                let word = await makeWorld()
+//                let portal = makePortal(world: word)
+//                anchor.addChild(word)
+//                anchor.addChild(portal)
+//            }
+//        }
+//        .immersionStyle(selection: $immersionStyle, in: .mixed)
+//    }
+//}

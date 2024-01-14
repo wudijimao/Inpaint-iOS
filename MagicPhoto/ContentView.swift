@@ -16,6 +16,8 @@ extension Entity {
     public func makeWorld() -> Entity {
         let world = Entity()
         world.components[WorldComponent.self] = .init()
+//        world.components[CollisionComponent.self] = .init(shapes: [.generateBox(width: 1, height: 1, depth: 1)])
+//        self.components[CollisionComponent.self] = .init(shapes: [.generateBox(width: 1, height: 1, depth: 1)])
         world.addChild(self)
         return world
     }
@@ -28,6 +30,7 @@ extension Entity {
                                                                             cornerRadius: 0.05),
                                                        materials: [PortalMaterial()])
         portal.components[PortalComponent.self] = .init(target: self)
+//        portal.components[CollisionComponent.self] = .init(shapes: [.generateBox(width: 1, height: 1, depth: 1)])
         return portal
     }
 }
@@ -95,6 +98,15 @@ extension Entity {
     func scale(scaleVector: SIMD3<Float>) -> Entity {
         var transform = self.transform
         transform.scale *= scaleVector
+        // 将缩放变换乘以Entity的transform属性
+        self.transform = transform
+        return self
+    }
+    
+    @discardableResult
+    func setScale(scaleVector: SIMD3<Float>) -> Entity {
+        var transform = self.transform
+        transform.scale = scaleVector
         // 将缩放变换乘以Entity的transform属性
         self.transform = transform
         return self
@@ -191,15 +203,26 @@ struct MagictPhoto: View {
     }
 }
 
+struct ManipulationState {
+    var isActive = false
+    var scale: Float = 1.0
+}
+
 struct ImmersiveView: View {
     
     @StateObject var vm = MagicPhotoViewModel()
     
+    @GestureState var manipulationState = ManipulationState()
+    
     var body: some View {
         if let world = vm.world, let protal = vm.protal {
-            RealityView() { content in
+            RealityView(make: { content in
                 let anchor = AnchorEntity(.plane(.vertical, classification: .wall,
                                                  minimumBounds: [1, 1]), trackingMode: .continuous)
+                anchor.components.set(CollisionComponent.init(shapes: [.generateBox(width: 1, height: 1, depth: 1)]))
+                anchor.components.set(InputTargetComponent())
+                
+                
                 content.add(anchor)
                 world.rotationX(angle: -90)
                 protal.rotationX(angle: -1)
@@ -207,11 +230,30 @@ struct ImmersiveView: View {
                 protal.translate(vector: .init(x: -0.4, y: 0, z: 0))
                 anchor.addChild(world)
                 anchor.addChild(protal)
-            }
+            }, update: { content in
+                content.entities.first?.setScale(scaleVector: .init(repeating: manipulationState.scale))
+            })
+            .opacity(manipulationState.isActive ? 0.2 : 1.0)
+            .gesture(manipulationGesture.updating($manipulationState, body: { transform, state, transaction in
+                state.isActive = true
+                print("XXXXX:\(transform.scale)")
+                state.scale = Float(transform.scale.width)
+            }))
         } else {
             Text("No")
         }
         Text("No")
+    }
+    
+    var manipulationGesture: some Gesture<AffineTransform3D> {
+        DragGesture()
+            .simultaneously(with: MagnifyGesture())
+            .map { gesture in
+                var translation = gesture.first?.translation3D ?? .zero
+                translation.z = 0.0
+                let scale = gesture.second?.magnification ?? 1.0
+                return AffineTransform3D(scale: .init(width: scale, height: scale, depth: scale), translation: translation)
+            }
     }
 //        RealityView { content in
 //            

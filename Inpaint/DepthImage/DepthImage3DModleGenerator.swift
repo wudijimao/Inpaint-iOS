@@ -36,7 +36,7 @@ struct MagicModel {
         guard let data = MagicModelData.loadFrom(fileURL: fileURL.appendingPathComponent("data.mgobj")) else {
             return nil
         }
-        guard let image = UIImage(contentsOfFile: fileURL.appendingPathComponent("texture.png").path()) else {
+        guard let image = UIImage(contentsOfFile: fileURL.appendingPathComponent("texture.png").path) else {
             return nil
         }
         return MagicModel(data: data, image: image)

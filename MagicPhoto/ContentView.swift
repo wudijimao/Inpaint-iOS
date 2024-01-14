@@ -9,6 +9,7 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 import PhotosUI
+import ARKit
 
 extension Entity {
     
@@ -203,12 +204,16 @@ struct MagictPhoto: View {
     }
 }
 
+
+
 struct ManipulationState {
     var isActive = false
     var scale: Float = 1.0
 }
 
 struct ImmersiveView: View {
+    
+    @StateObject var detector = MagicWordDetactor()
     
     @StateObject var vm = MagicPhotoViewModel()
     
@@ -226,12 +231,13 @@ struct ImmersiveView: View {
                 content.add(anchor)
                 world.rotationX(angle: -90)
                 protal.rotationX(angle: -1)
-                world.translate(vector: .init(x: -0.4, y: -0.12, z: 0))
-                protal.translate(vector: .init(x: -0.4, y: 0, z: 0))
+                world.translate(vector: .init(x: 0, y: -0.12, z: 0))
+                protal.translate(vector: .init(x: 0, y: 0, z: 0))
                 anchor.addChild(world)
                 anchor.addChild(protal)
             }, update: { content in
                 content.entities.first?.setScale(scaleVector: .init(repeating: manipulationState.scale))
+                print("Position: \(String(describing: content.entities.first?.position))")
             })
             .opacity(manipulationState.isActive ? 0.2 : 1.0)
             .gesture(manipulationGesture.updating($manipulationState, body: { transform, state, transaction in
@@ -242,7 +248,9 @@ struct ImmersiveView: View {
         } else {
             Text("No")
         }
-        Text("No")
+        Text("No").onAppear(perform: {
+            detector.run()
+        })
     }
     
     var manipulationGesture: some Gesture<AffineTransform3D> {

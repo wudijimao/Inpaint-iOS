@@ -50,6 +50,8 @@
 		BCAE549F2B5021110008EF90 /* DepthImage3DModleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */; };
 		BCAE54A02B5021150008EF90 /* DepthImageRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */; };
 		BCAE54A12B50211C0008EF90 /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
+		BCB9A5A02B53EF1B009CFDB8 /* MagicWordDetactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9A59F2B53EF1B009CFDB8 /* MagicWordDetactor.swift */; };
+		BCB9A5A12B53EF1B009CFDB8 /* MagicWordDetactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9A59F2B53EF1B009CFDB8 /* MagicWordDetactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,7 @@
 		BCAE54922B5020C40008EF90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCAE54952B5020C40008EF90 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BCAE54972B5020C40008EF90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCB9A59F2B53EF1B009CFDB8 /* MagicWordDetactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicWordDetactor.swift; sourceTree = "<group>"; };
 		BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSenceForVisionPro.swift; sourceTree = "<group>"; };
 		BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImage3DModleGenerator.swift; sourceTree = "<group>"; };
 		D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 				BCAE54922B5020C40008EF90 /* Assets.xcassets */,
 				BCAE54972B5020C40008EF90 /* Info.plist */,
 				BCAE54942B5020C40008EF90 /* Preview Content */,
+				BCB9A59F2B53EF1B009CFDB8 /* MagicWordDetactor.swift */,
 			);
 			path = MagicPhoto;
 			sourceTree = "<group>";
@@ -558,6 +562,7 @@
 				11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */,
 				BC7AA7AD2B50350300DC34EE /* ImageDepthPrediction.swift in Sources */,
 				1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */,
+				BCB9A5A02B53EF1B009CFDB8 /* MagicWordDetactor.swift in Sources */,
 				11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */,
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
 				1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */,
@@ -600,6 +605,7 @@
 				BCAE54912B5020C20008EF90 /* ContentView.swift in Sources */,
 				BC7AA7B12B50358B00DC34EE /* Localization.swift in Sources */,
 				BCAE549D2B5021010008EF90 /* DepthImageSenceForVisionPro.swift in Sources */,
+				BCB9A5A12B53EF1B009CFDB8 /* MagicWordDetactor.swift in Sources */,
 				BC7AA7B02B50358700DC34EE /* CGRect.swift in Sources */,
 				BCAE548F2B5020C20008EF90 /* MagicPhotoApp.swift in Sources */,
 			);
@@ -920,6 +926,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "HomePhotoGallery: 3D Gallery";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -948,6 +955,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "HomePhotoGallery: 3D Gallery";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

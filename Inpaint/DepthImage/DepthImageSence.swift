@@ -8,7 +8,7 @@
 import UIKit
 import SceneKit
 import CoreMotion
-
+import SnapKit
 
 
 
@@ -49,7 +49,8 @@ class DepthImageSenceViewController: UIViewController {
     
     func updateCameraRotation(rotationRate: CMRotationRate) {
         // 设定旋转半径
-        let radius: Float = 4.0
+        let isH = (self.view.frame.width > self.view.frame.height) // 是否是横屏
+        let radius: Float = 4.0 // 横屏离近一点，大一点
         
         // 获取当前摄像机的球面坐标
         var currentTheta = atan2(cameraNode.position.z, cameraNode.position.x)
@@ -74,10 +75,35 @@ class DepthImageSenceViewController: UIViewController {
         cameraNode.position = SCNVector3(x, y, z)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let scale = image.size.height / image.size.width
+        // 检查是否是横屏
+        let isLandscape = self.view.frame.width > self.view.frame.height
+        // 根据屏幕方向计算缩放比例
+        var scaleForLandscape: CGFloat = 1.0
+        
+        if isLandscape {
+            if image.size.width > image.size.height {
+                // 宽度变宽
+                scaleForLandscape = self.view.frame.width / self.view.frame.height
+            } else {
+                // 高度变低
+                scaleForLandscape = 1.0
+            }
+        }
+        boxNode?.scale = SCNVector3(scaleForLandscape, scaleForLandscape * scale, 1.0)
+        
+        
+    }
+    
+    var boxNode: SCNNode?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
+        self.navigationItem.rightBarButtonItem = saveButton
         
         guard let result = deepMapModelGenerator.process(depthData: depthData) else { return }
         let (vertices, texCoords) = (result.vertexList, result.texCoordList)
@@ -117,16 +143,8 @@ class DepthImageSenceViewController: UIViewController {
 
                 // 添加第一个三角形的索引
                 indices.append(contentsOf: [Int32(topLeft), Int32(bottomLeft), Int32(topRight)])
-
                 // 添加第二个三角形的索引
                 indices.append(contentsOf: [Int32(bottomLeft), Int32(bottomRight), Int32(topRight)])
-                
-//                // 添加第一个三角形的索引（改为顺时针）
-//                indices.append(contentsOf: [Int32(topLeft), Int32(topRight), Int32(bottomLeft)])
-//
-//                // 添加第二个三角形的索引（改为顺时针）
-//                indices.append(contentsOf: [Int32(bottomLeft), Int32(topRight), Int32(bottomRight)])
-
             }
         }
         // 定义元素
@@ -140,9 +158,28 @@ class DepthImageSenceViewController: UIViewController {
         // 创建SCNGeometry对象
         let geometry = SCNGeometry(sources: [vertexSource, texCoordSource], elements: [element])
 
+        let scale = image.size.height / image.size.width
         // 创建SceneKit视图
         let scnView = SCNView(frame: self.view.frame)
-        self.view.addSubview(scnView)
+        
+        let contentView = UIView()
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 20.0
+        contentView.layer.cornerCurve = .continuous
+        
+        self.view.addSubview(contentView)
+        contentView.addSubview(scnView)
+        
+        contentView.snp.makeConstraints { make in
+            make.width.height.lessThanOrEqualToSuperview()
+            make.center.equalToSuperview()
+            make.width.equalTo(contentView.snp.height).dividedBy(scale)
+            make.width.height.equalToSuperview().priority(.high)
+        }
+        scnView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(self.view)
+        }
         
         // 创建一个新的场景
         let scene = SCNScene()
@@ -168,9 +205,9 @@ class DepthImageSenceViewController: UIViewController {
         boxGeometry.materials = [material]
 
         let boxNode = SCNNode(geometry: boxGeometry)
+        self.boxNode = boxNode
         
-        let scale = image.size.height / image.size.width
-        boxNode.scale = SCNVector3(1.0, scale, 1.0)
+        viewDidLayoutSubviews()
         
         scene.rootNode.addChildNode(boxNode)
 

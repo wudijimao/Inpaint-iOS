@@ -48,7 +48,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(selectImageBtn.snp.top).offset(-20)
         }
-        scrollView.layer.cornerRadius = 20
+        scrollView.layer.cornerRadius = 20.0
+        scrollView.layer.cornerCurve = .continuous
         scrollView.layer.masksToBounds = true
 
 //        let images = [("1", "1b"), ("2", "2b"), ("3", "3b")]

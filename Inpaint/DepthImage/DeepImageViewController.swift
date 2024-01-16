@@ -10,7 +10,7 @@ import Vision
 import CoreML
 import SnapKit
 
-
+// 图片生成深度图
 class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Core ML 模型

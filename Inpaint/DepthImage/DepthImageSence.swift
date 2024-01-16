@@ -77,6 +77,8 @@ class DepthImageSenceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
+        
         guard let result = deepMapModelGenerator.process(depthData: depthData) else { return }
         let (vertices, texCoords) = (result.vertexList, result.texCoordList)
         // 创建顶点源
@@ -163,13 +165,13 @@ class DepthImageSenceViewController: UIViewController {
         material.diffuse.contents = self.image
         material.lightingModel = .constant // 关闭光照效果
 
-//            let program = SCNProgram()
-//            program.vertexFunctionName = "myVertex"
-//            program.fragmentFunctionName = "myFragment"
-//            material.program = program
         boxGeometry.materials = [material]
 
         let boxNode = SCNNode(geometry: boxGeometry)
+        
+        let scale = image.size.height / image.size.width
+        boxNode.scale = SCNVector3(1.0, scale, 1.0)
+        
         scene.rootNode.addChildNode(boxNode)
 
        
@@ -193,6 +195,11 @@ class DepthImageSenceViewController: UIViewController {
         scnView.backgroundColor = UIColor.systemBackground
         
         setupMotion()
+    }
+    
+    
+    @objc func onSave() {
+        
     }
     
     

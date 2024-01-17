@@ -162,7 +162,7 @@ class DepthImageSenceViewController: UIViewController {
         // 创建SceneKit视图
         let scnView = SCNView(frame: self.view.frame)
         
-        let contentView = UIView()
+        
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 20.0
         contentView.layer.cornerCurve = .continuous
@@ -233,10 +233,15 @@ class DepthImageSenceViewController: UIViewController {
         
         setupMotion()
     }
-    
+    lazy var contentView = UIView()
+    lazy var recoder = ViewRecorder()
     
     @objc func onSave() {
-        
+        let url = URL.documentsDirectory.appendingPathComponent("temp.mov")
+        recoder.startRecording(view: contentView, outputURL: url, size: view.frame.size)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+            self.recoder.stopRecording()
+        }
     }
     
     

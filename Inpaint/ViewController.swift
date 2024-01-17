@@ -22,7 +22,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         btn.addTarget(self, action: #selector(onClick), for: .touchUpInside)
         return btn
     }()
+    
+    lazy var photo3DGenBtn: UIButton = {
+        let btn = UIButton.init()
+        btn.setImage(UIImage(named: "3DPhotoButton"), for: .normal)
+        btn.setTitle("3D照片生成", for: .normal)
+        btn.backgroundColor = .clear
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onClick3DPhotoGen), for: .touchUpInside)
+        return btn
+    }()
 
+    
+    
     // UIScrollView实例
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -38,6 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         view.addSubview(scrollView)
         view.addSubview(selectImageBtn)
+        view.addSubview(photo3DGenBtn)
         setupScrollView()
         setupSelectImageButton()
     }
@@ -90,17 +103,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-50)
         }
+        photo3DGenBtn.snp.makeConstraints { make in
+            make.width.equalTo(80)
+            make.height.equalTo(80)
+            make.leading.equalTo(selectImageBtn.snp.right).offset(28)
+            make.bottom.equalTo(selectImageBtn)
+        }
+        photo3DGenBtn.clipsToBounds = true
+        photo3DGenBtn.layer.cornerRadius = 40
         UIView.animate(withDuration: 0.8, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
             // 放大到1.2倍
-            self.selectImageBtn.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            self.photo3DGenBtn.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }, completion: { finished in
             // 动画完成后恢复到原始大小
-            self.selectImageBtn.transform = CGAffineTransform.identity
+            self.photo3DGenBtn.transform = CGAffineTransform.identity
         })
     }
-
     
+    var is3DPhotoGen = false
+    
+    @objc func onClick3DPhotoGen() {
+        is3DPhotoGen = true
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+
     @objc func onClick() {
+        is3DPhotoGen = false
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
@@ -113,9 +144,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let image = info[.originalImage] as? UIImage else { return }
         let scaledImage = image.scaleToLimit(size: .init(width: kLimitImageSize, height: kLimitImageSize))
         picker.dismiss(animated: true, completion: {
-//            let vc = InpaintingViewController(image: scaledImage)
-            let vc = DeepImageViewController(image: scaledImage)
-//            let vc = DeepSenceViewController()
+            let vc: UIViewController
+            if self.is3DPhotoGen {
+                vc = DeepImageViewController(image: scaledImage)
+            } else {
+                vc = InpaintingViewController(image: scaledImage)
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         })
     }

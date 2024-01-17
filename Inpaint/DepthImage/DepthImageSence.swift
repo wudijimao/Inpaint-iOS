@@ -102,8 +102,8 @@ class DepthImageSenceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
-        self.navigationItem.rightBarButtonItem = saveButton
+//        let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
+//        self.navigationItem.rightBarButtonItem = saveButton
         
         guard let result = deepMapModelGenerator.process(depthData: depthData) else { return }
         let (vertices, texCoords) = (result.vertexList, result.texCoordList)
@@ -216,6 +216,8 @@ class DepthImageSenceViewController: UIViewController {
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 4)
         // 设置摄像机始终朝向(0,0,0)
         let constraint = SCNLookAtConstraint(target: boxNode)
+        constraint.isGimbalLockEnabled = true
+        constraint.worldUp = .init(0, 1, 0)
         cameraNode.constraints = [constraint]
         
         scene.rootNode.addChildNode(cameraNode)

@@ -57,12 +57,16 @@ class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate
     }
 
     func generateGrayScaleImage(_ image: UIImage) {
-        prediction.depthPrediction(image: image) { depthImage, depthData, err in
-            self.imageView.image = depthImage
+        prediction.depthPrediction(image: image) { [weak self] depthImage, depthData, err in
+            guard let self = self else { return }
+            //            self.imageView.image = depthImage
             guard let depthData = depthData else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                let vc = DepthImageSenceViewController(image: image, depthData: depthData)
-                self.navigationController?.pushViewController(vc, animated: true)
+            let vc = DepthImageSenceViewController(image: image, depthData: depthData)
+            self.addChild(vc)
+            self.view.addSubview(vc.view)
+            vc.view.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+                vc.didMove(toParent: self)
             }
         }
     }

@@ -11,6 +11,30 @@ import CoreMotion
 import SnapKit
 
 
+//extension SCNQuaternion {
+//    // 根据旋转轴和角度初始化四元数
+//    init(axis: SCNVector3, angle: Float) {
+//        let halfAngle = angle / 2
+//        let sinHalfAngle = sin(halfAngle)
+//        self.x = axis.x * sinHalfAngle
+//        self.y = axis.y * sinHalfAngle
+//        self.z = axis.z * sinHalfAngle
+//        self.w = cos(halfAngle)
+//    }
+//}
+
+func * (left: SCNQuaternion, right: SCNQuaternion) -> SCNQuaternion {
+    return SCNQuaternion(
+        x: left.w * right.x + left.x * right.w + left.y * right.z - left.z * right.y,
+        y: left.w * right.y - left.x * right.z + left.y * right.w + left.z * right.x,
+        z: left.w * right.z + left.x * right.y - left.y * right.x + left.z * right.w,
+        w: left.w * right.w - left.x * right.x - left.y * right.y - left.z * right.z)
+}
+
+func - (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+    return SCNVector3(left.x - right.x, left.y - right.y, left.z - right.z)
+}
+
 
 
 class DepthImageSenceViewController: UIViewController {
@@ -34,46 +58,55 @@ class DepthImageSenceViewController: UIViewController {
     }
     
     func setupMotion() {
-        motionManager.gyroUpdateInterval = 1.0 / 60.0
-        
-        // 开始接收陀螺仪数据
-        if motionManager.isGyroAvailable {
-            motionManager.startGyroUpdates(to: .main) { [weak self] (gyroData, error) in
-                guard let strongSelf = self else { return }
-                if let rotationRate = gyroData?.rotationRate {
-                    strongSelf.updateCameraRotation(rotationRate: rotationRate)
-                }
+        if motionManager.isDeviceMotionAvailable {
+            motionManager.deviceMotionUpdateInterval = 0.1
+            motionManager.startDeviceMotionUpdates(to: OperationQueue.current!) { [weak self] (motion, error) in
+                guard let motion = motion, let self = self else { return }
+
+                // 获取旋转角度
+                let rotation = motion.attitude
+                let roll = rotation.roll  // 横滚角
+                let pitch = rotation.pitch // 俯仰角
+                let yaw = rotation.yaw    // 偏航角
+
+                // 在这里可以使用这些旋转角度
+                self.updateCameraRotation(attitude: motion.attitude)
             }
         }
     }
     
-    func updateCameraRotation(rotationRate: CMRotationRate) {
-        // 设定旋转半径
-        let isH = (self.view.frame.width > self.view.frame.height) // 是否是横屏
-        let radius: Float = 4.0 // 横屏离近一点，大一点
-        
-        // 获取当前摄像机的球面坐标
-        var currentTheta = atan2(cameraNode.position.z, cameraNode.position.x)
-        var currentPhi = acos(cameraNode.position.y / radius)
-        
-        // 计算新的角度
-        let deltaTheta = Float(rotationRate.y) * 0.01 // 水平旋转角度，调整0.01来改变灵敏度
-        let deltaPhi = Float(rotationRate.x) * 0.01 // 垂直旋转角度，调整0.01来改变灵敏度
-        
-        currentTheta += deltaTheta
-        currentPhi -= deltaPhi
-        
-        // 限制phi的范围以避免翻转
-        currentPhi = max(0.1, min(currentPhi, Float.pi - 0.1))
-        
-        // 根据新的角度计算摄像机的位置
-        let x = radius * sin(currentPhi) * cos(currentTheta)
-        let y = radius * cos(currentPhi)
-        let z = radius * sin(currentPhi) * sin(currentTheta)
-        
-        // 更新摄像机的位置
-        cameraNode.position = SCNVector3(x, y, z)
-    }
+
+        var lastPitch: Float?
+        var lastRoll: Float?
+
+        func updateCameraRotation(attitude: CMAttitude) {
+            // 获取当前的俯仰和滚转角
+            let currentPitch = Float(attitude.pitch)
+            let currentRoll = Float(attitude.roll)
+
+            // 如果是第一次调用，初始化lastPitch和lastRoll
+            if lastPitch == nil || lastRoll == nil {
+                lastPitch = currentPitch
+                lastRoll = currentRoll
+                return
+            }
+
+            // 计算角度变化
+            let deltaPitch = currentPitch - lastPitch!
+            let deltaRoll = currentRoll - lastRoll!
+
+            // 更新上次的俯仰和滚转角
+            lastPitch = currentPitch
+            lastRoll = currentRoll
+
+            // 根据角度变化更新摄像机的位置
+            // 注意：这里的更新方式取决于您的具体需求
+            // 例如，可以将角度变化映射到摄像机的位移上
+            cameraNode.position.x += deltaRoll // 这里的映射规则可以根据需要调整
+            cameraNode.position.y += deltaPitch
+        }
+
+
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

@@ -32,6 +32,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         btn.addTarget(self, action: #selector(onClick3DPhotoGen), for: .touchUpInside)
         return btn
     }()
+    
+    lazy var settingBtn: UIButton = {
+        let btn = UIButton.init()
+        btn.setImage(UIImage(systemName: "gear"), for: .normal)
+        btn.setTitle("setting", for: .normal)
+        btn.backgroundColor = .clear
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onSetting), for: .touchUpInside)
+        return btn
+    }()
 
     
     
@@ -51,13 +61,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.addSubview(scrollView)
         view.addSubview(selectImageBtn)
         view.addSubview(photo3DGenBtn)
+        view.addSubview(settingBtn)
         setupScrollView()
         setupSelectImageButton()
     }
 
     private func setupScrollView() {
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(selectImageBtn.snp.top).offset(-20)
         }
@@ -97,17 +108,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     private func setupSelectImageButton() {
+        settingBtn.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-20)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.size.equalTo(40)
+        }
         selectImageBtn.snp.makeConstraints { make in
             make.width.equalTo(100)
             make.height.equalTo(100)
-            make.centerX.equalToSuperview()
+            make.centerX.equalToSuperview().offset(-50)
             make.bottom.equalToSuperview().offset(-50)
         }
         photo3DGenBtn.snp.makeConstraints { make in
-            make.width.equalTo(80)
-            make.height.equalTo(80)
-            make.leading.equalTo(selectImageBtn.snp.right).offset(28)
-            make.bottom.equalTo(selectImageBtn)
+            make.width.equalTo(60)
+            make.height.equalTo(60)
+            make.leading.equalTo(selectImageBtn.snp.trailing).offset(28)
+            make.centerY.equalTo(selectImageBtn)
         }
         photo3DGenBtn.clipsToBounds = true
         photo3DGenBtn.layer.cornerRadius = 40
@@ -123,11 +139,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var is3DPhotoGen = false
     
     @objc func onClick3DPhotoGen() {
-        is3DPhotoGen = true
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        self.present(imagePicker, animated: true, completion: nil)
+        Task { @MainActor in
+            if await PurchaseManager.shared.purchases() {
+                is3DPhotoGen = true
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary
+                self.present(imagePicker, animated: true, completion: nil)
+            } else {
+                UIApplication.shared.keyWindow?.makeToast("购买取消或失败，请重试")
+            }
+        }
     }
 
     @objc func onClick() {
@@ -136,6 +158,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @objc func onSetting() {
+        let vc = SettingViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     // UIImagePickerControllerDelegate methods

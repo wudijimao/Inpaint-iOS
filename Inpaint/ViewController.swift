@@ -140,6 +140,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var is3DPhotoGen = false
     
     @objc func onClick3DPhotoGen() {
+        MobClick.event("3dClick")
         Task { @MainActor in
             self.view.makeToastActivity(.center)
             if await PurchaseManager.shared.purchases() {
@@ -156,6 +157,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @objc func onClick() {
+        MobClick.event("inpaint")
         is3DPhotoGen = false
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -164,6 +166,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func onSetting() {
+        MobClick.event("setting")
         let vc = SettingViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }

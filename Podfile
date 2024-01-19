@@ -7,6 +7,9 @@ target 'Inpaint' do
 
   pod 'SnapKit'
   pod 'Toast-Swift'
+  pod 'UMCommon'
+  pod 'UMDevice'
+  pod 'UMAPM'
 
   # Pods for Inpaint
 

@@ -1,20 +1,33 @@
 PODS:
   - SnapKit (5.6.0)
   - Toast-Swift (5.0.1)
+  - UMAPM (1.8.2)
+  - UMCommon (7.3.9):
+    - UMDevice
+  - UMDevice (3.1.0)
 
 DEPENDENCIES:
   - SnapKit
   - Toast-Swift
+  - UMAPM
+  - UMCommon
+  - UMDevice
 
 SPEC REPOS:
   trunk:
     - SnapKit
     - Toast-Swift
+    - UMAPM
+    - UMCommon
+    - UMDevice
 
 SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  UMAPM: 30c7435fea6cf59bcec7b504a7197a94b59c3b33
+  UMCommon: afcbd381039c051d6a9bea864159a09252080a33
+  UMDevice: 9ef8045b59e0479cff7062915c879a1af46fa094
 
-PODFILE CHECKSUM: b030f3dbaa9d91c19fd2db60cec1f6f2f425d61f
+PODFILE CHECKSUM: 2ccbd4a115d9fb6124eee73873b1b8ea7d776c33
 
 COCOAPODS: 1.11.3

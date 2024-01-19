@@ -27,6 +27,7 @@ class DepthImageSenceViewController: UIViewController {
         self.image = image
         self.depthData = depthData
         super.init(nibName: nil, bundle: nil)
+        MobClick.event("3dused")
     }
     
     required init?(coder: NSCoder) {

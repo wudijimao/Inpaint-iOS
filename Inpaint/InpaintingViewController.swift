@@ -132,6 +132,7 @@ class InpaintingViewController: UIViewController {
     var hasWarned = false
 
     @objc func onInpaint() {
+        MobClick.event("inpainted")
         guard let inputImage = imageView.image else { return }
         guard let maskImage = drawView.exportAsGrayscaleImage() else { return }
         loadngView.startAnimating()
@@ -152,6 +153,7 @@ class InpaintingViewController: UIViewController {
     }
     
     @objc func onSave() {
+        MobClick.event("inpaintsave")
         // 检查 imageView 是否有图像
         guard let imageToSave = imageView.image else {
             print("没有可保存的图像")

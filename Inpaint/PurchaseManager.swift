@@ -61,10 +61,15 @@ class PurchaseManager: NSObject {
         if isPayed {
             return true
         }
+        MobClick.event("3dpay")
         guard let product = try? await self.requestProductInfo() else {
             return false
         }
-        return await self.purchaseProduct(product: product)
+        let isSuccess = await self.purchaseProduct(product: product)
+        if isSuccess {
+            MobClick.event("3dpayed")
+        }
+        return isSuccess
     }
     
     // 定义一个恢复购买的方法

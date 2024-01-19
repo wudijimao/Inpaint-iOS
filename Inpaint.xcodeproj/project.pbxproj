@@ -112,6 +112,7 @@
 		11F2B9992B56D98D001318F5 /* UIView+Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Record.swift"; sourceTree = "<group>"; };
 		11F2B99B2B583003001318F5 /* SettingViewControoler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewControoler.swift; sourceTree = "<group>"; };
 		11F2B99D2B583084001318F5 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		11FFAD752B5A990100EF752B /* Inpaint-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Inpaint-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A93C1B326361604F4C9E547 /* Pods-InpaintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.release.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.release.xcconfig"; sourceTree = "<group>"; };
 		85CF5DBC619910A0108151C8 /* Pods-Inpaint-InpaintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.release.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.release.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +252,7 @@
 				11AE81E92B2A008A000F95C4 /* Inpainting.swift */,
 				11F2B99B2B583003001318F5 /* SettingViewControoler.swift */,
 				11F2B99D2B583084001318F5 /* PurchaseManager.swift */,
+				11FFAD752B5A990100EF752B /* Inpaint-Bridging-Header.h */,
 			);
 			path = Inpaint;
 			sourceTree = "<group>";
@@ -415,6 +417,7 @@
 				TargetAttributes = {
 					11CFF9EE2B18D9FF008CFCA5 = {
 						CreatedOnToolsVersion = 15.1;
+						LastSwiftMigration = 1520;
 					};
 					11CFFA042B18DA01008CFCA5 = {
 						CreatedOnToolsVersion = 15.1;
@@ -786,6 +789,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Inpaint/Inpaint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10;
@@ -812,6 +816,8 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Inpaint/Inpaint-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -823,6 +829,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Inpaint/Inpaint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10;
@@ -849,6 +856,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Inpaint/Inpaint-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

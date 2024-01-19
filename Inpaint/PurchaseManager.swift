@@ -16,7 +16,7 @@ class PurchaseManager: NSObject {
     static let shared = PurchaseManager()
     
     // 定义一个产品id的常量
-    let productID = "com.example.nonconsumable"
+    let productID = "3DPhoto"
     
     // 私有化构造函数，防止外部创建实例
     private override init() {

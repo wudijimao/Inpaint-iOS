@@ -8,6 +8,7 @@
 import UIKit
 import Vision
 import SnapKit
+import Toast_Swift
 
 let kLimitImageSize: CGFloat = 2048
 
@@ -109,8 +110,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     private func setupSelectImageButton() {
         settingBtn.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-20)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(scrollView.snp.top)
             make.size.equalTo(40)
         }
         selectImageBtn.snp.makeConstraints { make in
@@ -140,6 +141,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @objc func onClick3DPhotoGen() {
         Task { @MainActor in
+            self.view.makeToastActivity(.center)
             if await PurchaseManager.shared.purchases() {
                 is3DPhotoGen = true
                 let imagePicker = UIImagePickerController()
@@ -149,6 +151,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             } else {
                 UIApplication.shared.keyWindow?.makeToast("购买取消或失败，请重试")
             }
+            self.view.hideToastActivity()
         }
     }
 

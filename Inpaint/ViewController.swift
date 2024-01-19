@@ -37,7 +37,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     lazy var settingBtn: UIButton = {
         let btn = UIButton.init()
         btn.setImage(UIImage(systemName: "gear"), for: .normal)
-        btn.setTitle("setting", for: .normal)
         btn.backgroundColor = .clear
         btn.setTitleColor(.black, for: .normal)
         btn.addTarget(self, action: #selector(onSetting), for: .touchUpInside)
@@ -127,7 +126,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             make.centerY.equalTo(selectImageBtn)
         }
         photo3DGenBtn.clipsToBounds = true
-        photo3DGenBtn.layer.cornerRadius = 40
+        photo3DGenBtn.layer.cornerRadius = 30
         UIView.animate(withDuration: 0.8, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
             // 放大到1.2倍
             self.photo3DGenBtn.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)

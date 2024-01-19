@@ -11,7 +11,6 @@
 		1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
 		115EF1E92B48F6EB00F4C420 /* DepthImageSence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */; };
 		115EF1EF2B49127C00F4C420 /* DepthImageRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */; };
-		11817B742B4C475600DFF8D4 /* VisionImageViewControllerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11817B732B4C475500DFF8D4 /* VisionImageViewControllerExample.swift */; };
 		1192515B2B366F6500F72E5D /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
 		119251602B369FFA00F72E5D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1192515F2B369FFA00F72E5D /* Localizable.xcstrings */; };
 		119251642B36A1DA00F72E5D /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 119251632B36A1DA00F72E5D /* InfoPlist.xcstrings */; };
@@ -83,7 +82,6 @@
 		1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MiDaSMobileSwin2Tiny256FP16.mlpackage; sourceTree = "<group>"; };
 		115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSence.swift; sourceTree = "<group>"; };
 		115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DepthImageRender.metal; sourceTree = "<group>"; };
-		11817B732B4C475500DFF8D4 /* VisionImageViewControllerExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisionImageViewControllerExample.swift; sourceTree = "<group>"; };
 		1192515A2B366F6500F72E5D /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		1192515C2B368F8200F72E5D /* Inpaint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inpaint.entitlements; sourceTree = "<group>"; };
 		1192515F2B369FFA00F72E5D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -244,7 +242,6 @@
 				11CFF9F42B18D9FF008CFCA5 /* SceneDelegate.swift */,
 				11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */,
 				11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */,
-				11817B732B4C475500DFF8D4 /* VisionImageViewControllerExample.swift */,
 				11CFF9F82B18D9FF008CFCA5 /* Main.storyboard */,
 				11CFF9FB2B18DA01008CFCA5 /* Assets.xcassets */,
 				11CFF9FD2B18DA01008CFCA5 /* LaunchScreen.storyboard */,
@@ -589,7 +586,6 @@
 				1192515B2B366F6500F72E5D /* CGRect.swift in Sources */,
 				BC7AA7B32B50364000DC34EE /* UIImage.swift in Sources */,
 				11CFF9F52B18D9FF008CFCA5 /* SceneDelegate.swift in Sources */,
-				11817B742B4C475600DFF8D4 /* VisionImageViewControllerExample.swift in Sources */,
 				11F2B99A2B56D98D001318F5 /* UIView+Record.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -792,7 +788,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Inpaint/Inpaint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
@@ -809,7 +805,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -829,7 +825,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Inpaint/Inpaint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
@@ -846,7 +842,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

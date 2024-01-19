@@ -21,6 +21,21 @@ class PurchaseManager: NSObject {
     // 私有化构造函数，防止外部创建实例
     private override init() {
         super.init()
+        Task(priority: .background) {
+            for await verificationResult in Transaction.updates {
+                self.handle(updatedTransaction: verificationResult)
+            }
+        }
+    }
+    
+    private func handle(updatedTransaction verificationResult: VerificationResult<Transaction>) {
+        guard case .verified(let transaction) = verificationResult else {
+            // Ignore unverified transactions.
+            return
+        }
+        if transaction.productID == productID {
+            isPayed = true
+        }
     }
     
     // 定义一个请求产品信息的方法

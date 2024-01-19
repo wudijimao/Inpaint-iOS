@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UMConfigure.initWithAppkey("65aa6034a7208a5af1a0825a", channel: "App Store")
+        _ = PurchaseManager.shared
         return true
     }
 

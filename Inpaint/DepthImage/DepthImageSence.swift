@@ -9,7 +9,7 @@ import UIKit
 import SceneKit
 import CoreMotion
 import SnapKit
-
+import Toast_Swift
 
 
 
@@ -34,6 +34,11 @@ class DepthImageSenceViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.view.makeToast("生成成功~请试试转动手机\n从不同的角度查看")
+    }
+    
     func setupMotion() {
         motionManager.gyroUpdateInterval = 1.0 / 60.0
         
@@ -48,10 +53,46 @@ class DepthImageSenceViewController: UIViewController {
         }
     }
     
+    var simulationTime = 0.0 // 模拟的时间
+    var autoMotionTimer: Timer?
+    func startAutoMotion() {
+        resetPosition()
+        let updateInterval = 1.0 / 60.0 // 60帧/秒
+        autoMotionTimer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { [weak self] timer in
+            guard let self = self else { return }
+            self.simulationTime += (updateInterval * 2.0)
+            let simulatedData = self.createSimulatedGyroData()
+            // 更新相机旋转等操作
+            updateCameraRotation(rotationRate: simulatedData)
+        }
+    }
+    
+    private func resetPosition() {
+        cameraNode.position = SCNVector3(0, 0, radius)
+    }
+    
+    func stopAutoMotion() {
+        autoMotionTimer?.invalidate()
+        autoMotionTimer = nil
+        resetPosition()
+    }
+    
+    func createSimulatedGyroData() -> CMRotationRate {
+        // 使用正弦和余弦函数生成模拟数据
+        let xRotationRate = sin(simulationTime) * 0.2 // X轴的旋转速率
+        let yRotationRate = cos(simulationTime) * 0.2 // Y轴的旋转速率
+        let zRotationRate = 0.0 // Z轴的旋转速率可以设定为恒定值
+        
+        return CMRotationRate(x: xRotationRate, y: yRotationRate, z: zRotationRate)
+    }
+    
+    var radius: Float = 4.0
+    
+    
     func updateCameraRotation(rotationRate: CMRotationRate) {
         // 设定旋转半径
         let isH = (self.view.frame.width > self.view.frame.height) // 是否是横屏
-        let radius: Float = 4.0 // 横屏离近一点，大一点
+        let radius: Float = self.radius
         
         // 获取当前摄像机的球面坐标
         var currentTheta = atan2(cameraNode.position.z, cameraNode.position.x)
@@ -98,14 +139,14 @@ class DepthImageSenceViewController: UIViewController {
         
     }
     
+    
+    // 创建SceneKit视图
+    lazy var scnView = SCNView(frame: self.view.frame)
     var boxNode: SCNNode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
-//        self.navigationItem.rightBarButtonItem = saveButton
-        
+
         guard let result = deepMapModelGenerator.process(depthData: depthData) else { return }
         let (vertices, texCoords) = (result.vertexList, result.texCoordList)
         // 创建顶点源
@@ -160,8 +201,7 @@ class DepthImageSenceViewController: UIViewController {
         let geometry = SCNGeometry(sources: [vertexSource, texCoordSource], elements: [element])
 
         let scale = image.size.height / image.size.width
-        // 创建SceneKit视图
-        let scnView = SCNView(frame: self.view.frame)
+        
         
         
         contentView.clipsToBounds = true
@@ -239,10 +279,14 @@ class DepthImageSenceViewController: UIViewController {
     lazy var contentView = UIView()
     lazy var recoder = ViewRecorder()
     
-    @objc func onSave() {
+    @objc func save(completion: @escaping () -> Void) {
+        startAutoMotion()
+        self.scnView.isUserInteractionEnabled = false
         let url = URL.documentsDirectory.appendingPathComponent("temp.mov")
         recoder.startRecording(view: contentView, outputURL: url, size: view.frame.size)
         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+            self.scnView.isUserInteractionEnabled = true
+            self.stopAutoMotion()
             self.recoder.stopRecording()
         }
     }

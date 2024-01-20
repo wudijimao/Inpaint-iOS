@@ -9,6 +9,7 @@ import UIKit
 import Vision
 import CoreML
 import SnapKit
+import Toast_Swift
 
 // 图片生成深度图
 class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -55,13 +56,32 @@ class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate
     func loadModel() {
         _ = prediction
     }
+    
+    func setupSaveButton() {
+        let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
+        self.navigationItem.rightBarButtonItem = saveButton
+        
+    }
+    
+    @objc func onSave() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.senceVC?.save {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+    }
+    
+    var senceVC: DepthImageSenceViewController?
 
     func generateGrayScaleImage(_ image: UIImage) {
+        self.view.makeToastActivity(.center)
         prediction.depthPrediction(image: image) { [weak self] depthImage, depthData, err in
             guard let self = self else { return }
+            self.view.hideToastActivity()
             //            self.imageView.image = depthImage
             guard let depthData = depthData else { return }
+            self.setupSaveButton()
             let vc = DepthImageSenceViewController(image: image, depthData: depthData)
+            self.senceVC = vc
             self.addChild(vc)
             self.view.addSubview(vc.view)
             vc.view.snp.makeConstraints { make in

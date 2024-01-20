@@ -26,6 +26,7 @@ class PurchaseManager: NSObject {
                 self.handle(updatedTransaction: verificationResult)
             }
         }
+        SKPaymentQueue.default().add(self)
     }
     
     private func handle(updatedTransaction verificationResult: VerificationResult<Transaction>) {
@@ -101,3 +102,16 @@ class PurchaseManager: NSObject {
     }
 }
 
+extension PurchaseManager: SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print(transactions)
+        for transaction in transactions {
+            queue.finishTransaction(transaction)
+        }
+        
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+        return true
+    }
+}

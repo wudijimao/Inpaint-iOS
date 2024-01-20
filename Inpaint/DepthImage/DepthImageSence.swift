@@ -10,7 +10,8 @@ import SceneKit
 import CoreMotion
 import SnapKit
 import Toast_Swift
-
+import ReplayKit
+import Photos
 
 
 class DepthImageSenceViewController: UIViewController {
@@ -53,6 +54,10 @@ class DepthImageSenceViewController: UIViewController {
         }
     }
     
+    func stopMotion() {
+        motionManager.stopGyroUpdates()
+    }
+    
     var simulationTime = 0.0 // 模拟的时间
     var autoMotionTimer: Timer?
     func startAutoMotion() {
@@ -67,7 +72,7 @@ class DepthImageSenceViewController: UIViewController {
         }
     }
     
-    private func resetPosition() {
+    public func resetPosition() {
         cameraNode.position = SCNVector3(0, 0, radius)
     }
     
@@ -277,19 +282,77 @@ class DepthImageSenceViewController: UIViewController {
         setupMotion()
     }
     lazy var contentView = UIView()
-    lazy var recoder = ViewRecorder()
-    
-    @objc func save(completion: @escaping () -> Void) {
-        startAutoMotion()
+
+    public func save(completion: @escaping () -> Void) {
         self.scnView.isUserInteractionEnabled = false
-        let url = URL.documentsDirectory.appendingPathComponent("temp.mov")
-        recoder.startRecording(view: contentView, outputURL: url, size: view.frame.size)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-            self.scnView.isUserInteractionEnabled = true
-            self.stopAutoMotion()
-            self.recoder.stopRecording()
+        let url = URL.temporaryDirectory.appendingPathComponent("photo3d.mp4")
+        let screenRecorder = RPScreenRecorder.shared()
+        screenRecorder.startRecording { (error) in
+            if let error = error {
+                print("录制开始失败: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    completion()
+                }
+                return
+            }
+            print("录制开始成功")
+            self.stopMotion()
+            self.startAutoMotion()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6.28) {
+                self.scnView.isUserInteractionEnabled = true
+                self.stopAutoMotion()
+                self.setupMotion()
+                try? FileManager.default.removeItem(at: url)
+                screenRecorder.stopRecording(withOutput: url) { err in
+                    DispatchQueue.main.async {
+                        self.saveToPhotoLib(videoURL: url)
+                        completion()
+                    }
+                }
+            }
         }
     }
     
+    private func saveToPhotoLib(videoURL: URL) {
+        // 检查照片库访问权限
+        PHPhotoLibrary.requestAuthorization { status in
+            if status == .authorized {
+                // 在权限被授予的情况下保存视频
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoURL)
+                }) { saved, error in
+                    if saved {
+                        // 视频已成功保存到照片库
+                        print("视频已保存到照片库")
+                    } else {
+                        // 保存失败，处理错误
+                        print("保存视频失败: \(String(describing: error))")
+                    }
+                }
+            } else {
+                // 无权限访问照片库，处理权限问题
+                print("没有权限访问照片库")
+            }
+        }
+    }
+
     
+    private func exportVideo(url: URL) {
+        let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        // 在iPad上，需要设置弹出的源视图
+        if let popoverController = activityViewController.popoverPresentationController {
+            popoverController.sourceView = self.view // 或者其他UIView实例
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+
+        self.present(activityViewController, animated: true, completion: nil)
+        activityViewController.completionWithItemsHandler = { activity, success, items, error in
+            if success {
+                print("分享成功")
+            } else {
+                print("分享取消")
+            }
+        }
+    }
 }

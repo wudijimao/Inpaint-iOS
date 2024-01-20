@@ -59,8 +59,13 @@ class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate
     
     func setupSaveButton() {
         let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
-        self.navigationItem.rightBarButtonItem = saveButton
         
+        let resetViewButton = UIBarButtonItem(title: *"重置视角", style: .plain, target: self, action: #selector(onResetView))
+        self.navigationItem.rightBarButtonItems = [saveButton, resetViewButton]
+    }
+    
+    @objc func onResetView() {
+        self.senceVC?.resetPosition()
     }
     
     @objc func onSave() {

@@ -79,7 +79,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "SavePhotos"
+            "value" : "此应用需要访问您的照片库来保存视频"
           }
         }
       }

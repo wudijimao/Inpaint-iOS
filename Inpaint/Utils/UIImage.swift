@@ -76,4 +76,8 @@ extension URL {
     static var documentsDirectory: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
+    
+    static var temporaryDirectory: URL {
+        return URL.init(fileURLWithPath: NSTemporaryDirectory())
+    }
 }

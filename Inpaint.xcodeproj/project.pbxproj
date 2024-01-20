@@ -30,7 +30,6 @@
 		11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */; };
 		11F2B95B2B556F71001318F5 /* AVDepthData+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B9592B556F71001318F5 /* AVDepthData+Utils.swift */; };
 		11F2B95C2B556F71001318F5 /* CGImageSource+Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B95A2B556F71001318F5 /* CGImageSource+Depth.swift */; };
-		11F2B99A2B56D98D001318F5 /* UIView+Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B9992B56D98D001318F5 /* UIView+Record.swift */; };
 		11F2B99C2B583003001318F5 /* SettingViewControoler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B99B2B583003001318F5 /* SettingViewControoler.swift */; };
 		11F2B99E2B583084001318F5 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B99D2B583084001318F5 /* PurchaseManager.swift */; };
 		3CF5136D7FA29622DA933275 /* Pods_Inpaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */; };
@@ -107,7 +106,6 @@
 		11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmudgeDrawingView.swift; sourceTree = "<group>"; };
 		11F2B9592B556F71001318F5 /* AVDepthData+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVDepthData+Utils.swift"; sourceTree = "<group>"; };
 		11F2B95A2B556F71001318F5 /* CGImageSource+Depth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImageSource+Depth.swift"; sourceTree = "<group>"; };
-		11F2B9992B56D98D001318F5 /* UIView+Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Record.swift"; sourceTree = "<group>"; };
 		11F2B99B2B583003001318F5 /* SettingViewControoler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewControoler.swift; sourceTree = "<group>"; };
 		11F2B99D2B583084001318F5 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		11FFAD752B5A990100EF752B /* Inpaint-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Inpaint-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */,
 				BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */,
 				BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */,
-				11F2B9992B56D98D001318F5 /* UIView+Record.swift */,
 			);
 			path = DepthImage;
 			sourceTree = "<group>";
@@ -585,7 +582,6 @@
 				11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */,
 				1192515B2B366F6500F72E5D /* CGRect.swift in Sources */,
 				BC7AA7B32B50364000DC34EE /* UIImage.swift in Sources */,
-				11F2B99A2B56D98D001318F5 /* UIView+Record.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,7 +790,7 @@
 				INFOPLIST_FILE = Inpaint/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Inpaint;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = SavePhotos;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "此应用需要访问您的照片库来保存视频";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -834,7 +830,7 @@
 				INFOPLIST_FILE = Inpaint/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Inpaint;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = SavePhotos;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "此应用需要访问您的照片库来保存视频";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

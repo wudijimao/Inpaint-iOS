@@ -127,6 +127,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         photo3DGenBtn.clipsToBounds = true
         photo3DGenBtn.layer.cornerRadius = 30
+        photo3DGenBtn.layer.cornerCurve = .continuous
         UIView.animate(withDuration: 0.8, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
             // 放大到1.2倍
             self.photo3DGenBtn.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)

@@ -85,6 +85,7 @@ class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate
             //            self.imageView.image = depthImage
             guard let depthData = depthData else { return }
             self.setupSaveButton()
+            self.imageView.isHidden = true
             let vc = DepthImageSenceViewController(image: image, depthData: depthData)
             self.senceVC = vc
             self.addChild(vc)

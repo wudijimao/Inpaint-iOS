@@ -217,10 +217,10 @@ class DepthImageSenceViewController: UIViewController {
         contentView.addSubview(scnView)
         
         contentView.snp.makeConstraints { make in
-            make.width.height.lessThanOrEqualToSuperview()
+            make.width.height.lessThanOrEqualToSuperview().inset(20)
             make.center.equalToSuperview()
             make.width.equalTo(contentView.snp.height).dividedBy(scale)
-            make.width.height.equalToSuperview().priority(.high)
+            make.width.height.equalToSuperview().inset(20).priority(.high)
         }
         scnView.snp.makeConstraints { make in
             make.center.equalToSuperview()

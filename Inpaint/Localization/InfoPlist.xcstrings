@@ -71,18 +71,6 @@
           }
         }
       }
-    },
-    "NSPhotoLibraryUsageDescription" : {
-      "comment" : "Privacy - Photo Library Usage Description",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "此应用需要访问您的照片库来保存视频"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

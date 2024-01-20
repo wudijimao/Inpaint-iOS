@@ -44,8 +44,8 @@ class SmudgeDrawingView: UIView {
                 guard !path.isEmpty else { return }
                 var rect = path.bounds
                 // 要扩大path.width的半径
-                // 计算扩大的值，这里是路径宽度的一半
-                let expandBy = path.lineWidth / 2
+                // 计算扩大的值，这里是路径宽度  加上多余的一些，没有参考会出bug
+                let expandBy = path.lineWidth + 20.0
                 // 扩大 CGRect
                 rect = rect.insetBy(dx: -expandBy, dy: -expandBy)
                 rect = CGRect(x: rect.origin.x * UIScreen.main.scale, y: rect.origin.y * UIScreen.main.scale, width: rect.size.width * UIScreen.main.scale, height: rect.size.height * UIScreen.main.scale)

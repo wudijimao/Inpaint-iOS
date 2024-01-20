@@ -790,7 +790,6 @@
 				INFOPLIST_FILE = Inpaint/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Inpaint;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "此应用需要访问您的照片库来保存视频";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -830,7 +829,6 @@
 				INFOPLIST_FILE = Inpaint/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Inpaint;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "此应用需要访问您的照片库来保存视频";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

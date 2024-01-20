@@ -314,9 +314,6 @@ class DepthImageSenceViewController: UIViewController {
     }
     
     private func saveToPhotoLib(videoURL: URL) {
-        // 检查照片库访问权限
-        PHPhotoLibrary.requestAuthorization { status in
-            if status == .authorized {
                 // 在权限被授予的情况下保存视频
                 PHPhotoLibrary.shared().performChanges({
                     PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoURL)
@@ -324,16 +321,14 @@ class DepthImageSenceViewController: UIViewController {
                     if saved {
                         // 视频已成功保存到照片库
                         print("视频已保存到照片库")
+                        DispatchQueue.main.async {
+                            self.view.makeToast("保存成功!!！你可以从相册中分享给你的朋友啦~")
+                        }
                     } else {
                         // 保存失败，处理错误
                         print("保存视频失败: \(String(describing: error))")
                     }
                 }
-            } else {
-                // 无权限访问照片库，处理权限问题
-                print("没有权限访问照片库")
-            }
-        }
     }
 
     

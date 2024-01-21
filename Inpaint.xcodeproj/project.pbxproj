@@ -54,6 +54,8 @@
 		BCAE54A02B5021150008EF90 /* DepthImageRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */; };
 		BCAE54A12B50211C0008EF90 /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
 		BCB9A5A12B53EF1B009CFDB8 /* MagicWordDetactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9A59F2B53EF1B009CFDB8 /* MagicWordDetactor.swift */; };
+		BCCFA89C2B5D22550062C96A /* data.mgobj in Resources */ = {isa = PBXBuildFile; fileRef = BCCFA89A2B5D22550062C96A /* data.mgobj */; };
+		BCCFA89D2B5D22550062C96A /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCFA89B2B5D22550062C96A /* texture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		BCB9A59F2B53EF1B009CFDB8 /* MagicWordDetactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicWordDetactor.swift; sourceTree = "<group>"; };
 		BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSenceForVisionPro.swift; sourceTree = "<group>"; };
 		BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImage3DModleGenerator.swift; sourceTree = "<group>"; };
+		BCCFA89A2B5D22550062C96A /* data.mgobj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.mgobj; sourceTree = "<group>"; };
+		BCCFA89B2B5D22550062C96A /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E084CFB713396F64E30392E4 /* Pods-Inpaint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,6 +278,7 @@
 		BCAE54892B5020C20008EF90 /* MagicPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				BCCFA8992B5D22420062C96A /* Res */,
 				BCAE548E2B5020C20008EF90 /* MagicPhotoApp.swift */,
 				BCAE54902B5020C20008EF90 /* ContentView.swift */,
 				BCAE54922B5020C40008EF90 /* Assets.xcassets */,
@@ -298,6 +303,15 @@
 				BCAE54952B5020C40008EF90 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BCCFA8992B5D22420062C96A /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				BCCFA89A2B5D22550062C96A /* data.mgobj */,
+				BCCFA89B2B5D22550062C96A /* texture.png */,
+			);
+			path = Res;
 			sourceTree = "<group>";
 		};
 		C66415C5D5EA8FB3CD0D26FF /* Frameworks */ = {
@@ -483,7 +497,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCCFA89D2B5D22550062C96A /* texture.png in Resources */,
 				BCAE54962B5020C40008EF90 /* Preview Assets.xcassets in Resources */,
+				BCCFA89C2B5D22550062C96A /* data.mgobj in Resources */,
 				BCAE549C2B5020EB0008EF90 /* Assets.xcassets in Resources */,
 				BCAE54932B5020C40008EF90 /* Assets.xcassets in Resources */,
 			);
@@ -940,7 +956,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MagicPhoto/Preview Content\"";
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				ENABLE_PREVIEWS = YES;
@@ -951,8 +967,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.MagicPhoto;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.VisionMagicPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -969,7 +985,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MagicPhoto/Preview Content\"";
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				ENABLE_PREVIEWS = YES;
@@ -980,8 +996,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.MagicPhoto;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.VisionMagicPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";

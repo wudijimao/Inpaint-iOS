@@ -142,7 +142,7 @@ class MagicPhotoViewModel: ObservableObject {
     }
     
     func loadFromFile() {
-        guard let model = MagicModel.loadFrom(fileURL: URL.documentsDirectory) else {
+        guard let model = MagicModel.loadFrom(fileURL: URL.documentsDirectory) ?? MagicModel.loadFrom(fileURL: Bundle.main.bundleURL) else {
             return
         }
         DispatchQueue.main.async {
@@ -329,13 +329,14 @@ struct ContentView: View {
                             await openImmersiveSpace(id: "immersive")
                         }
                     } label: {
-                        Text("Pin to wall !!!")
+                        Text("Pin to wall !!!( CommingSoon )")
                     }
-                    Button {
+                    .disabled(true)
+                    /*Button {
                         openWindow(id: "photo")
                     } label: {
                         Text("打开新window")
-                    }
+                    }*/
                 }
             }
 //            if let selectedImage {

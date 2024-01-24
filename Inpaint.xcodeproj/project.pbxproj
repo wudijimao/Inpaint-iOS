@@ -48,7 +48,6 @@
 		BCAE54932B5020C40008EF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCAE54922B5020C40008EF90 /* Assets.xcassets */; };
 		BCAE54962B5020C40008EF90 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCAE54952B5020C40008EF90 /* Preview Assets.xcassets */; };
 		BCAE549C2B5020EB0008EF90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11CFF9FB2B18DA01008CFCA5 /* Assets.xcassets */; };
-		BCAE549D2B5021010008EF90 /* DepthImageSenceForVisionPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */; };
 		BCAE549E2B50210E0008EF90 /* DepthImage3DModleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */; };
 		BCAE549F2B5021110008EF90 /* DepthImage3DModleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */; };
 		BCAE54A02B5021150008EF90 /* DepthImageRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */; };
@@ -127,7 +126,6 @@
 		BCAE54952B5020C40008EF90 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BCAE54972B5020C40008EF90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCB9A59F2B53EF1B009CFDB8 /* MagicWordDetactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicWordDetactor.swift; sourceTree = "<group>"; };
-		BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSenceForVisionPro.swift; sourceTree = "<group>"; };
 		BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImage3DModleGenerator.swift; sourceTree = "<group>"; };
 		BCCFA89A2B5D22550062C96A /* data.mgobj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.mgobj; sourceTree = "<group>"; };
 		BCCFA89B2B5D22550062C96A /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				11F2B95A2B556F71001318F5 /* CGImageSource+Depth.swift */,
 				115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */,
 				115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */,
-				BCC06E5E2B4F8737002E28BD /* DepthImageSenceForVisionPro.swift */,
 				1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */,
 				BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */,
 				BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */,
@@ -633,7 +630,6 @@
 				BCAE54A02B5021150008EF90 /* DepthImageRender.metal in Sources */,
 				BCAE54912B5020C20008EF90 /* ContentView.swift in Sources */,
 				BC7AA7B12B50358B00DC34EE /* Localization.swift in Sources */,
-				BCAE549D2B5021010008EF90 /* DepthImageSenceForVisionPro.swift in Sources */,
 				BCB9A5A12B53EF1B009CFDB8 /* MagicWordDetactor.swift in Sources */,
 				BC7AA7B02B50358700DC34EE /* CGRect.swift in Sources */,
 				BCAE548F2B5020C20008EF90 /* MagicPhotoApp.swift in Sources */,
@@ -956,7 +952,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"MagicPhoto/Preview Content\"";
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				ENABLE_PREVIEWS = YES;
@@ -985,7 +981,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"MagicPhoto/Preview Content\"";
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				ENABLE_PREVIEWS = YES;

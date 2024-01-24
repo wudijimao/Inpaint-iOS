@@ -31,7 +31,7 @@ class MiDaSImageDepthPrediction: ImageDepthPrediction {
     
     lazy var config: MLModelConfiguration = {
         let config = MLModelConfiguration()
-        config.computeUnits = .cpuAndGPU
+        config.computeUnits = .all
         return config
     }()
     
@@ -44,7 +44,6 @@ class MiDaSImageDepthPrediction: ImageDepthPrediction {
     func depthPrediction(image: UIImage, completion: @escaping (UIImage?, [Float]?, NSError?) -> Void) {
         workQueue.async {
             guard let model = self.model else { return }
-//            let scaledImage = image.scaleTo(size: .init(width: 256, height: 256))
             guard let imgBuffer = image.buffer(ofSize: 256) else {
                 completion(nil, nil, nil)
                 return

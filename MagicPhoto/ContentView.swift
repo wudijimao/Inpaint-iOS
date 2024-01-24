@@ -168,20 +168,24 @@ class MagicPhotoViewModel: ObservableObject {
         self.protal?.scale(scaleVector: scale)
     }
     
+    let workQueue = DispatchQueue.init(label: "MagicPhotoMental")
+    
     func process(_ image: UIImage) {
         deepPrediction.depthPrediction(image: image) { resultImage, depthData, err in
             if let depthData {
-                guard let result = self.modleGen.process(depthData: depthData) else {
-                    return
-                }
-                self.modelData = result
-                let url = URL.documentsDirectory
-                print("XXX:\(url)")
-                let model = MagicModel.init(data: result, image: image)
-                model.saveTo(fileURL: url)
-                
-                DispatchQueue.main.async {
-                    self.fill(with: model)
+                self.workQueue.async {
+                    guard let result = self.modleGen.process(depthData: depthData) else {
+                        return
+                    }
+                    self.modelData = result
+                    let url = URL.documentsDirectory
+                    print("XXX:\(url)")
+                    let model = MagicModel.init(data: result, image: image)
+                    model.saveTo(fileURL: url)
+                    
+                    DispatchQueue.main.async {
+                        self.fill(with: model)
+                    }
                 }
             }
         }

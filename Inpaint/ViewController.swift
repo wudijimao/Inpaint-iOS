@@ -141,19 +141,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @objc func onClick3DPhotoGen() {
         MobClick.event("3dClick")
-        Task { @MainActor in
-            self.view.makeToastActivity(.center)
-            if await PurchaseManager.shared.purchases() {
-                is3DPhotoGen = true
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = .photoLibrary
-                self.present(imagePicker, animated: true, completion: nil)
-            } else {
-                UIApplication.shared.keyWindow?.makeToast("购买取消或失败，请重试")
-            }
-            self.view.hideToastActivity()
-        }
+        let vc = DeepImagePreviewViewController.init()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func onClick() {

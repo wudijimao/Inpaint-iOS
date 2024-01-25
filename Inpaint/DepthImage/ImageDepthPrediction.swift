@@ -31,7 +31,11 @@ class MiDaSImageDepthPrediction: ImageDepthPrediction {
     
     lazy var config: MLModelConfiguration = {
         let config = MLModelConfiguration()
+    #if os(visionOS)
         config.computeUnits = .cpuAndNeuralEngine
+    #else
+        config.computeUnits = .cpuAndGPU
+    #endif
         return config
     }()
     

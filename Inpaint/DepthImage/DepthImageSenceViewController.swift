@@ -37,7 +37,7 @@ class DepthImageSenceViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.view.makeToast("生成成功~请试试转动手机\n从不同的角度查看")
+        self.view.makeToast(*"3dgen_successed")
     }
     
     func setupMotion() {
@@ -322,7 +322,7 @@ class DepthImageSenceViewController: UIViewController {
                         // 视频已成功保存到照片库
                         print("视频已保存到照片库")
                         DispatchQueue.main.async {
-                            self.view.makeToast("保存成功!!！你可以从相册中分享给你的朋友啦~")
+                            self.view.makeToast(*"save and share")
                         }
                     } else {
                         // 保存失败，处理错误

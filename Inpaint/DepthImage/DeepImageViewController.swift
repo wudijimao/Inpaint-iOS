@@ -84,6 +84,8 @@ class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate
             guard let depthData = depthData else { return }
             self.setupSaveButton()
             self.imageView.isHidden = true
+            
+            depthData.saveTo(fileURL: URL.documentsDirectory.appendingPathComponent("depth.data"))
             let vc = DepthImageSenceViewController(image: image, depthData: depthData)
             self.senceVC = vc
             self.addChild(vc)

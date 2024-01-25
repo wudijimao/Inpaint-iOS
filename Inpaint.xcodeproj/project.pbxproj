@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1127672E2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127672D2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift */; };
+		112767302B62B09A008B5AC5 /* depth.data in Resources */ = {isa = PBXBuildFile; fileRef = 1127672F2B62B09A008B5AC5 /* depth.data */; };
+		112767322B62B0D4008B5AC5 /* Res in Resources */ = {isa = PBXBuildFile; fileRef = 112767312B62B0D4008B5AC5 /* Res */; };
 		1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */; };
 		1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
-		115EF1E92B48F6EB00F4C420 /* DepthImageSence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */; };
+		115EF1E92B48F6EB00F4C420 /* DepthImageSenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1E82B48F6EB00F4C420 /* DepthImageSenceViewController.swift */; };
 		115EF1EF2B49127C00F4C420 /* DepthImageRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */; };
 		1192515B2B366F6500F72E5D /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
 		119251602B369FFA00F72E5D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1192515F2B369FFA00F72E5D /* Localizable.xcstrings */; };
@@ -79,9 +81,11 @@
 		0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.debug.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1127672D2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepImagePreviewViewController.swift; sourceTree = "<group>"; };
+		1127672F2B62B09A008B5AC5 /* depth.data */ = {isa = PBXFileReference; lastKnownFileType = file; name = depth.data; path = MagicPhoto/Res/depth.data; sourceTree = SOURCE_ROOT; };
+		112767312B62B0D4008B5AC5 /* Res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Res; sourceTree = "<group>"; };
 		1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepImageViewController.swift; sourceTree = "<group>"; };
 		1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MiDaSMobileSwin2Tiny256FP16.mlpackage; sourceTree = "<group>"; };
-		115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSence.swift; sourceTree = "<group>"; };
+		115EF1E82B48F6EB00F4C420 /* DepthImageSenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSenceViewController.swift; sourceTree = "<group>"; };
 		115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DepthImageRender.metal; sourceTree = "<group>"; };
 		1192515A2B366F6500F72E5D /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		1192515C2B368F8200F72E5D /* Inpaint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inpaint.entitlements; sourceTree = "<group>"; };
@@ -174,11 +178,11 @@
 			children = (
 				11F2B9592B556F71001318F5 /* AVDepthData+Utils.swift */,
 				11F2B95A2B556F71001318F5 /* CGImageSource+Depth.swift */,
-				115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */,
-				115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */,
-				1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */,
-				BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */,
 				BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */,
+				BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */,
+				115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */,
+				115EF1E82B48F6EB00F4C420 /* DepthImageSenceViewController.swift */,
+				1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */,
 				1127672D2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift */,
 			);
 			path = DepthImage;
@@ -231,12 +235,14 @@
 		11CFF9F12B18D9FF008CFCA5 /* Inpaint */ = {
 			isa = PBXGroup;
 			children = (
+				112767312B62B0D4008B5AC5 /* Res */,
 				115EF1E72B48F6D500F4C420 /* DepthImage */,
 				1192515E2B369FA600F72E5D /* Localization */,
 				1192515C2B368F8200F72E5D /* Inpaint.entitlements */,
 				119251592B366F5300F72E5D /* Utils */,
 				11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */,
 				11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */,
+				1127672F2B62B09A008B5AC5 /* depth.data */,
 				1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */,
 				11CFF9F22B18D9FF008CFCA5 /* AppDelegate.swift */,
 				11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */,
@@ -468,7 +474,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				112767322B62B0D4008B5AC5 /* Res in Resources */,
 				11CFF9FF2B18DA01008CFCA5 /* LaunchScreen.storyboard in Resources */,
+				112767302B62B09A008B5AC5 /* depth.data in Resources */,
 				119251642B36A1DA00F72E5D /* InfoPlist.xcstrings in Resources */,
 				11CFF9FC2B18DA01008CFCA5 /* Assets.xcassets in Resources */,
 				119251602B369FFA00F72E5D /* Localizable.xcstrings in Resources */,
@@ -592,7 +600,7 @@
 				1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */,
 				119251662B36A65000F72E5D /* Localization.swift in Sources */,
 				11F2B99E2B583084001318F5 /* PurchaseManager.swift in Sources */,
-				115EF1E92B48F6EB00F4C420 /* DepthImageSence.swift in Sources */,
+				115EF1E92B48F6EB00F4C420 /* DepthImageSenceViewController.swift in Sources */,
 				11F2B95B2B556F71001318F5 /* AVDepthData+Utils.swift in Sources */,
 				11F2B99C2B583003001318F5 /* SettingViewControoler.swift in Sources */,
 				11F2B95C2B556F71001318F5 /* CGImageSource+Depth.swift in Sources */,

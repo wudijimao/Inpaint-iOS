@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Toast_Swift
 
-// 图片生成深度图
+// 深度图预览
 class DeepImagePreviewViewController: UIViewController {
 
     var imageView = UIImageView()
@@ -35,16 +35,25 @@ class DeepImagePreviewViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-
         // 加载模型
         loadModel()
+        setupButton()
     }
 
     func loadModel() {
-
+        guard let image = UIImage(named: "3DExample") else { return }
+        guard let depthData = [Float].loadFrom(fileURL: Bundle.main.url(forResource: "depth", withExtension: "data")!) else { return }
+        let vc = DepthImageSenceViewController(image: image, depthData: depthData)
+        self.senceVC = vc
+        self.addChild(vc)
+        self.view.addSubview(vc.view)
+        vc.view.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            vc.didMove(toParent: self)
+        }
     }
     
-    func setupSaveButton() {
+    func setupButton() {
         let selectButton = UIBarButtonItem(title: *"try my photo", style: .plain, target: self, action: #selector(onTakePhoto))
         self.navigationItem.rightBarButtonItems = [selectButton]
     }
@@ -54,9 +63,18 @@ class DeepImagePreviewViewController: UIViewController {
     }
     
     @objc func onTakePhoto() {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.senceVC?.save {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        MobClick.event("3dTakePhoto")
+        Task { @MainActor in
+            self.view.makeToastActivity(.center)
+            if await PurchaseManager.shared.purchases() {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary
+                self.present(imagePicker, animated: true, completion: nil)
+            } else {
+                UIApplication.shared.keyWindow?.makeToast(*"pay_failed")
+            }
+            self.view.hideToastActivity()
         }
     }
     
@@ -65,5 +83,22 @@ class DeepImagePreviewViewController: UIViewController {
     func generateGrayScaleImage(_ image: UIImage) {
         self.view.makeToastActivity(.center)
         
+    }
+}
+
+extension DeepImagePreviewViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // UIImagePickerControllerDelegate methods
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // You can handle the selected image here
+        guard let image = info[.originalImage] as? UIImage else { return }
+        let scaledImage = image.scaleToLimit(size: .init(width: kLimitImageSize, height: kLimitImageSize))
+        picker.dismiss(animated: true, completion: {
+            let vc = DeepImageViewController(image: scaledImage)
+            self.navigationController?.pushViewController(vc, animated: true)
+        })
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }

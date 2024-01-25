@@ -43,11 +43,7 @@ struct MagicModel {
     }
 }
 
-struct MagicModelData: Codable {
-    let vertexList: [MyVector3]
-    let texCoordList: [MyPoint]
-    let indices: [UInt32]
-    
+extension Encodable {
     // 保存数据到指定的文件URL
     func saveTo(fileURL: URL) {
         // 将数据转换为JSON格式
@@ -64,9 +60,11 @@ struct MagicModelData: Codable {
             print("Failed to write data: \(error)")
         }
     }
-    
+}
+
+extension Decodable {
     // 从指定的文件URL加载数据
-    static func loadFrom(fileURL: URL) -> MagicModelData? {
+    static func loadFrom(fileURL: URL) -> Self? {
         // 从文件读取数据
         guard let data = try? Data(contentsOf: fileURL) else {
             print("Failed to read data")
@@ -74,12 +72,18 @@ struct MagicModelData: Codable {
         }
         // 将数据从JSON格式转换回结构体
         let decoder = JSONDecoder()
-        guard let model = try? decoder.decode(MagicModelData.self, from: data) else {
+        guard let model = try? decoder.decode(Self.self, from: data) else {
             print("Failed to decode data")
             return nil
         }
         return model
     }
+}
+
+struct MagicModelData: Codable {
+    let vertexList: [MyVector3]
+    let texCoordList: [MyPoint]
+    let indices: [UInt32]
 }
 
 

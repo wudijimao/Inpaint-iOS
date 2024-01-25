@@ -50,8 +50,6 @@ class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate
         // 对选择的图片进行处理
         generateGrayScaleImage(image)
     }
-    
-    var lama: LaMaFP16_512?
 
     func loadModel() {
         _ = prediction

@@ -14,7 +14,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.title = "设置"
+        self.title = *"设置"
         self.view.backgroundColor = .white
         // 创建并配置SwiftUI视图
         let settingView = SettingView()
@@ -52,7 +52,7 @@ struct SettingView: View {
                 // 使用HStack来水平排列文本和图标
                 HStack {
                     // 使用Text来显示文本
-                    Text("恢复购买")
+                    Text(*"恢复购买")
                     // 使用Spacer来占据剩余的空间
                     Spacer()
                     // 使用Image来显示系统图标
@@ -63,7 +63,7 @@ struct SettingView: View {
             .disabled(isRestoring)
         }
         // 使用navigationBarTitle来设置导航栏的标题
-        .navigationBarTitle("设置")
+        .navigationBarTitle(*"设置")
     }
     
     // 定义一个恢复购买的方法
@@ -71,9 +71,9 @@ struct SettingView: View {
         // 恢复完成后，设置isRestoring为false
         Task { @MainActor in
             if await PurchaseManager.shared.restorePurchases() {
-                UIApplication.shared.keyWindow?.makeToast("恢复成功")
+                UIApplication.shared.keyWindow?.makeToast(*"恢复成功")
             } else {
-                UIApplication.shared.keyWindow?.makeToast("恢复失败")
+                UIApplication.shared.keyWindow?.makeToast(*"恢复失败")
             }
             self.isRestoring = false
         }

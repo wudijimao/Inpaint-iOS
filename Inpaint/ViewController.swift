@@ -135,6 +135,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             // 动画完成后恢复到原始大小
             self.photo3DGenBtn.transform = CGAffineTransform.identity
         })
+        
+        let label = UILabel()
+        label.text = "new"
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 13)
+        label.backgroundColor = UIColor.init(red: 0.9, green: 0.2, blue: 0.2, alpha: 1.0)
+        label.layer.cornerRadius = 4
+        label.layer.cornerCurve = .continuous
+        label.clipsToBounds = true
+        label.isUserInteractionEnabled = false
+        label.textAlignment = .center
+        self.view.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.top.equalTo(photo3DGenBtn).offset(-10)
+            make.right.equalTo(photo3DGenBtn).offset(24)
+            make.width.equalTo(40)
+            make.height.equalTo(20)
+        }
     }
     
     var is3DPhotoGen = false

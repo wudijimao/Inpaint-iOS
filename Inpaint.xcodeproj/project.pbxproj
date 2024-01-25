@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1127672E2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127672D2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift */; };
 		1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */; };
 		1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
 		115EF1E92B48F6EB00F4C420 /* DepthImageSence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */; };
@@ -76,6 +77,7 @@
 		05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint_InpaintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.debug.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1127672D2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepImagePreviewViewController.swift; sourceTree = "<group>"; };
 		1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepImageViewController.swift; sourceTree = "<group>"; };
 		1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MiDaSMobileSwin2Tiny256FP16.mlpackage; sourceTree = "<group>"; };
 		115EF1E82B48F6EB00F4C420 /* DepthImageSence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSence.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */,
 				BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */,
 				BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */,
+				1127672D2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift */,
 			);
 			path = DepthImage;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				115EF1EF2B49127C00F4C420 /* DepthImageRender.metal in Sources */,
 				11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */,
 				11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */,
+				1127672E2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift in Sources */,
 				BCAE549F2B5021110008EF90 /* DepthImage3DModleGenerator.swift in Sources */,
 				11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */,
 				BC7AA7AD2B50350300DC34EE /* ImageDepthPrediction.swift in Sources */,

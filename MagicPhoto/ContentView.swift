@@ -142,7 +142,7 @@ class MagicPhotoViewModel: ObservableObject {
     }
     
     func loadFromFile() {
-        guard let model = MagicModel.loadFrom(fileURL: URL.documentsDirectory) else {
+        guard let model = MagicModel.loadFrom(fileURL: URL.documentsDirectory) ?? MagicModel.loadFrom(fileURL: Bundle.main.bundleURL) else {
             return
         }
         DispatchQueue.main.async {
@@ -168,20 +168,24 @@ class MagicPhotoViewModel: ObservableObject {
         self.protal?.scale(scaleVector: scale)
     }
     
+    let workQueue = DispatchQueue.init(label: "MagicPhotoMental")
+    
     func process(_ image: UIImage) {
         deepPrediction.depthPrediction(image: image) { resultImage, depthData, err in
             if let depthData {
-                guard let result = self.modleGen.process(depthData: depthData) else {
-                    return
-                }
-                self.modelData = result
-                let url = URL.documentsDirectory
-                print("XXX:\(url)")
-                let model = MagicModel.init(data: result, image: image)
-                model.saveTo(fileURL: url)
-                
-                DispatchQueue.main.async {
-                    self.fill(with: model)
+                self.workQueue.async {
+                    guard let result = self.modleGen.process(depthData: depthData) else {
+                        return
+                    }
+                    self.modelData = result
+                    let url = URL.documentsDirectory
+                    print("XXX:\(url)")
+                    let model = MagicModel.init(data: result, image: image)
+                    model.saveTo(fileURL: url)
+                    
+                    DispatchQueue.main.async {
+                        self.fill(with: model)
+                    }
                 }
             }
         }
@@ -329,13 +333,14 @@ struct ContentView: View {
                             await openImmersiveSpace(id: "immersive")
                         }
                     } label: {
-                        Text("Pin to wall !!!")
+                        Text("Pin to wall !!!( CommingSoon )")
                     }
-                    Button {
+                    .disabled(true)
+                    /*Button {
                         openWindow(id: "photo")
                     } label: {
                         Text("打开新window")
-                    }
+                    }*/
                 }
             }
 //            if let selectedImage {

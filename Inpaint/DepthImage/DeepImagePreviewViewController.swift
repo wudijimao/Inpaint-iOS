@@ -53,9 +53,28 @@ class DeepImagePreviewViewController: UIViewController {
         }
     }
     
+    lazy var photo3DGenBtn: UIButton = {
+        let btn = UIButton.init()
+        btn.setImage(UIImage(named: "3DPhotoButton"), for: .normal)
+        btn.setTitle("3D照片生成", for: .normal)
+        btn.backgroundColor = .clear
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTakePhoto), for: .touchUpInside)
+        return btn
+    }()
+    
     func setupButton() {
-        let selectButton = UIBarButtonItem(title: *"try my photo", style: .plain, target: self, action: #selector(onTakePhoto))
+        let selectButton = UIBarButtonItem(title: *"Try Your Photo", style: .plain, target: self, action: #selector(onTakePhoto))
         self.navigationItem.rightBarButtonItems = [selectButton]
+        
+        view.addSubview(photo3DGenBtn)
+        photo3DGenBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-10)
+            make.size.equalTo(100)
+        }
+        photo3DGenBtn.layer.cornerRadius = 50
+        photo3DGenBtn.clipsToBounds = true
     }
     
     @objc func onResetView() {

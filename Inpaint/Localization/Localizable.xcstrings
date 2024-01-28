@@ -208,6 +208,29 @@
         }
       }
     },
+    "Try Your Photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Your Photo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの写真を使う"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用您的照片"
+          }
+        }
+      }
+    },
     "undo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -230,6 +253,9 @@
           }
         }
       }
+    },
+    "关于" : {
+
     },
     "恢复失败" : {
       "extractionState" : "manual",
@@ -299,6 +325,12 @@
           }
         }
       }
+    },
+    "第一页" : {
+
+    },
+    "第二页" : {
+
     },
     "设置" : {
       "extractionState" : "stale",

@@ -7,18 +7,18 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Magic Inpaint"
+            "value" : "Magic Photo"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "マジック修復"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "影像魔术师"
           }
         }

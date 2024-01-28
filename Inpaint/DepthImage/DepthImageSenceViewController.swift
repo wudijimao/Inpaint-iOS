@@ -37,7 +37,7 @@ class DepthImageSenceViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.view.makeToast(*"3dgen_successed")
+        self.view.superview?.makeToast(*"3dgen_successed")
     }
     
     func setupMotion() {

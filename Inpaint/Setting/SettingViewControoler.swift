@@ -61,6 +61,13 @@ struct SettingView: View {
             }
             // 使用disabled来禁用按钮，当isRestoring为true时
             .disabled(isRestoring)
+            // 使用NavigationLink跳转到关于页面
+            NavigationLink(destination: AboutView()) {
+                HStack {
+                    Text("关于")
+                    Spacer() // 用于在文本和图标之间创建空间
+                }
+            }
         }
         // 使用navigationBarTitle来设置导航栏的标题
         .navigationBarTitle(*"设置")

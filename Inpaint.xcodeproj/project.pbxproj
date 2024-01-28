@@ -10,6 +10,7 @@
 		1127672E2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127672D2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift */; };
 		112767302B62B09A008B5AC5 /* depth.data in Resources */ = {isa = PBXBuildFile; fileRef = 1127672F2B62B09A008B5AC5 /* depth.data */; };
 		112767322B62B0D4008B5AC5 /* Res in Resources */ = {isa = PBXBuildFile; fileRef = 112767312B62B0D4008B5AC5 /* Res */; };
+		11292AC82B652B0E000AFF6F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11292AC72B652B0E000AFF6F /* AboutViewController.swift */; };
 		1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */; };
 		1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
 		115EF1E92B48F6EB00F4C420 /* DepthImageSenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1E82B48F6EB00F4C420 /* DepthImageSenceViewController.swift */; };
@@ -81,8 +82,9 @@
 		0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.debug.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1127672D2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepImagePreviewViewController.swift; sourceTree = "<group>"; };
-		1127672F2B62B09A008B5AC5 /* depth.data */ = {isa = PBXFileReference; lastKnownFileType = file; name = depth.data; path = MagicPhoto/Res/depth.data; sourceTree = SOURCE_ROOT; };
+		1127672F2B62B09A008B5AC5 /* depth.data */ = {isa = PBXFileReference; lastKnownFileType = text; name = depth.data; path = MagicPhoto/Res/depth.data; sourceTree = SOURCE_ROOT; };
 		112767312B62B0D4008B5AC5 /* Res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Res; sourceTree = "<group>"; };
+		11292AC72B652B0E000AFF6F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepImageViewController.swift; sourceTree = "<group>"; };
 		1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MiDaSMobileSwin2Tiny256FP16.mlpackage; sourceTree = "<group>"; };
 		115EF1E82B48F6EB00F4C420 /* DepthImageSenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSenceViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11292AC62B652AF6000AFF6F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				11F2B99B2B583003001318F5 /* SettingViewControoler.swift */,
+				11292AC72B652B0E000AFF6F /* AboutViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		115EF1E72B48F6D500F4C420 /* DepthImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +246,7 @@
 		11CFF9F12B18D9FF008CFCA5 /* Inpaint */ = {
 			isa = PBXGroup;
 			children = (
+				11292AC62B652AF6000AFF6F /* Setting */,
 				112767312B62B0D4008B5AC5 /* Res */,
 				115EF1E72B48F6D500F4C420 /* DepthImage */,
 				1192515E2B369FA600F72E5D /* Localization */,
@@ -254,7 +266,6 @@
 				11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */,
 				11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */,
 				11AE81E92B2A008A000F95C4 /* Inpainting.swift */,
-				11F2B99B2B583003001318F5 /* SettingViewControoler.swift */,
 				11F2B99D2B583084001318F5 /* PurchaseManager.swift */,
 				11FFAD752B5A990100EF752B /* Inpaint-Bridging-Header.h */,
 			);
@@ -588,6 +599,7 @@
 			files = (
 				11C1FA2F2B1C80FE0021EA5F /* SplitImageView.swift in Sources */,
 				115EF1EF2B49127C00F4C420 /* DepthImageRender.metal in Sources */,
+				11292AC82B652B0E000AFF6F /* AboutViewController.swift in Sources */,
 				11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */,
 				11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */,
 				1127672E2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift in Sources */,
@@ -808,7 +820,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Inpaint/Inpaint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
@@ -847,7 +859,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Inpaint/Inpaint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;

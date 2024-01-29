@@ -16,24 +16,12 @@
 		11292AD42B67C9D1000AFF6F /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11292AD32B67C9D1000AFF6F /* PhotoEditingViewController.swift */; };
 		11292AD72B67C9D1000AFF6F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11292AD52B67C9D1000AFF6F /* MainInterface.storyboard */; };
 		11292ADB2B67C9D1000AFF6F /* InpaintEditor.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 11292ACD2B67C9D0000AFF6F /* InpaintEditor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		11292AE02B67D075000AFF6F /* InpaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */; };
-		11292AE12B67D1FB000AFF6F /* Inpainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E92B2A008A000F95C4 /* Inpainting.swift */; };
-		11292AE22B67D206000AFF6F /* LaMaFP16_512.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */; };
-		11292AE32B67D215000AFF6F /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
-		11292AE42B67D217000AFF6F /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119251652B36A65000F72E5D /* Localization.swift */; };
-		11292AE52B67D21A000AFF6F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7B22B50364000DC34EE /* UIImage.swift */; };
-		11292AE62B67D240000AFF6F /* SmudgeDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */; };
 		1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */; };
 		1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
 		115EF1E92B48F6EB00F4C420 /* DepthImageSenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1E82B48F6EB00F4C420 /* DepthImageSenceViewController.swift */; };
 		115EF1EF2B49127C00F4C420 /* DepthImageRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */; };
-		1192515B2B366F6500F72E5D /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
 		119251602B369FFA00F72E5D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1192515F2B369FFA00F72E5D /* Localizable.xcstrings */; };
 		119251642B36A1DA00F72E5D /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 119251632B36A1DA00F72E5D /* InfoPlist.xcstrings */; };
-		119251662B36A65000F72E5D /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119251652B36A65000F72E5D /* Localization.swift */; };
-		11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */; };
-		11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E92B2A008A000F95C4 /* Inpainting.swift */; };
-		11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */; };
 		11C1FA2F2B1C80FE0021EA5F /* SplitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */; };
 		11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFF9F22B18D9FF008CFCA5 /* AppDelegate.swift */; };
 		11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */; };
@@ -43,7 +31,6 @@
 		11CFFA0A2B18DA01008CFCA5 /* InpaintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA092B18DA01008CFCA5 /* InpaintTests.swift */; };
 		11CFFA142B18DA01008CFCA5 /* InpaintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA132B18DA01008CFCA5 /* InpaintUITests.swift */; };
 		11CFFA162B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA152B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift */; };
-		11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */; };
 		11F2B95B2B556F71001318F5 /* AVDepthData+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B9592B556F71001318F5 /* AVDepthData+Utils.swift */; };
 		11F2B95C2B556F71001318F5 /* CGImageSource+Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B95A2B556F71001318F5 /* CGImageSource+Depth.swift */; };
 		11F2B99C2B583003001318F5 /* SettingViewControoler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B99B2B583003001318F5 /* SettingViewControoler.swift */; };
@@ -54,10 +41,6 @@
 		90609CAA495B37910B508E46 /* Pods_InpaintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */; };
 		BC7AA7AD2B50350300DC34EE /* ImageDepthPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */; };
 		BC7AA7AE2B50356F00DC34EE /* ImageDepthPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */; };
-		BC7AA7B02B50358700DC34EE /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
-		BC7AA7B12B50358B00DC34EE /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119251652B36A65000F72E5D /* Localization.swift */; };
-		BC7AA7B32B50364000DC34EE /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7B22B50364000DC34EE /* UIImage.swift */; };
-		BC7AA7B42B50365100DC34EE /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7B22B50364000DC34EE /* UIImage.swift */; };
 		BCAE548D2B5020C20008EF90 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = BCAE548C2B5020C20008EF90 /* RealityKitContent */; };
 		BCAE548F2B5020C20008EF90 /* MagicPhotoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAE548E2B5020C20008EF90 /* MagicPhotoApp.swift */; };
 		BCAE54912B5020C20008EF90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAE54902B5020C20008EF90 /* ContentView.swift */; };
@@ -109,9 +92,20 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		11292B032B67E8FF000AFF6F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01790B11CE53A45E8B7A64C0 /* Pods-Inpaint-Inpainting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-Inpainting.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint-Inpainting/Pods-Inpaint-Inpainting.debug.xcconfig"; sourceTree = "<group>"; };
 		05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint_InpaintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.debug.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,15 +123,10 @@
 		1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MiDaSMobileSwin2Tiny256FP16.mlpackage; sourceTree = "<group>"; };
 		115EF1E82B48F6EB00F4C420 /* DepthImageSenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSenceViewController.swift; sourceTree = "<group>"; };
 		115EF1EE2B49127C00F4C420 /* DepthImageRender.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DepthImageRender.metal; sourceTree = "<group>"; };
-		1192515A2B366F6500F72E5D /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		1192515C2B368F8200F72E5D /* Inpaint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inpaint.entitlements; sourceTree = "<group>"; };
 		1192515F2B369FFA00F72E5D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		119251622B36A16000F72E5D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		119251632B36A1DA00F72E5D /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		119251652B36A65000F72E5D /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintingViewController.swift; sourceTree = "<group>"; };
-		11AE81E92B2A008A000F95C4 /* Inpainting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inpainting.swift; sourceTree = "<group>"; };
-		11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LaMaFP16_512.mlpackage; sourceTree = "<group>"; };
 		11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitImageView.swift; sourceTree = "<group>"; };
 		11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LaMaFP16_1024.mlpackage; sourceTree = "<group>"; };
 		11CFF9EF2B18D9FF008CFCA5 /* Inpaint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inpaint.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +141,6 @@
 		11CFFA0F2B18DA01008CFCA5 /* InpaintUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InpaintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11CFFA132B18DA01008CFCA5 /* InpaintUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintUITests.swift; sourceTree = "<group>"; };
 		11CFFA152B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpaintUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmudgeDrawingView.swift; sourceTree = "<group>"; };
 		11F2B9592B556F71001318F5 /* AVDepthData+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVDepthData+Utils.swift"; sourceTree = "<group>"; };
 		11F2B95A2B556F71001318F5 /* CGImageSource+Depth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImageSource+Depth.swift"; sourceTree = "<group>"; };
 		11F2B99B2B583003001318F5 /* SettingViewControoler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewControoler.swift; sourceTree = "<group>"; };
@@ -164,7 +152,6 @@
 		A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.release.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.release.xcconfig"; sourceTree = "<group>"; };
 		AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InpaintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDepthPrediction.swift; sourceTree = "<group>"; };
-		BC7AA7B22B50364000DC34EE /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BCAE54882B5020C20008EF90 /* MagicPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCAE548B2B5020C20008EF90 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		BCAE548E2B5020C20008EF90 /* MagicPhotoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicPhotoApp.swift; sourceTree = "<group>"; };
@@ -180,6 +167,8 @@
 		D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E084CFB713396F64E30392E4 /* Pods-Inpaint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.debug.xcconfig"; sourceTree = "<group>"; };
 		E4F7CAAF75AB1E9031F0F8FB /* Pods-Inpaint-InpaintEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintEditor.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintEditor/Pods-Inpaint-InpaintEditor.release.xcconfig"; sourceTree = "<group>"; };
+		F6ABB77CBD3FDCDD0573234E /* Pods_Inpaint_Inpainting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint_Inpainting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4B8C7865C5B7DAFBA2B470 /* Pods-Inpaint-Inpainting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-Inpainting.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-Inpainting/Pods-Inpaint-Inpainting.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,16 +251,6 @@
 			path = DepthImage;
 			sourceTree = "<group>";
 		};
-		119251592B366F5300F72E5D /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				1192515A2B366F6500F72E5D /* CGRect.swift */,
-				119251652B36A65000F72E5D /* Localization.swift */,
-				BC7AA7B22B50364000DC34EE /* UIImage.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		1192515E2B369FA600F72E5D /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,21 +295,16 @@
 				115EF1E72B48F6D500F4C420 /* DepthImage */,
 				1192515E2B369FA600F72E5D /* Localization */,
 				1192515C2B368F8200F72E5D /* Inpaint.entitlements */,
-				119251592B366F5300F72E5D /* Utils */,
 				11C1FA302B1DC87F0021EA5F /* LaMaFP16_1024.mlpackage */,
-				11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */,
 				1127672F2B62B09A008B5AC5 /* depth.data */,
 				1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */,
 				11CFF9F22B18D9FF008CFCA5 /* AppDelegate.swift */,
 				11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */,
-				11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */,
 				11CFF9F82B18D9FF008CFCA5 /* Main.storyboard */,
 				11CFF9FB2B18DA01008CFCA5 /* Assets.xcassets */,
 				11CFF9FD2B18DA01008CFCA5 /* LaunchScreen.storyboard */,
 				11CFFA002B18DA01008CFCA5 /* Info.plist */,
-				11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */,
 				11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */,
-				11AE81E92B2A008A000F95C4 /* Inpainting.swift */,
 				11F2B99D2B583084001318F5 /* PurchaseManager.swift */,
 				11FFAD752B5A990100EF752B /* Inpaint-Bridging-Header.h */,
 			);
@@ -402,6 +376,7 @@
 				11292ACE2B67C9D0000AFF6F /* PhotosUI.framework */,
 				11292AD02B67C9D1000AFF6F /* Photos.framework */,
 				C31C3033B26B3A067657D02C /* Pods_Inpaint_InpaintEditor.framework */,
+				F6ABB77CBD3FDCDD0573234E /* Pods_Inpaint_Inpainting.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -417,6 +392,8 @@
 				1A93C1B326361604F4C9E547 /* Pods-InpaintTests.release.xcconfig */,
 				30583F0EBE2054D3CA95AB06 /* Pods-Inpaint-InpaintEditor.debug.xcconfig */,
 				E4F7CAAF75AB1E9031F0F8FB /* Pods-Inpaint-InpaintEditor.release.xcconfig */,
+				01790B11CE53A45E8B7A64C0 /* Pods-Inpaint-Inpainting.debug.xcconfig */,
+				FA4B8C7865C5B7DAFBA2B470 /* Pods-Inpaint-Inpainting.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -432,6 +409,7 @@
 				11292AC92B67C9D0000AFF6F /* Sources */,
 				11292ACA2B67C9D0000AFF6F /* Frameworks */,
 				11292ACB2B67C9D0000AFF6F /* Resources */,
+				ECDBDA96A283A0CDB41BE802 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -451,6 +429,8 @@
 				11CFF9EC2B18D9FF008CFCA5 /* Frameworks */,
 				11CFF9ED2B18D9FF008CFCA5 /* Resources */,
 				11292ADC2B67C9D1000AFF6F /* Embed Foundation Extensions */,
+				11292B032B67E8FF000AFF6F /* Embed Frameworks */,
+				E45E2D5B38EFBF40F35F1E84 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -489,6 +469,7 @@
 				11CFFA0B2B18DA01008CFCA5 /* Sources */,
 				11CFFA0C2B18DA01008CFCA5 /* Frameworks */,
 				11CFFA0D2B18DA01008CFCA5 /* Resources */,
+				D0329C3AC2EC34F49888A92C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -714,6 +695,57 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D0329C3AC2EC34F49888A92C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E45E2D5B38EFBF40F35F1E84 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint/Pods-Inpaint-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint/Pods-Inpaint-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inpaint/Pods-Inpaint-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECDBDA96A283A0CDB41BE802 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintEditor/Pods-Inpaint-InpaintEditor-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintEditor/Pods-Inpaint-InpaintEditor-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintEditor/Pods-Inpaint-InpaintEditor-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -721,14 +753,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11292AE22B67D206000AFF6F /* LaMaFP16_512.mlpackage in Sources */,
 				11292AD42B67C9D1000AFF6F /* PhotoEditingViewController.swift in Sources */,
-				11292AE42B67D217000AFF6F /* Localization.swift in Sources */,
-				11292AE32B67D215000AFF6F /* CGRect.swift in Sources */,
-				11292AE12B67D1FB000AFF6F /* Inpainting.swift in Sources */,
-				11292AE02B67D075000AFF6F /* InpaintingViewController.swift in Sources */,
-				11292AE62B67D240000AFF6F /* SmudgeDrawingView.swift in Sources */,
-				11292AE52B67D21A000AFF6F /* UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,25 +764,18 @@
 				11C1FA2F2B1C80FE0021EA5F /* SplitImageView.swift in Sources */,
 				115EF1EF2B49127C00F4C420 /* DepthImageRender.metal in Sources */,
 				11292AC82B652B0E000AFF6F /* AboutViewController.swift in Sources */,
-				11AE81E82B2A0043000F95C4 /* InpaintingViewController.swift in Sources */,
-				11C1FA2D2B1C13600021EA5F /* LaMaFP16_512.mlpackage in Sources */,
 				1127672E2B62A88A008B5AC5 /* DeepImagePreviewViewController.swift in Sources */,
 				BCAE549F2B5021110008EF90 /* DepthImage3DModleGenerator.swift in Sources */,
-				11AE81EA2B2A008A000F95C4 /* Inpainting.swift in Sources */,
 				BC7AA7AD2B50350300DC34EE /* ImageDepthPrediction.swift in Sources */,
 				1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */,
-				11CFFA372B19F05D008CFCA5 /* SmudgeDrawingView.swift in Sources */,
 				11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */,
 				1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */,
-				119251662B36A65000F72E5D /* Localization.swift in Sources */,
 				11F2B99E2B583084001318F5 /* PurchaseManager.swift in Sources */,
 				115EF1E92B48F6EB00F4C420 /* DepthImageSenceViewController.swift in Sources */,
 				11F2B95B2B556F71001318F5 /* AVDepthData+Utils.swift in Sources */,
 				11F2B99C2B583003001318F5 /* SettingViewControoler.swift in Sources */,
 				11F2B95C2B556F71001318F5 /* CGImageSource+Depth.swift in Sources */,
 				11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */,
-				1192515B2B366F6500F72E5D /* CGRect.swift in Sources */,
-				BC7AA7B32B50364000DC34EE /* UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,14 +801,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCAE549E2B50210E0008EF90 /* DepthImage3DModleGenerator.swift in Sources */,
-				BC7AA7B42B50365100DC34EE /* UIImage.swift in Sources */,
 				BC7AA7AE2B50356F00DC34EE /* ImageDepthPrediction.swift in Sources */,
 				BCAE54A12B50211C0008EF90 /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */,
 				BCAE54A02B5021150008EF90 /* DepthImageRender.metal in Sources */,
 				BCAE54912B5020C20008EF90 /* ContentView.swift in Sources */,
-				BC7AA7B12B50358B00DC34EE /* Localization.swift in Sources */,
 				BCB9A5A12B53EF1B009CFDB8 /* MagicWordDetactor.swift in Sources */,
-				BC7AA7B02B50358700DC34EE /* CGRect.swift in Sources */,
 				BCAE548F2B5020C20008EF90 /* MagicPhotoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

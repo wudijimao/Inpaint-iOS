@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 import PhotosUI
+import Inpainting
 
 class PhotoEditingViewController: UIViewController, PHContentEditingController {
 

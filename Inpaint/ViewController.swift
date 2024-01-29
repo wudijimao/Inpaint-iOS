@@ -9,6 +9,7 @@ import UIKit
 import Vision
 import SnapKit
 import Toast_Swift
+import Inpainting
 
 let kLimitImageSize: CGFloat = 2048
 
@@ -189,6 +190,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 vc = DeepImageViewController(image: scaledImage)
             } else {
                 vc = InpaintingViewController(image: scaledImage)
+                vc.sendEventBlock = { msg in
+                    MobClick.event(msg)
+                }
             }
             self.navigationController?.pushViewController(vc, animated: true)
         })

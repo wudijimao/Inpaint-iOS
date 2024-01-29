@@ -1,4 +1,9 @@
 PODS:
+  - CoreMLImage (0.1.0)
+  - Inpainting (0.1.0):
+    - CoreMLImage
+    - SnapKit
+    - Toast-Swift
   - SnapKit (5.6.0)
   - Toast-Swift (5.0.1)
   - UMAPM (1.8.2)
@@ -7,6 +12,8 @@ PODS:
   - UMDevice (3.1.0)
 
 DEPENDENCIES:
+  - CoreMLImage (from `LocalPods/CoreMLImage`)
+  - Inpainting (from `LocalPods/Inpainting`)
   - SnapKit
   - Toast-Swift
   - UMAPM
@@ -21,13 +28,21 @@ SPEC REPOS:
     - UMCommon
     - UMDevice
 
+EXTERNAL SOURCES:
+  CoreMLImage:
+    :path: LocalPods/CoreMLImage
+  Inpainting:
+    :path: LocalPods/Inpainting
+
 SPEC CHECKSUMS:
+  CoreMLImage: 5d3ee7ef3ecbbccba8eec12d39b65bdf4585da12
+  Inpainting: 9a8f6c6fea8ca167e22cb98dd01835407ca57eb3
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   UMAPM: 30c7435fea6cf59bcec7b504a7197a94b59c3b33
   UMCommon: afcbd381039c051d6a9bea864159a09252080a33
   UMDevice: 9ef8045b59e0479cff7062915c879a1af46fa094
 
-PODFILE CHECKSUM: 1a7beaa352f28df82882885df909d6325af2bbb0
+PODFILE CHECKSUM: 74dc0b42d2b44c24fda5ec9cfa3b5200eee383ce
 
 COCOAPODS: 1.11.3

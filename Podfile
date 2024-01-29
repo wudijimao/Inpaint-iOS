@@ -12,6 +12,10 @@ target 'Inpaint' do
   pod 'UMAPM'
 
   # Pods for Inpaint
+  
+  target 'InpaintEditor' do
+  end
+
 
   target 'InpaintTests' do
     inherit! :search_paths

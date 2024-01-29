@@ -11,6 +11,18 @@
 		112767302B62B09A008B5AC5 /* depth.data in Resources */ = {isa = PBXBuildFile; fileRef = 1127672F2B62B09A008B5AC5 /* depth.data */; };
 		112767322B62B0D4008B5AC5 /* Res in Resources */ = {isa = PBXBuildFile; fileRef = 112767312B62B0D4008B5AC5 /* Res */; };
 		11292AC82B652B0E000AFF6F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11292AC72B652B0E000AFF6F /* AboutViewController.swift */; };
+		11292ACF2B67C9D1000AFF6F /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11292ACE2B67C9D0000AFF6F /* PhotosUI.framework */; };
+		11292AD12B67C9D1000AFF6F /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11292AD02B67C9D1000AFF6F /* Photos.framework */; };
+		11292AD42B67C9D1000AFF6F /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11292AD32B67C9D1000AFF6F /* PhotoEditingViewController.swift */; };
+		11292AD72B67C9D1000AFF6F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11292AD52B67C9D1000AFF6F /* MainInterface.storyboard */; };
+		11292ADB2B67C9D1000AFF6F /* InpaintEditor.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 11292ACD2B67C9D0000AFF6F /* InpaintEditor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		11292AE02B67D075000AFF6F /* InpaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E72B2A0043000F95C4 /* InpaintingViewController.swift */; };
+		11292AE12B67D1FB000AFF6F /* Inpainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE81E92B2A008A000F95C4 /* Inpainting.swift */; };
+		11292AE22B67D206000AFF6F /* LaMaFP16_512.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2C2B1C13600021EA5F /* LaMaFP16_512.mlpackage */; };
+		11292AE32B67D215000AFF6F /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192515A2B366F6500F72E5D /* CGRect.swift */; };
+		11292AE42B67D217000AFF6F /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119251652B36A65000F72E5D /* Localization.swift */; };
+		11292AE52B67D21A000AFF6F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7B22B50364000DC34EE /* UIImage.swift */; };
+		11292AE62B67D240000AFF6F /* SmudgeDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA362B19F05D008CFCA5 /* SmudgeDrawingView.swift */; };
 		1144D1A02B39B47E00E4142F /* DeepImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */; };
 		1144D1A22B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */; };
 		115EF1E92B48F6EB00F4C420 /* DepthImageSenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115EF1E82B48F6EB00F4C420 /* DepthImageSenceViewController.swift */; };
@@ -38,6 +50,7 @@
 		11F2B99E2B583084001318F5 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B99D2B583084001318F5 /* PurchaseManager.swift */; };
 		3CF5136D7FA29622DA933275 /* Pods_Inpaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */; };
 		5A5261AB7059201704BCF1F0 /* Pods_Inpaint_InpaintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */; };
+		863B7B855AD35D0ECA2EC710 /* Pods_Inpaint_InpaintEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31C3033B26B3A067657D02C /* Pods_Inpaint_InpaintEditor.framework */; };
 		90609CAA495B37910B508E46 /* Pods_InpaintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */; };
 		BC7AA7AD2B50350300DC34EE /* ImageDepthPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */; };
 		BC7AA7AE2B50356F00DC34EE /* ImageDepthPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AA7AC2B50350300DC34EE /* ImageDepthPrediction.swift */; };
@@ -61,6 +74,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		11292AD92B67C9D1000AFF6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 11CFF9E72B18D9FF008CFCA5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11292ACC2B67C9D0000AFF6F;
+			remoteInfo = InpaintEditor;
+		};
 		11CFFA062B18DA01008CFCA5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 11CFF9E72B18D9FF008CFCA5 /* Project object */;
@@ -77,6 +97,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		11292ADC2B67C9D1000AFF6F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				11292ADB2B67C9D1000AFF6F /* InpaintEditor.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint_InpaintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.debug.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +119,12 @@
 		1127672F2B62B09A008B5AC5 /* depth.data */ = {isa = PBXFileReference; lastKnownFileType = text; name = depth.data; path = MagicPhoto/Res/depth.data; sourceTree = SOURCE_ROOT; };
 		112767312B62B0D4008B5AC5 /* Res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Res; sourceTree = "<group>"; };
 		11292AC72B652B0E000AFF6F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		11292ACD2B67C9D0000AFF6F /* InpaintEditor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = InpaintEditor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		11292ACE2B67C9D0000AFF6F /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		11292AD02B67C9D1000AFF6F /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		11292AD32B67C9D1000AFF6F /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		11292AD62B67C9D1000AFF6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		11292AD82B67C9D1000AFF6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1144D19F2B39B47E00E4142F /* DeepImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepImageViewController.swift; sourceTree = "<group>"; };
 		1144D1A12B39B4C200E4142F /* MiDaSMobileSwin2Tiny256FP16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MiDaSMobileSwin2Tiny256FP16.mlpackage; sourceTree = "<group>"; };
 		115EF1E82B48F6EB00F4C420 /* DepthImageSenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageSenceViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +159,7 @@
 		11F2B99D2B583084001318F5 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		11FFAD752B5A990100EF752B /* Inpaint-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Inpaint-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A93C1B326361604F4C9E547 /* Pods-InpaintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InpaintTests.release.xcconfig"; path = "Target Support Files/Pods-InpaintTests/Pods-InpaintTests.release.xcconfig"; sourceTree = "<group>"; };
+		30583F0EBE2054D3CA95AB06 /* Pods-Inpaint-InpaintEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintEditor.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintEditor/Pods-Inpaint-InpaintEditor.debug.xcconfig"; sourceTree = "<group>"; };
 		85CF5DBC619910A0108151C8 /* Pods-Inpaint-InpaintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.release.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.release.xcconfig"; sourceTree = "<group>"; };
 		AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InpaintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,11 +176,23 @@
 		BCC06E602B4F88F1002E28BD /* DepthImage3DModleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImage3DModleGenerator.swift; sourceTree = "<group>"; };
 		BCCFA89A2B5D22550062C96A /* data.mgobj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.mgobj; sourceTree = "<group>"; };
 		BCCFA89B2B5D22550062C96A /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
+		C31C3033B26B3A067657D02C /* Pods_Inpaint_InpaintEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inpaint_InpaintEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintUITests.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E084CFB713396F64E30392E4 /* Pods-Inpaint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint.debug.xcconfig"; path = "Target Support Files/Pods-Inpaint/Pods-Inpaint.debug.xcconfig"; sourceTree = "<group>"; };
+		E4F7CAAF75AB1E9031F0F8FB /* Pods-Inpaint-InpaintEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inpaint-InpaintEditor.release.xcconfig"; path = "Target Support Files/Pods-Inpaint-InpaintEditor/Pods-Inpaint-InpaintEditor.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		11292ACA2B67C9D0000AFF6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11292ACF2B67C9D1000AFF6F /* PhotosUI.framework in Frameworks */,
+				11292AD12B67C9D1000AFF6F /* Photos.framework in Frameworks */,
+				863B7B855AD35D0ECA2EC710 /* Pods_Inpaint_InpaintEditor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		11CFF9EC2B18D9FF008CFCA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -184,6 +237,16 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		11292AD22B67C9D1000AFF6F /* InpaintEditor */ = {
+			isa = PBXGroup;
+			children = (
+				11292AD32B67C9D1000AFF6F /* PhotoEditingViewController.swift */,
+				11292AD52B67C9D1000AFF6F /* MainInterface.storyboard */,
+				11292AD82B67C9D1000AFF6F /* Info.plist */,
+			);
+			path = InpaintEditor;
+			sourceTree = "<group>";
+		};
 		115EF1E72B48F6D500F4C420 /* DepthImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +289,7 @@
 				11CFFA122B18DA01008CFCA5 /* InpaintUITests */,
 				BCAE54892B5020C20008EF90 /* MagicPhoto */,
 				BCAE548A2B5020C20008EF90 /* Packages */,
+				11292AD22B67C9D1000AFF6F /* InpaintEditor */,
 				11CFF9F02B18D9FF008CFCA5 /* Products */,
 				EA541A4E031102D287C1266B /* Pods */,
 				C66415C5D5EA8FB3CD0D26FF /* Frameworks */,
@@ -239,6 +303,7 @@
 				11CFFA052B18DA01008CFCA5 /* InpaintTests.xctest */,
 				11CFFA0F2B18DA01008CFCA5 /* InpaintUITests.xctest */,
 				BCAE54882B5020C20008EF90 /* MagicPhoto.app */,
+				11292ACD2B67C9D0000AFF6F /* InpaintEditor.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -334,6 +399,9 @@
 				0B6006C652C31F0B1D1DB6D7 /* Pods_Inpaint.framework */,
 				05B7ACEF06E77CD3E91FC769 /* Pods_Inpaint_InpaintUITests.framework */,
 				AC4CA385A6A39DF57A6AA9F8 /* Pods_InpaintTests.framework */,
+				11292ACE2B67C9D0000AFF6F /* PhotosUI.framework */,
+				11292AD02B67C9D1000AFF6F /* Photos.framework */,
+				C31C3033B26B3A067657D02C /* Pods_Inpaint_InpaintEditor.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -347,6 +415,8 @@
 				D9E7658C0F526B8A6D41DAC1 /* Pods-Inpaint-InpaintUITests.release.xcconfig */,
 				0B15625F97450C34688782A6 /* Pods-InpaintTests.debug.xcconfig */,
 				1A93C1B326361604F4C9E547 /* Pods-InpaintTests.release.xcconfig */,
+				30583F0EBE2054D3CA95AB06 /* Pods-Inpaint-InpaintEditor.debug.xcconfig */,
+				E4F7CAAF75AB1E9031F0F8FB /* Pods-Inpaint-InpaintEditor.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -354,6 +424,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		11292ACC2B67C9D0000AFF6F /* InpaintEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11292ADF2B67C9D1000AFF6F /* Build configuration list for PBXNativeTarget "InpaintEditor" */;
+			buildPhases = (
+				5A5B54C3F85260167333580E /* [CP] Check Pods Manifest.lock */,
+				11292AC92B67C9D0000AFF6F /* Sources */,
+				11292ACA2B67C9D0000AFF6F /* Frameworks */,
+				11292ACB2B67C9D0000AFF6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InpaintEditor;
+			productName = InpaintEditor;
+			productReference = 11292ACD2B67C9D0000AFF6F /* InpaintEditor.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		11CFF9EE2B18D9FF008CFCA5 /* Inpaint */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11CFFA192B18DA01008CFCA5 /* Build configuration list for PBXNativeTarget "Inpaint" */;
@@ -362,10 +450,12 @@
 				11CFF9EB2B18D9FF008CFCA5 /* Sources */,
 				11CFF9EC2B18D9FF008CFCA5 /* Frameworks */,
 				11CFF9ED2B18D9FF008CFCA5 /* Resources */,
+				11292ADC2B67C9D1000AFF6F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				11292ADA2B67C9D1000AFF6F /* PBXTargetDependency */,
 			);
 			name = Inpaint;
 			productName = Inpaint;
@@ -440,6 +530,9 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
+					11292ACC2B67C9D0000AFF6F = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					11CFF9EE2B18D9FF008CFCA5 = {
 						CreatedOnToolsVersion = 15.1;
 						LastSwiftMigration = 1520;
@@ -476,11 +569,20 @@
 				11CFFA042B18DA01008CFCA5 /* InpaintTests */,
 				11CFFA0E2B18DA01008CFCA5 /* InpaintUITests */,
 				BCAE54872B5020C20008EF90 /* MagicPhoto */,
+				11292ACC2B67C9D0000AFF6F /* InpaintEditor */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		11292ACB2B67C9D0000AFF6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11292AD72B67C9D1000AFF6F /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		11CFF9ED2B18D9FF008CFCA5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -546,6 +648,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5A5B54C3F85260167333580E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Inpaint-InpaintEditor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		91AC5FA5301BBC924297A5BA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -593,6 +717,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		11292AC92B67C9D0000AFF6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11292AE22B67D206000AFF6F /* LaMaFP16_512.mlpackage in Sources */,
+				11292AD42B67C9D1000AFF6F /* PhotoEditingViewController.swift in Sources */,
+				11292AE42B67D217000AFF6F /* Localization.swift in Sources */,
+				11292AE32B67D215000AFF6F /* CGRect.swift in Sources */,
+				11292AE12B67D1FB000AFF6F /* Inpainting.swift in Sources */,
+				11292AE02B67D075000AFF6F /* InpaintingViewController.swift in Sources */,
+				11292AE62B67D240000AFF6F /* SmudgeDrawingView.swift in Sources */,
+				11292AE52B67D21A000AFF6F /* UIImage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		11CFF9EB2B18D9FF008CFCA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -659,6 +798,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		11292ADA2B67C9D1000AFF6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 11292ACC2B67C9D0000AFF6F /* InpaintEditor */;
+			targetProxy = 11292AD92B67C9D1000AFF6F /* PBXContainerItemProxy */;
+		};
 		11CFFA072B18DA01008CFCA5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 11CFF9EE2B18D9FF008CFCA5 /* Inpaint */;
@@ -672,6 +816,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		11292AD52B67C9D1000AFF6F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				11292AD62B67C9D1000AFF6F /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		11CFF9F82B18D9FF008CFCA5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -692,6 +844,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		11292ADD2B67C9D1000AFF6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30583F0EBE2054D3CA95AB06 /* Pods-Inpaint-InpaintEditor.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26NS455T8K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InpaintEditor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InpaintEditor;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint.InpaintEditor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		11292ADE2B67C9D1000AFF6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4F7CAAF75AB1E9031F0F8FB /* Pods-Inpaint-InpaintEditor.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26NS455T8K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InpaintEditor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InpaintEditor;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint.InpaintEditor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		11CFFA172B18DA01008CFCA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -815,6 +1021,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E084CFB713396F64E30392E4 /* Pods-Inpaint.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -854,6 +1061,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A086FDD6FF2D80CF0E84BDE2 /* Pods-Inpaint.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -1025,6 +1233,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		11292ADF2B67C9D1000AFF6F /* Build configuration list for PBXNativeTarget "InpaintEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11292ADD2B67C9D1000AFF6F /* Debug */,
+				11292ADE2B67C9D1000AFF6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		11CFF9EA2B18D9FF008CFCA5 /* Build configuration list for PBXProject "Inpaint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

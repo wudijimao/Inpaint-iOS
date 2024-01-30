@@ -189,15 +189,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if self.is3DPhotoGen {
                 vc = DeepImageViewController(image: scaledImage)
             } else {
-                vc = InpaintingViewController(image: scaledImage)
-                vc.sendEventBlock = { msg in
+                let inpaintVC = InpaintingViewController(image: scaledImage)
+                inpaintVC.sendEventBlock = { msg in
                     MobClick.event(msg)
                 }
+                vc = inpaintVC
             }
             self.navigationController?.pushViewController(vc, animated: true)
         })
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

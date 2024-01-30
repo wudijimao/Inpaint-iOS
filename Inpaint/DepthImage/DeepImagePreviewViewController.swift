@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Toast_Swift
+import CoreMLImage
 
 // 深度图预览
 class DeepImagePreviewViewController: UIViewController {

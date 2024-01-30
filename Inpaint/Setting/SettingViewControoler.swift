@@ -35,6 +35,7 @@ class SettingViewController: UIViewController {
 
 // SettingView.swift
 import SwiftUI
+import CoreMLImage
 
 struct SettingView: View {
     // 创建一个状态属性，用于控制恢复购买的操作

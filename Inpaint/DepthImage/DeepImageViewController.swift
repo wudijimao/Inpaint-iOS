@@ -10,6 +10,7 @@ import Vision
 import CoreML
 import SnapKit
 import Toast_Swift
+import CoreMLImage
 
 // 图片生成深度图
 class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -85,7 +86,6 @@ class DeepImageViewController: UIViewController, UIImagePickerControllerDelegate
             self.setupSaveButton()
             self.imageView.isHidden = true
             
-            depthData.saveTo(fileURL: URL.documentsDirectory.appendingPathComponent("depth.data"))
             let vc = DepthImageSenceViewController(image: image, depthData: depthData)
             self.senceVC = vc
             self.addChild(vc)

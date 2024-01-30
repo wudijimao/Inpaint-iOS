@@ -409,7 +409,6 @@
 				11292AC92B67C9D0000AFF6F /* Sources */,
 				11292ACA2B67C9D0000AFF6F /* Frameworks */,
 				11292ACB2B67C9D0000AFF6F /* Resources */,
-				ECDBDA96A283A0CDB41BE802 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -430,7 +429,7 @@
 				11CFF9ED2B18D9FF008CFCA5 /* Resources */,
 				11292ADC2B67C9D1000AFF6F /* Embed Foundation Extensions */,
 				11292B032B67E8FF000AFF6F /* Embed Frameworks */,
-				E45E2D5B38EFBF40F35F1E84 /* [CP] Copy Pods Resources */,
+				FF9EE662CE875CDFEBD68D60 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -469,7 +468,7 @@
 				11CFFA0B2B18DA01008CFCA5 /* Sources */,
 				11CFFA0C2B18DA01008CFCA5 /* Frameworks */,
 				11CFFA0D2B18DA01008CFCA5 /* Resources */,
-				D0329C3AC2EC34F49888A92C /* [CP] Copy Pods Resources */,
+				E75F5A5A7D81CBDF7F2B118F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -695,55 +694,38 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D0329C3AC2EC34F49888A92C /* [CP] Copy Pods Resources */ = {
+		E75F5A5A7D81CBDF7F2B118F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintUITests/Pods-Inpaint-InpaintUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E45E2D5B38EFBF40F35F1E84 /* [CP] Copy Pods Resources */ = {
+		FF9EE662CE875CDFEBD68D60 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inpaint/Pods-Inpaint-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint/Pods-Inpaint-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inpaint/Pods-Inpaint-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Inpaint/Pods-Inpaint-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inpaint/Pods-Inpaint-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ECDBDA96A283A0CDB41BE802 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintEditor/Pods-Inpaint-InpaintEditor-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintEditor/Pods-Inpaint-InpaintEditor-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inpaint-InpaintEditor/Pods-Inpaint-InpaintEditor-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inpaint/Pods-Inpaint-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -866,6 +848,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 26NS455T8K;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InpaintEditor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = InpaintEditor;
@@ -893,6 +876,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 26NS455T8K;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InpaintEditor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = InpaintEditor;
@@ -1044,6 +1028,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 26NS455T8K;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Inpaint;
@@ -1084,6 +1069,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 26NS455T8K;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Inpaint/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Inpaint;

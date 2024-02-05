@@ -9,6 +9,7 @@ import UIKit
 import Photos
 import PhotosUI
 import Inpainting
+import SnapKit
 
 class PhotoEditingViewController: UIViewController, PHContentEditingController {
 
@@ -35,8 +36,20 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
         
         if let image = contentEditingInput.displaySizeImage {
             let vc = InpaintingViewController(image: image)
-            self.view.addSubview(vc.view)
-            vc.view.frame = self.view.bounds
+            let nvc = UINavigationController(rootViewController: vc)
+            self.present(nvc, animated: true)
+            
+//            // 将子视图控制器的视图添加到当前视图控制器的视图
+//            self.addChild(vc)
+//            self.view.addSubview(vc.view)
+//
+//            // 配置约束
+//            vc.view.snp.makeConstraints { make in
+//                make.edges.equalToSuperview()
+//            }
+//
+//            // 调用 didMove(toParent:) 来完成添加流程
+//            vc.didMove(toParent: self)
         }
     }
     

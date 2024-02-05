@@ -111,9 +111,14 @@ open class InpaintingViewController: UIViewController {
         drawView.brushSize = CGFloat(roundedValue)
     }
     
+    /// 默认内存警告剩最后三次撤销，在系统照片编辑plugin中，设置为1
+    public var memoryWarningLimitCount = 3
+    public var undoLimitHistorySteps: Int = Int.max
+    
     
     var undoList = [UIImage]() {
         didSet {
+            _limitUndoList(undoLimitHistorySteps)
             unDoButton.isEnabled = undoList.count > 0
         }
     }
@@ -123,13 +128,21 @@ open class InpaintingViewController: UIViewController {
         self.imageView.image = img
     }
     
+    private func _limitUndoList(_ count: Int) {
+        var limitCount = count
+        if limitCount < 2 {
+            limitCount = 2 // 最小限制两个
+        }
+        if undoList.count > limitCount {
+            let lastOperations = undoList.suffix(limitCount - 1)
+            undoList = [undoList[0]] + lastOperations
+        }
+    }
+    
     public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // 如果收到内存警告则只保留最新的两次操作和原始图片
-        if undoList.count > 3 {
-            let lastTwoOperations = undoList.suffix(2)
-            undoList = [undoList[0]] + lastTwoOperations
-        }
+        _limitUndoList(memoryWarningLimitCount)
     }
     
     var hasWarned = false

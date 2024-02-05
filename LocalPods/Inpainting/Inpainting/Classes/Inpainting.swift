@@ -37,34 +37,37 @@ class LaMaImageInpenting: ImageInpenting {
     }
     
     func inpent(image: UIImage, mask: UIImage, inpaintingRects:[CGRect], completion: @escaping (UIImage?, NSError?) -> Void) {
+        
+        let callComplete: (UIImage?, NSError?) -> Void  = { img, err in
+            DispatchQueue.main.async {
+                completion(img, err)
+            }
+        }
+        
         workQueue.async {
             guard let lama = self.lama else { return }
         
             let rect = inpaintingRects.largestBoundingRect()
             let imgs = image.processForInpainting(mask: mask, cropFrame: rect, targetSize: .init(width: self.imageSize, height: self.imageSize))
             guard let imgBuffer = imgs.img.buffer(ofSize: self.imageSize) else {
-                completion(nil, nil)
+                callComplete(nil, nil)
                 return
             }
             guard let maskBuffer = imgs.mask.grayBuffer(ofSize: self.imageSize) else {
-                completion(nil, nil)
+                callComplete(nil, nil)
                 return
             }
             do {
                 let result = try lama.prediction(image: imgBuffer, mask: maskBuffer)
                 guard let outImage = result.output.uiImage else {
-                    completion(nil, nil)
+                    callComplete(nil, nil)
                     return
                 }
                 let finalImage = imgs.transpose.writeBack(to: image, subImg: outImage)
-                DispatchQueue.main.async {
-                    completion(finalImage, nil)
-                }
+                callComplete(finalImage, nil)
             } catch(let e) {
                 print(e)
-                DispatchQueue.main.async {
-                    completion(nil, e as NSError)
-                }
+                callComplete(nil, e as NSError)
             }
             
         }

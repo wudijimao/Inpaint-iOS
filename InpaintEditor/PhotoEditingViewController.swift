@@ -36,6 +36,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
         
         if let image = contentEditingInput.displaySizeImage {
             let vc = InpaintingViewController(image: image)
+            vc.undoLimitHistorySteps = 2
             let nvc = UINavigationController(rootViewController: vc)
             self.present(nvc, animated: true)
             

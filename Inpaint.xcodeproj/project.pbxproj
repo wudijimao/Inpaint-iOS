@@ -31,6 +31,7 @@
 		11CFFA0A2B18DA01008CFCA5 /* InpaintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA092B18DA01008CFCA5 /* InpaintTests.swift */; };
 		11CFFA142B18DA01008CFCA5 /* InpaintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA132B18DA01008CFCA5 /* InpaintUITests.swift */; };
 		11CFFA162B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFFA152B18DA01008CFCA5 /* InpaintUITestsLaunchTests.swift */; };
+		11DA847C2B7138150099C346 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1192515F2B369FFA00F72E5D /* Localizable.xcstrings */; };
 		11F2B95B2B556F71001318F5 /* AVDepthData+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B9592B556F71001318F5 /* AVDepthData+Utils.swift */; };
 		11F2B95C2B556F71001318F5 /* CGImageSource+Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B95A2B556F71001318F5 /* CGImageSource+Depth.swift */; };
 		11F2B99C2B583003001318F5 /* SettingViewControoler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2B99B2B583003001318F5 /* SettingViewControoler.swift */; };
@@ -559,6 +560,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11DA847C2B7138150099C346 /* Localizable.xcstrings in Resources */,
 				11292AD72B67C9D1000AFF6F /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

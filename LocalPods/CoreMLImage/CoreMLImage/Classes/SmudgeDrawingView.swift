@@ -14,7 +14,7 @@ open class SmudgeDrawingView: UIView {
     private var path: UIBezierPath = UIBezierPath()
     private var touchPoints: [CGPoint] = []
     
-    public var smudgeColor: UIColor = UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 0.5) // 默认为半透明的淡蓝色
+    public var smudgeColor: UIColor = UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 1.0) // 默认为半透明的淡蓝色
     public var exportLineColor: UIColor = .white // 涂抹部分导出时的颜色
     public var exportBackgroundColor: UIColor = .black // 未涂抹部分导出时的颜色
     public var brushSize: CGFloat = 20.0 // 默认笔刷大小
@@ -92,6 +92,7 @@ open class SmudgeDrawingView: UIView {
         path = UIBezierPath()
         path.lineWidth = brushSize
         path.lineCapStyle = .round // 设置线帽为圆形，使曲线封闭部分为圆形
+        path.lineJoinStyle = .round
         path.move(to: touchPoint)
         touchPoints.append(touchPoint)
     }

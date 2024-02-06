@@ -36,6 +36,7 @@ open class InpaintingViewController: UIViewController {
     
     lazy var drawView: SmudgeDrawingView = {
         let view = SmudgeDrawingView.init()
+        view.alpha = 0.5
         return view
     }()
     

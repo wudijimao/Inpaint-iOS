@@ -28,6 +28,8 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
         return true
     }
     
+    var inpaintingVC: InpaintingViewController?
+    
     func startContentEditing(with contentEditingInput: PHContentEditingInput, placeholderImage: UIImage) {
         // Present content for editing, and keep the contentEditingInput for use when closing the edit session.
         // If you returned true from canHandleAdjustmentData:, contentEditingInput has the original image and adjustment data.
@@ -36,6 +38,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
         
         if let image = contentEditingInput.displaySizeImage {
             let vc = InpaintingViewController(image: image)
+            inpaintingVC = vc
             vc.commandManager.maxUndoStackSize = 2
             vc.commandManager.maxRedoStackSize = 1
             let nvc = UINavigationController(rootViewController: vc)
@@ -67,8 +70,15 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
             // output.adjustmentData = <#new adjustment data#>
             // let renderedJPEGData = <#output JPEG#>
             // renderedJPEGData.writeToURL(output.renderedContentURL, atomically: true)
-            
-            // Call completion handler to commit edit to Photos.
+            let adjustmentData = PHAdjustmentData(formatIdentifier: "YourApp.FormatIdentifier", formatVersion: "1.0", data: "YourAdjustmentsData".data(using: .utf8)!)
+                    output.adjustmentData = adjustmentData
+            do {
+                // Call completion handler to commit edit to Photos.
+                let data = self.inpaintingVC?.image.jpegData(compressionQuality: 1.0)
+                try data?.write(to: output.renderedContentURL, options: .atomic)
+            } catch (let err) {
+                print(err)
+            }
             completionHandler(output)
             
             // Clean up temporary files, etc.

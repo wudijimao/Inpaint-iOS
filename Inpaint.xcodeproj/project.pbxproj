@@ -23,6 +23,7 @@
 		119251602B369FFA00F72E5D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1192515F2B369FFA00F72E5D /* Localizable.xcstrings */; };
 		119251642B36A1DA00F72E5D /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 119251632B36A1DA00F72E5D /* InfoPlist.xcstrings */; };
 		11C1FA2F2B1C80FE0021EA5F /* SplitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1FA2E2B1C80FE0021EA5F /* SplitImageView.swift */; };
+		11C20CF32B729376003DE382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11CFF9FB2B18DA01008CFCA5 /* Assets.xcassets */; };
 		11CFF9F32B18D9FF008CFCA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFF9F22B18D9FF008CFCA5 /* AppDelegate.swift */; };
 		11CFF9F72B18D9FF008CFCA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFF9F62B18D9FF008CFCA5 /* ViewController.swift */; };
 		11CFF9FA2B18D9FF008CFCA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CFF9F82B18D9FF008CFCA5 /* Main.storyboard */; };
@@ -561,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11DA847C2B7138150099C346 /* Localizable.xcstrings in Resources */,
+				11C20CF32B729376003DE382 /* Assets.xcassets in Resources */,
 				11292AD72B67C9D1000AFF6F /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1028,7 +1030,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Inpaint/Inpaint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1045,7 +1047,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1069,7 +1071,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Inpaint/Inpaint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 26NS455T8K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1086,7 +1088,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemiku.Inpaint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

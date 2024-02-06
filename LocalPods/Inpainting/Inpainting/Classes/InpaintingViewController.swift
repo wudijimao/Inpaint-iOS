@@ -32,7 +32,7 @@ open class InpaintingViewController: UIViewController {
         return scrollView
     }()
     var imageView = UIImageView()
-    var image: UIImage
+    public private(set) var image: UIImage
     
     lazy var drawView: SmudgeDrawingView = {
         let view = SmudgeDrawingView.init()
@@ -61,9 +61,9 @@ open class InpaintingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var unDoButton = UIBarButtonItem(title: *"undo", style: .plain, target: self, action: #selector(onUndo))
+    lazy var unDoButton = UIBarButtonItem(image: UIImage(named: "undo_btn"), style: .plain, target: self, action: #selector(onUndo))
     
-    lazy var reDoButton = UIBarButtonItem(title: *"redo", style: .plain, target: self, action: #selector(onRedo))
+    lazy var reDoButton = UIBarButtonItem(image: UIImage(named: "redo_btn"), style: .plain, target: self, action: #selector(onRedo))
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +96,7 @@ open class InpaintingViewController: UIViewController {
         let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
         
         // 将按钮添加到导航栏
-        navigationItem.rightBarButtonItems = [saveButton, clearButton, unDoButton, reDoButton]
+        navigationItem.rightBarButtonItems = [saveButton, clearButton, reDoButton, unDoButton]
         
         loadngView.hidesWhenStopped = true
         view.addSubview(loadngView)

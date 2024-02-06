@@ -23,6 +23,8 @@ class LaMaImageInpenting: ImageInpenting {
     let workQueue = DispatchQueue.init(label: "LaMaImageInpenting")
     
     var imageSize: Int = 512
+
+    var commandManager: AsyncCommandManager = AsyncCommandManager()
     
     lazy var config: MLModelConfiguration = {
         let config = MLModelConfiguration()
@@ -229,3 +231,43 @@ extension Array where Element == CGRect {
         return CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
     }
 }
+
+struct InpaintingPartInfo {
+    /// 从原图中裁剪出来的需要修复的图像(用于undo操作)
+    var croppedImages: UIImage
+    /// 修复后的图像
+    var inpaintedImages: UIImage
+    /// 修复后的图像在原图中的位置
+    var transposeInfoInOriginalImage: UIImage.TransposeInfo
+}
+
+protocol InpaintingCurrentImageProvider: AnyObject {
+    
+}
+
+class InpaintingCommand: AsyncCommand {
+    
+    weak var imageProvider: InpaintingCurrentImageProvider?
+    
+    let inpantingParts: [InpaintingPartInfo]
+
+    init(_ inpantingParts: [InpaintingPartInfo]) {
+        self.inpantingParts = inpantingParts
+    }
+    
+    func execute() async {
+        
+    }
+    
+    func undo() async {
+        
+    }
+    
+    func redo() async {
+        
+    }
+    
+    
+}
+
+

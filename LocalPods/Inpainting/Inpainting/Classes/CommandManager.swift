@@ -27,10 +27,12 @@ public class AsyncCommandManager {
     /// 重做栈内存警告时保留数量
     public var minRedoStackSize: Int = 1
     
-    private var undoStack: [AsyncCommand] = []
-    private var redoStack: [AsyncCommand] = []
+    public private(set) var undoStack: [AsyncCommand] = []
+    public private(set) var redoStack: [AsyncCommand] = []
     
     private var isExecing = false
+    
+    public var onStackChanged: (() -> Void)? = nil
 
     @MainActor
     public func executeCommand(_ command: AsyncCommand) async {
@@ -39,6 +41,7 @@ public class AsyncCommandManager {
         await command.execute()
         undoStack.append(command)
         redoStack.removeAll() // 执行新命令后清空重做栈
+        onStackChanged?()
         limitStackIfNeeded()
         isExecing = false
     }
@@ -51,6 +54,7 @@ public class AsyncCommandManager {
         redoStack.append(command)
         limitStackIfNeeded()
         isExecing = false
+        onStackChanged?()
     }
 
     @MainActor
@@ -61,10 +65,11 @@ public class AsyncCommandManager {
         undoStack.append(command)
         limitStackIfNeeded()
         isExecing = false
+        onStackChanged?()
     }
     
     @MainActor
-    public func reciveMemoryWarning() async {
+    public func reciveMemoryWarning() {
         limitStack(minUndoStackSize, minRedoStackSize)
     }
     
@@ -79,6 +84,7 @@ public class AsyncCommandManager {
         if redoStack.count > redoCount {
             redoStack.removeFirst(redoStack.count - redoCount)
         }
+        onStackChanged?()
     }
 }
 

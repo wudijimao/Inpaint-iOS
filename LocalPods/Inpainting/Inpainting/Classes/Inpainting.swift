@@ -24,7 +24,10 @@ class LaMaImageInpenting: ImageInpenting {
     
     var imageSize: Int = 512
 
-    var commandManager: AsyncCommandManager = AsyncCommandManager()
+    public var commandManager: AsyncCommandManager = AsyncCommandManager()
+    
+    // 目前是给redo undo使用
+    public weak var imageProvider: InpaintingCurrentImageProvider?
     
     lazy var config: MLModelConfiguration = {
         let config = MLModelConfiguration()
@@ -66,7 +69,13 @@ class LaMaImageInpenting: ImageInpenting {
                     return
                 }
                 let finalImage = imgs.transpose.writeBack(to: image, subImg: outImage)
-                callComplete(finalImage, nil)
+                
+                Task { @MainActor in
+                    let cmd = InpaintingCommand([InpaintingPartInfo.init(croppedImage: imgs.img, transposeInfoInOriginalImage: imgs.transpose)])
+                    cmd.imageProvider = self.imageProvider
+                    await self.commandManager.executeCommand(cmd)
+                    callComplete(finalImage, nil)
+                }
             } catch(let e) {
                 print(e)
                 callComplete(nil, e as NSError)
@@ -131,6 +140,13 @@ extension UIImage {
             // 如果涂抹区域过大，原始尺寸大于模型可处理尺寸时需要放大，这时候可能会导致模糊
             let originSubImg = subImg.scaleTo(size: originalSize)
             return img.writeBack(image: originSubImg, to: position)
+        }
+        
+        // 从图片中提取该截取的部分
+        func getSubImg(from img: UIImage) -> UIImage {
+            let frame = CGRect.init(origin: position, size: originalSize)
+            let cropedImg = img.crop(to: frame)
+            return cropedImg
         }
     }
     
@@ -232,23 +248,51 @@ extension Array where Element == CGRect {
     }
 }
 
-struct InpaintingPartInfo {
+class InpaintingPartInfo {
+    internal init(croppedImage: UIImage, transposeInfoInOriginalImage: UIImage.TransposeInfo) {
+        self.croppedImage = croppedImage
+        self.transposeInfoInOriginalImage = transposeInfoInOriginalImage
+    }
+    
     /// 从原图中裁剪出来的需要修复的图像(用于undo操作)
-    var croppedImages: UIImage
-    /// 修复后的图像
-    var inpaintedImages: UIImage
-    /// 修复后的图像在原图中的位置
+    var croppedImage: UIImage?
+    /// 图片数据
+    var croppedImageData: Data?
+    /// 图像在原图中的位置
     var transposeInfoInOriginalImage: UIImage.TransposeInfo
+    
+    func getImage() -> UIImage? {
+        if let croppedImage {
+            return croppedImage
+        } else if let croppedImageData {
+            return UIImage.init(data: croppedImageData)
+        } else {
+            return nil
+        }
+    }
+    
+    func comprese() {
+        DispatchQueue.global(qos: .background).async {
+            if let croppedImage = self.croppedImage {
+                self.croppedImageData = croppedImage.pngData()
+                self.croppedImage = nil
+            }
+        }
+    }
 }
 
 protocol InpaintingCurrentImageProvider: AnyObject {
-    
+    /// 获取当前需要修复的图像
+    func getCurrentImageForInpainting() -> UIImage?
+    /// 修复后的图像, 或者撤销
+    func onInpaintingImageChanged(_ image: UIImage)
 }
 
 class InpaintingCommand: AsyncCommand {
     
     weak var imageProvider: InpaintingCurrentImageProvider?
     
+    /// 可能会一次涂抹多片，这里可以存储多个片区
     let inpantingParts: [InpaintingPartInfo]
 
     init(_ inpantingParts: [InpaintingPartInfo]) {
@@ -256,15 +300,36 @@ class InpaintingCommand: AsyncCommand {
     }
     
     func execute() async {
-        
+        // 不实际做inpaint， 在外部执行好了
+        // 异步压缩传进来的图片
+        inpantingParts.forEach { info in
+            info.comprese()
+        }
+    }
+    
+    // 正反操作是一样的，所以写在这里
+    private func _do() async {
+        await withCheckedContinuation { continuation in
+            guard var image = imageProvider?.getCurrentImageForInpainting() else { return }
+            inpantingParts.forEach { info in
+                guard let toReplaceImage = info.getImage() else {
+                    return
+                }
+                let croppedImg = info.transposeInfoInOriginalImage.getSubImg(from: image)
+                image = info.transposeInfoInOriginalImage.writeBack(to: image, subImg: toReplaceImage)
+                info.croppedImage = croppedImg
+            }
+            imageProvider?.onInpaintingImageChanged(image)
+            continuation.resume()
+        }
     }
     
     func undo() async {
-        
+        await _do()
     }
     
     func redo() async {
-        
+        await _do()
     }
     
     

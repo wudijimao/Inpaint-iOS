@@ -14,7 +14,11 @@ open class InpaintingViewController: UIViewController {
     
     public var sendEventBlock: ((String) -> Void)?
     
-    var inpenting = LaMaImageInpenting.init()
+    let inpenting = LaMaImageInpenting.init()
+    
+    public let commandManager = AsyncCommandManager()
+    
+    
     
     // 新增：加载指示器
     var loadngView = UIActivityIndicatorView(style: .large)
@@ -28,6 +32,7 @@ open class InpaintingViewController: UIViewController {
         return scrollView
     }()
     var imageView = UIImageView()
+    var image: UIImage
     
     lazy var drawView: SmudgeDrawingView = {
         let view = SmudgeDrawingView.init()
@@ -35,9 +40,20 @@ open class InpaintingViewController: UIViewController {
     }()
     
     public init(image: UIImage) {
+        self.image = image
         super.init(nibName: nil, bundle: nil)
         imageView.image = image
         imageView.backgroundColor = .red
+        inpenting.commandManager = self.commandManager
+        inpenting.imageProvider = self
+        
+        self.unDoButton.isEnabled = false
+        self.reDoButton.isEnabled = false
+        self.commandManager.onStackChanged = { [weak self] in
+            guard let self = self else { return }
+            self.unDoButton.isEnabled = self.commandManager.undoStack.count > 0
+            self.reDoButton.isEnabled = self.commandManager.redoStack.count > 0
+        }
     }
     
     required public init?(coder: NSCoder) {
@@ -45,6 +61,8 @@ open class InpaintingViewController: UIViewController {
     }
     
     lazy var unDoButton = UIBarButtonItem(title: *"undo", style: .plain, target: self, action: #selector(onUndo))
+    
+    lazy var reDoButton = UIBarButtonItem(title: *"redo", style: .plain, target: self, action: #selector(onRedo))
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,13 +89,13 @@ open class InpaintingViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        unDoButton.isEnabled = false
+//        unDoButton.isEnabled = false
         // 创建消除和保存按钮
         let clearButton = UIBarButtonItem(title: *"inpaint", style: .plain, target: self, action: #selector(onInpaint))
         let saveButton = UIBarButtonItem(title: *"save_to_photo_lib", style: .plain, target: self, action: #selector(onSave))
         
         // 将按钮添加到导航栏
-        navigationItem.rightBarButtonItems = [saveButton, clearButton, unDoButton]
+        navigationItem.rightBarButtonItems = [saveButton, clearButton, unDoButton, reDoButton]
         
         loadngView.hidesWhenStopped = true
         view.addSubview(loadngView)
@@ -111,38 +129,23 @@ open class InpaintingViewController: UIViewController {
         drawView.brushSize = CGFloat(roundedValue)
     }
     
-    /// 默认内存警告剩最后三次撤销，在系统照片编辑plugin中，设置为1
-    public var memoryWarningLimitCount = 3
-    public var undoLimitHistorySteps: Int = Int.max
-    
-    
-    var undoList = [UIImage]() {
-        didSet {
-            _limitUndoList(undoLimitHistorySteps)
-            unDoButton.isEnabled = undoList.count > 0
-        }
-    }
+  
     @objc func onUndo() {
-        guard undoList.count > 0 else { return }
-        let img = undoList.removeLast()
-        self.imageView.image = img
+        Task {
+            await commandManager.undo()
+        }
     }
     
-    private func _limitUndoList(_ count: Int) {
-        var limitCount = count
-        if limitCount < 2 {
-            limitCount = 2 // 最小限制两个
-        }
-        if undoList.count > limitCount {
-            let lastOperations = undoList.suffix(limitCount - 1)
-            undoList = [undoList[0]] + lastOperations
+    @objc func onRedo() {
+        Task {
+            await commandManager.redo()
         }
     }
     
     public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // 如果收到内存警告则只保留最新的两次操作和原始图片
-        _limitUndoList(memoryWarningLimitCount)
+        commandManager.reciveMemoryWarning()
     }
     
     var hasWarned = false
@@ -160,8 +163,8 @@ open class InpaintingViewController: UIViewController {
         inpenting.inpent(image: inputImage, mask: maskImage, inpaintingRects: bounds) { [weak self] outImage, err in
             guard let self = self else { return }
             self.imageView.image = outImage
+            self.image = outImage ?? self.image
             self.imageView.contentMode = .scaleAspectFit
-            self.undoList.append(inputImage)
             self.drawView.clean()
             self.loadngView.stopAnimating()
         }
@@ -202,3 +205,18 @@ extension InpaintingViewController: UIScrollViewDelegate {
         //TODO: 放大后对笔刷进行处理，这要求DrawView支持同时绘制不同大小的笔刷，需要先支持笔刷切换再做
     }
 }
+
+extension InpaintingViewController: InpaintingCurrentImageProvider {
+    func getCurrentImageForInpainting() -> UIImage? {
+        return self.image
+    }
+    
+    func onInpaintingImageChanged(_ image: UIImage) {
+        DispatchQueue.main.async {
+            self.imageView.image = image
+            self.image = image
+        }
+        
+    }
+}
+

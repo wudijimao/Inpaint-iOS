@@ -36,6 +36,7 @@ open class InpaintingViewController: UIViewController {
     
     lazy var drawView: SmudgeDrawingView = {
         let view = SmudgeDrawingView.init()
+        view.delegate = self
         view.alpha = 0.5
         return view
     }()
@@ -52,8 +53,7 @@ open class InpaintingViewController: UIViewController {
         self.reDoButton.isEnabled = false
         self.commandManager.onStackChanged = { [weak self] in
             guard let self = self else { return }
-            self.unDoButton.isEnabled = self.commandManager.undoStack.count > 0
-            self.reDoButton.isEnabled = self.commandManager.redoStack.count > 0
+            self._checkUndoButtonState()
         }
     }
     
@@ -132,12 +132,22 @@ open class InpaintingViewController: UIViewController {
     
   
     @objc func onUndo() {
+        // 先撤销笔触
+        if drawView.canUndo {
+            drawView.undo()
+            return
+        }
         Task {
             await commandManager.undo()
         }
     }
     
     @objc func onRedo() {
+        // 先重做笔触
+        if drawView.canRedo {
+            drawView.redo()
+            return
+        }
         Task {
             await commandManager.redo()
         }
@@ -219,5 +229,17 @@ extension InpaintingViewController: InpaintingCurrentImageProvider {
         }
         
     }
+}
+
+extension InpaintingViewController: SmudgeDrawingViewDelegate {
+    public func onDrawed(_ view: CoreMLImage.SmudgeDrawingView) {
+        _checkUndoButtonState()
+    }
+    
+    private func _checkUndoButtonState() {
+        self.unDoButton.isEnabled = self.commandManager.undoStack.count > 0 || self.drawView.canUndo
+        self.reDoButton.isEnabled = self.commandManager.redoStack.count > 0 || self.drawView.canRedo
+    }
+    
 }
 

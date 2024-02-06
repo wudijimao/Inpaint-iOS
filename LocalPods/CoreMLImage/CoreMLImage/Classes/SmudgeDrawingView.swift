@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+public protocol SmudgeDrawingViewDelegate: AnyObject {
+    func onDrawed(_ view: SmudgeDrawingView)
+}
+
 open class SmudgeDrawingView: UIView {
     
     private var paths = [UIBezierPath]()
@@ -18,6 +22,8 @@ open class SmudgeDrawingView: UIView {
     public var exportLineColor: UIColor = .white // 涂抹部分导出时的颜色
     public var exportBackgroundColor: UIColor = .black // 未涂抹部分导出时的颜色
     public var brushSize: CGFloat = 20.0 // 默认笔刷大小
+    
+    public weak var delegate: SmudgeDrawingViewDelegate?
 
 
     public init() {
@@ -32,6 +38,32 @@ open class SmudgeDrawingView: UIView {
 
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    private var _undoedPathList = [UIBezierPath]()
+    
+    public var canUndo: Bool {
+        return paths.count > 0
+    }
+    
+    public var canRedo: Bool {
+        return _undoedPathList.count > 0
+    }
+    
+    public func undo() {
+        guard paths.count > 0 else { return }
+        let lastPath = paths.removeLast()
+        _undoedPathList.append(lastPath)
+        self.setNeedsDisplay()
+        self.delegate?.onDrawed(self)
+    }
+    
+    public func redo() {
+        guard _undoedPathList.count > 0 else { return }
+        let lastPath = _undoedPathList.removeLast()
+        paths.append(lastPath)
+        self.setNeedsDisplay()
+        self.delegate?.onDrawed(self)
     }
     
     // 计算绘制区域的边界
@@ -129,6 +161,8 @@ open class SmudgeDrawingView: UIView {
 
         // 重绘视图以显示最终的绘图
         self.setNeedsDisplay()
+        _undoedPathList.removeAll()
+        self.delegate?.onDrawed(self)
     }
 
     // 绘制方法
